@@ -1,6 +1,6 @@
 /* Snells Beach service worker: offline app shell + last data. No push, sync or badges.
    VERSION must equal APP_VERSION in app.js and data/version.txt (scripts/validate.py checks). */
-const VERSION = "2026-10-20r2";
+const VERSION = "2026-11-01r1";
 const CACHE = "snells-beach-" + VERSION;
 const SHELL = ["./", "index.html", "app.js", "style.css", "manifest.webmanifest",
   "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png", "icons/apple-touch-icon.png", "icons/favicon-32.png",
@@ -42,6 +42,7 @@ self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET") return;
   const url = new URL(req.url);
+  if (url.hostname.endsWith("cloudflareinsights.com")) return; // never touch analytics beacon
   if (url.origin !== location.origin || !url.pathname.startsWith(new URL("./", self.registration.scope).pathname)) return;
   url.search = "";
   if (req.mode === "navigate") url.pathname = url.pathname.replace(/index\.html$/, "");
