@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "updated": "2026-11-01T12:26:23+13:00",
+ "updated": "2026-11-01T13:23:47+13:00",
  "timezone": "Pacific/Auckland",
  "location": {
   "name": "Snells Beach",
@@ -158,20 +158,16 @@
     },
     {
      "time": "11:00",
-     "windDirDeg": 26,
-     "windKn": 9.6,
+     "windDirDeg": 27,
+     "windKn": 8.0,
      "gustKn": 18.3,
      "rainMm": 0.0,
      "rainProbPct": 0,
      "airC": 17.8,
      "cloudPct": 99,
      "sky": "cloud",
-     "src": "metno+openmeteo",
+     "src": "openmeteo",
      "models": {
-      "metno": [
-       25,
-       11.1
-      ],
       "openmeteo": [
        27,
        8.0
@@ -180,19 +176,19 @@
     },
     {
      "time": "12:00",
-     "windDirDeg": 23,
-     "windKn": 10.7,
+     "windDirDeg": 22,
+     "windKn": 10.8,
      "gustKn": 21.4,
      "rainMm": 0.0,
      "rainProbPct": 0,
-     "airC": 17.5,
-     "cloudPct": 74,
+     "airC": 17.9,
+     "cloudPct": 69,
      "sky": "partly",
      "src": "metno+openmeteo",
      "models": {
       "metno": [
-       22,
-       11.4
+       19,
+       11.7
       ],
       "openmeteo": [
        25,
@@ -202,8 +198,8 @@
     },
     {
      "time": "13:00",
-     "windDirDeg": 21,
-     "windKn": 11.2,
+     "windDirDeg": 20,
+     "windKn": 11.3,
      "gustKn": 23.5,
      "rainMm": 0.0,
      "rainProbPct": 0,
@@ -213,8 +209,8 @@
      "src": "metno+openmeteo",
      "models": {
       "metno": [
-       22,
-       11.4
+       21,
+       11.5
       ],
       "openmeteo": [
        19,
@@ -381,71 +377,71 @@
     {
      "time": "06:00",
      "open": {
-      "swellM": 0.16,
-      "periodS": 7.15,
-      "dirDeg": 33,
-      "waveM": 0.26
+      "swellM": 0.22,
+      "periodS": 8.3,
+      "dirDeg": 35,
+      "waveM": 0.28
      },
      "inner": {
       "waveM": 0.12,
-      "periodS": 6.75,
-      "dirDeg": 68
+      "periodS": 7.65,
+      "dirDeg": 61
      }
     },
     {
      "time": "09:00",
      "open": {
       "swellM": 0.16,
-      "periodS": 8.6,
-      "dirDeg": 35,
-      "waveM": 0.24
+      "periodS": 7.8,
+      "dirDeg": 32,
+      "waveM": 0.26
      },
      "inner": {
       "waveM": 0.12,
-      "periodS": 7.25,
-      "dirDeg": 54
+      "periodS": 7.1,
+      "dirDeg": 58
      }
     },
     {
      "time": "12:00",
      "open": {
       "swellM": 0.18,
-      "periodS": 8.4,
-      "dirDeg": 35,
-      "waveM": 0.34
+      "periodS": 7.95,
+      "dirDeg": 33,
+      "waveM": 0.26
      },
      "inner": {
-      "waveM": 0.16,
-      "periodS": 5.3,
-      "dirDeg": 53
+      "waveM": 0.14,
+      "periodS": 6.25,
+      "dirDeg": 57
      }
     },
     {
      "time": "15:00",
      "open": {
-      "swellM": 0.26,
-      "periodS": 4.45,
-      "dirDeg": 59,
-      "waveM": 0.56
+      "swellM": 0.22,
+      "periodS": 6.4,
+      "dirDeg": 34,
+      "waveM": 0.4
      },
      "inner": {
-      "waveM": 0.36,
-      "periodS": 3.45,
-      "dirDeg": 44
+      "waveM": 0.28,
+      "periodS": 3.65,
+      "dirDeg": 37
      }
     },
     {
      "time": "18:00",
      "open": {
-      "swellM": 0.38,
-      "periodS": 3.25,
-      "dirDeg": 63,
-      "waveM": 0.68
+      "swellM": 0.2,
+      "periodS": 3.65,
+      "dirDeg": 61,
+      "waveM": 0.56
      },
      "inner": {
-      "waveM": 0.5,
-      "periodS": 3.25,
-      "dirDeg": 36
+      "waveM": 0.44,
+      "periodS": 2.9,
+      "dirDeg": 28
      }
     }
    ],
@@ -819,27 +815,27 @@
     {
      "time": "06:00",
      "open": {
-      "swellM": 0.36,
+      "swellM": 0.28,
       "periodS": 4.6,
-      "dirDeg": 59,
+      "dirDeg": 64,
       "waveM": 1.1
      },
      "inner": {
       "waveM": 0.78,
       "periodS": 3.9,
-      "dirDeg": 29
+      "dirDeg": 28
      }
     },
     {
      "time": "09:00",
      "open": {
-      "swellM": 0.48,
-      "periodS": 4.65,
-      "dirDeg": 56,
+      "swellM": 0.3,
+      "periodS": 5.05,
+      "dirDeg": 58,
       "waveM": 1.16
      },
      "inner": {
-      "waveM": 0.84,
+      "waveM": 0.86,
       "periodS": 4.1,
       "dirDeg": 28
      }
@@ -847,13 +843,13 @@
     {
      "time": "12:00",
      "open": {
-      "swellM": 0.54,
-      "periodS": 4.8,
-      "dirDeg": 55,
-      "waveM": 1.14
+      "swellM": 0.38,
+      "periodS": 5.15,
+      "dirDeg": 39,
+      "waveM": 1.2
      },
      "inner": {
-      "waveM": 0.84,
+      "waveM": 0.88,
       "periodS": 4.15,
       "dirDeg": 29
      }
@@ -861,28 +857,28 @@
     {
      "time": "15:00",
      "open": {
-      "swellM": 0.66,
+      "swellM": 0.56,
       "periodS": 4.85,
-      "dirDeg": 43,
-      "waveM": 1.14
+      "dirDeg": 46,
+      "waveM": 1.18
      },
      "inner": {
-      "waveM": 0.82,
-      "periodS": 4.1,
+      "waveM": 0.86,
+      "periodS": 4.2,
       "dirDeg": 29
      }
     },
     {
      "time": "18:00",
      "open": {
-      "swellM": 0.86,
-      "periodS": 4.65,
-      "dirDeg": 32,
-      "waveM": 1.1
+      "swellM": 0.84,
+      "periodS": 4.55,
+      "dirDeg": 37,
+      "waveM": 1.12
      },
      "inner": {
       "waveM": 0.8,
-      "periodS": 4.15,
+      "periodS": 4.2,
       "dirDeg": 30
      }
     }
@@ -1255,69 +1251,69 @@
      "open": {
       "swellM": 1.04,
       "periodS": 4.95,
-      "dirDeg": 29,
-      "waveM": 1.06
+      "dirDeg": 28,
+      "waveM": 1.08
      },
      "inner": {
       "waveM": 0.64,
       "periodS": 5.0,
-      "dirDeg": 36
+      "dirDeg": 37
      }
     },
     {
      "time": "09:00",
      "open": {
-      "swellM": 1.02,
+      "swellM": 1.04,
       "periodS": 5.1,
       "dirDeg": 30,
-      "waveM": 1.04
+      "waveM": 1.06
      },
      "inner": {
-      "waveM": 0.64,
-      "periodS": 5.1,
+      "waveM": 0.66,
+      "periodS": 5.05,
       "dirDeg": 37
      }
     },
     {
      "time": "12:00",
      "open": {
-      "swellM": 1.0,
-      "periodS": 5.3,
+      "swellM": 1.02,
+      "periodS": 5.35,
       "dirDeg": 32,
-      "waveM": 1.06
+      "waveM": 1.08
      },
      "inner": {
-      "waveM": 0.66,
-      "periodS": 4.85,
+      "waveM": 0.68,
+      "periodS": 4.9,
       "dirDeg": 36
      }
     },
     {
      "time": "15:00",
      "open": {
-      "swellM": 1.0,
-      "periodS": 5.4,
-      "dirDeg": 33,
-      "waveM": 1.08
+      "swellM": 0.98,
+      "periodS": 5.6,
+      "dirDeg": 34,
+      "waveM": 1.12
      },
      "inner": {
-      "waveM": 0.68,
-      "periodS": 4.8,
-      "dirDeg": 36
+      "waveM": 0.72,
+      "periodS": 4.65,
+      "dirDeg": 35
      }
     },
     {
      "time": "18:00",
      "open": {
-      "swellM": 1.02,
-      "periodS": 5.5,
-      "dirDeg": 33,
-      "waveM": 1.1
+      "swellM": 1.04,
+      "periodS": 5.55,
+      "dirDeg": 34,
+      "waveM": 1.16
      },
      "inner": {
-      "waveM": 0.66,
-      "periodS": 4.9,
-      "dirDeg": 36
+      "waveM": 0.72,
+      "periodS": 4.7,
+      "dirDeg": 34
      }
     }
    ]
@@ -1639,71 +1635,71 @@
     {
      "time": "06:00",
      "open": {
-      "swellM": 1.1,
-      "periodS": 5.85,
+      "swellM": 1.12,
+      "periodS": 5.8,
       "dirDeg": 34,
-      "waveM": 1.12
+      "waveM": 1.14
      },
      "inner": {
-      "waveM": 0.6,
-      "periodS": 5.9,
+      "waveM": 0.64,
+      "periodS": 5.75,
       "dirDeg": 41
      }
     },
     {
      "time": "09:00",
      "open": {
-      "swellM": 1.08,
-      "periodS": 5.95,
+      "swellM": 1.12,
+      "periodS": 5.85,
       "dirDeg": 34,
       "waveM": 1.14
      },
      "inner": {
-      "waveM": 0.62,
-      "periodS": 5.65,
-      "dirDeg": 43
+      "waveM": 0.64,
+      "periodS": 5.7,
+      "dirDeg": 40
      }
     },
     {
      "time": "12:00",
      "open": {
       "swellM": 1.1,
-      "periodS": 6.0,
-      "dirDeg": 33,
+      "periodS": 5.95,
+      "dirDeg": 34,
       "waveM": 1.16
      },
      "inner": {
       "waveM": 0.66,
-      "periodS": 5.3,
-      "dirDeg": 45
+      "periodS": 5.35,
+      "dirDeg": 39
      }
     },
     {
      "time": "15:00",
      "open": {
-      "swellM": 1.06,
-      "periodS": 6.2,
-      "dirDeg": 33,
-      "waveM": 1.18
+      "swellM": 1.08,
+      "periodS": 6.05,
+      "dirDeg": 35,
+      "waveM": 1.16
      },
      "inner": {
-      "waveM": 0.7,
-      "periodS": 5.05,
-      "dirDeg": 44
+      "waveM": 0.68,
+      "periodS": 5.15,
+      "dirDeg": 37
      }
     },
     {
      "time": "18:00",
      "open": {
-      "swellM": 1.1,
-      "periodS": 6.15,
-      "dirDeg": 33,
-      "waveM": 1.26
+      "swellM": 1.08,
+      "periodS": 6.05,
+      "dirDeg": 35,
+      "waveM": 1.16
      },
      "inner": {
-      "waveM": 0.74,
-      "periodS": 4.95,
-      "dirDeg": 44
+      "waveM": 0.7,
+      "periodS": 5.1,
+      "dirDeg": 37
      }
     }
    ]
@@ -1713,7 +1709,7 @@
   {
    "source": "tides4fishing",
    "url": "https://tides4fishing.com/nz/auckland/mahurangi-harbour",
-   "at": "2026-11-01T12:26:23+13:00",
+   "at": "2026-11-01T13:23:47+13:00",
    "ok": true,
    "attempts": 1,
    "fallback": {
@@ -1731,7 +1727,7 @@
   }
  ],
  "observations": {
-  "fetched": "2026-11-01T12:26:23+13:00",
+  "fetched": "2026-11-01T13:23:47+13:00",
   "kind": "airport",
   "blend": false,
   "stations": [
@@ -1741,12 +1737,12 @@
     "kind": "airport",
     "lat": -37.008,
     "lon": 174.792,
-    "time": "2026-11-01T12:00:00+13:00",
-    "windKn": 10.0,
+    "time": "2026-11-01T13:00:00+13:00",
+    "windKn": 13.0,
     "gustKn": null,
-    "windDirDeg": 10,
-    "airC": 19,
-    "pressureHpa": 1031,
+    "windDirDeg": 360,
+    "airC": 20,
+    "pressureHpa": 1030,
     "rainRateMmH": null,
     "rainTodayMm": null,
     "raining": false,
