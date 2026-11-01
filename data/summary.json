@@ -1,16 +1,16 @@
 {
- "updated": "04:24",
+ "updated": "06:29",
  "date": "Mon 2 Nov",
  "picks": [
   {
-   "name": "Scotts Landing",
-   "window": "6:30-9:30am",
-   "note": "NNE 3-13kn, sheltered, dry"
+   "name": "Martins Bay",
+   "window": "Now-8:30am",
+   "note": "NNW 3-9kn, dry"
   },
   {
-   "name": "Snells Beach",
-   "window": "6:30-7:30am",
-   "note": "N 4-13kn, dry"
+   "name": "Scandretts Bay",
+   "window": "Now-8:30am",
+   "note": "NNW 3-9kn, dry"
   },
   {
    "name": "Algies Bay",
@@ -18,23 +18,18 @@
    "note": "swim, deep enough, NNE 11-14kn"
   }
  ],
- "wind": "NNE 9-14kn g26",
+ "wind": "NNE 3-14kn g26",
  "swell": "0.9m, small surf",
  "tide": "High 2:00pm",
  "weather": {
-  "now_c": 14.6,
+  "now_c": 14,
   "hi_c": 19,
   "lo_c": 15,
   "cond": "Cloudy",
-  "rain": "0.2mm, 4%",
+  "rain": "0.2mm, 2%",
   "wind": "NNE 11-14kn g26",
   "sunset": "7:54pm",
   "later": [
-   {
-    "t": "6am",
-    "c": 15,
-    "cond": "clear"
-   },
    {
     "t": "9am",
     "c": 17,
@@ -43,6 +38,11 @@
    {
     "t": "12pm",
     "c": 18,
+    "cond": "cloudy"
+   },
+   {
+    "t": "3pm",
+    "c": 19,
     "cond": "cloudy"
    }
   ]
