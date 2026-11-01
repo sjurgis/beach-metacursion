@@ -1,15 +1,15 @@
 {
- "updated": "08:24",
+ "updated": "09:26",
  "date": "Mon 2 Nov",
  "picks": [
   {
    "name": "Scotts Landing",
    "window": "Now-8:00pm",
-   "note": "NNE 2-12kn, sheltered, dry"
+   "note": "NNE 4-12kn, sheltered, dry"
   },
   {
    "name": "Tāwharanui",
-   "window": "Now-10:30am",
+   "window": "Now-11:30am",
    "note": "WSW 5-10kn, offshore, dry"
   },
   {
@@ -18,11 +18,11 @@
    "note": "swim, deep enough, NNE 10-12kn"
   }
  ],
- "wind": "NNE 7-12kn g23",
+ "wind": "N 10-12kn g22",
  "swell": "0.9m, small surf",
  "tide": "High 2:00pm",
  "weather": {
-  "now_c": 16.9,
+  "now_c": 17.9,
   "hi_c": 19,
   "lo_c": 15,
   "cond": "Cloudy",
