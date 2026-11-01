@@ -157,7 +157,7 @@ A failed tide fetch never stops the run; the forecast and live readings still up
 Written every run by `scripts/summary.js` (called from `update_forecast.py` after forecast.json). It loads
 `app.js` and scores with the site's own hangout-mode logic and default prefs (Nearby drive, no dog, no favourites),
 so the picks match the page. Covers the rest of today, or tomorrow once it's about 7pm (or 30 min before sunset).
-Fetched directly over HTTPS by the ESPHome 480x480 screen. Flat, under 1.5 KB, plain UTF-8, no emoji, keys always
+Fetched directly over HTTPS by the ESPHome 480x480 screen. Small (under 2 KB), plain UTF-8, no emoji, keys always
 present (empty string when data is missing).
 
 ```json
@@ -169,7 +169,16 @@ present (empty string when data is missing).
   ],
   "wind": "NNE 10-12kn g24",          // ≤22, daylight range from now, gust max
   "swell": "0.2m, no surf",           // ≤22, max open-coast swell
-  "tide": "High 2:30pm (est)"         // ≤22, "(est)" when tidesSource is "computed"
+  "tide": "High 2:30pm (est)",        // ≤22, "(est)" when tidesSource is "computed"
+  "weather": {                        // always today (NZ), all keys always present
+    "now_c": 14.2,                    // live home-station mean when fresh, else forecast slot within 90 min, else null
+    "hi_c": 19, "lo_c": 11,           // today's forecast max/min, rounded (null if missing)
+    "cond": "Sunny, cloudy pm",       // ≤26, daylight am/pm sky
+    "rain": "0mm, 10%",               // today's total mm, max chance
+    "wind": "NNE 10-12kn g20",        // today's range, gust max
+    "sunset": "7:52pm",
+    "later": [{"t": "12pm", "c": 18, "cond": "sunny"}]   // next 3 slots ~3 h apart; cond one of
+  }                                   // sunny, partly, cloudy, rain, showers, windy, clear (night) or ""
 }
 ```
 

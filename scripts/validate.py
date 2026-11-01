@@ -212,7 +212,7 @@ def check_summary(s):
     """data/summary.json: the wall-screen summary (see SCHEMA.md)."""
     w = "summary.json"
     if not isinstance(s, dict): err(f"{w}: not an object"); return
-    want = {"updated", "date", "picks", "wind", "swell", "tide"}
+    want = {"updated", "date", "picks", "wind", "swell", "tide", "weather"}
     if set(s) != want: err(f"{w}: keys {sorted(s)} != {sorted(want)}")
     if not re.match(r"^([01]\d|2[0-3]):[0-5]\d$", str(s.get("updated", ""))): err(f"{w}: updated must be HH:MM")
     if not isinstance(s.get("date"), str) or not s["date"]: err(f"{w}: date missing")
@@ -227,6 +227,21 @@ def check_summary(s):
         for k, v in p.items():
             if not isinstance(v, str): err(f"{w}: picks[{i}].{k} must be a string")
             elif len(v) > SUMMARY_LIM[k]: err(f"{w}: picks[{i}].{k} longer than {SUMMARY_LIM[k]}")
+    wx = s.get("weather")
+    wk = {"now_c", "hi_c", "lo_c", "cond", "rain", "wind", "sunset", "later"}
+    if not isinstance(wx, dict) or set(wx) != wk: err(f"{w}: weather keys must be {sorted(wk)}"); wx = {}
+    for k in ("now_c", "hi_c", "lo_c"):
+        v = wx.get(k)
+        if v is not None and (isinstance(v, bool) or not isinstance(v, (int, float)) or not -10 <= v <= 45): err(f"{w}: weather.{k} must be a number or null")
+    for k, n in (("cond", 26), ("rain", 22), ("wind", 22), ("sunset", 8)):
+        if k in wx and (not isinstance(wx[k], str) or len(wx[k]) > n): err(f"{w}: weather.{k} must be a string <= {n}")
+    lt = wx.get("later", [])
+    if not isinstance(lt, list) or len(lt) > 3: err(f"{w}: weather.later must be a list of up to 3"); lt = []
+    for i, x in enumerate(lt):
+        if not isinstance(x, dict) or set(x) != {"t", "c", "cond"}: err(f"{w}: weather.later[{i}] keys must be t/c/cond"); continue
+        if not re.match(r"^(1[0-2]|[1-9])(am|pm)$", str(x["t"])): err(f"{w}: weather.later[{i}].t bad")
+        if x["c"] is not None and not isinstance(x["c"], (int, float)): err(f"{w}: weather.later[{i}].c must be a number or null")
+        if x["cond"] not in {"", "sunny", "partly", "cloudy", "rain", "showers", "windy", "clear"}: err(f"{w}: weather.later[{i}].cond bad")
     raw = json.dumps(s, ensure_ascii=False)
     if EMOJI.search(raw): err(f"{w}: contains emoji")
     if re.search(r"\b(IWARKW|ISNELL|NZAA)", raw): err(f"{w}: contains a station ID")
@@ -242,7 +257,7 @@ def main():
         fn(data)
     sp = ROOT / "data" / "summary.json"
     if sp.exists():
-        if sp.stat().st_size > 1536: err(f"summary.json: {sp.stat().st_size} bytes, over 1.5 KB")
+        if sp.stat().st_size > 2048: err(f"summary.json: {sp.stat().st_size} bytes, over 2 KB")
         try: check_summary(json.loads(sp.read_text(encoding="utf-8")))
         except ValueError as e: err(f"summary.json: cannot parse: {e}")
     else:

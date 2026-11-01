@@ -121,10 +121,63 @@ if (hs.length || highs.length) {
   if (est && !tide.endsWith("(est)")) tide = `High ${t12((hs.length ? hs : highs)[0])}${est}`;
 }
 
+// ---- weather (today, NZ local) ----
+const W1 = { sun: "sunny", partly: "partly", cloud: "cloudy", fog: "cloudy", showers: "showers", rain: "rain", storm: "rain" };
+function weather() {
+  const td = fc.days.find((x) => x.date === now.date);
+  const all = [];
+  for (const x of fc.days) for (const sl of x.fcSlots || x.slots || []) all.push({ day: x, sl, abs: (A.dayNum(x.date) - A.dayNum(now.date)) * 1440 + A.hm(sl.time) });
+  const num = (v) => (typeof v === "number" && isFinite(v) ? v : null);
+  let now_c = null;
+  const L = fc.liveNow;
+  if (L?.mode === "live") { const v = L.stations.map((q) => num(q.airC)).filter((v) => v != null); if (v.length) now_c = Math.round(v.reduce((a, b) => a + b) / v.length * 10) / 10; }
+  if (now_c == null && all.length) { const c = all.reduce((a, b) => Math.abs(b.abs - now.min) < Math.abs(a.abs - now.min) ? b : a); if (Math.abs(c.abs - now.min) <= 90) now_c = num(c.sl.airC); }
+  const ts = (td?.fcSlots || td?.slots || []);
+  const temps = ts.map((q) => num(q.airC)).filter((v) => v != null);
+  const hi_c = td?.airMaxC != null ? Math.round(td.airMaxC) : temps.length ? Math.round(Math.max(...temps)) : null;
+  const lo_c = temps.length ? Math.round(Math.min(...temps)) : null;
+  let cond = "";
+  if (td && ts.length) {
+    const sr = A.hm(td.sunrise || "06:30"), ss = A.hm(td.sunset || "19:30");
+    const dl = ts.filter((q) => { const t = A.hm(q.time); return t >= sr && t <= ss; });
+    const part = (lo, hi) => { const z = dl.filter((q) => { const t = A.hm(q.time); return t >= lo && t < hi; }); if (!z.length) return null;
+      const c = {}; for (const q of z) c[q.sky] = (c[q.sky] || 0) + 1; return Object.entries(c).sort((a, b) => b[1] - a[1])[0][0]; };
+    const NAME = { sun: "Sunny", partly: "Partly cloudy", cloud: "Cloudy", fog: "Foggy", showers: "Showers", rain: "Rain", storm: "Storms" };
+    const am = part(0, 12 * 60), pm = part(12 * 60, 24 * 60);
+    if (am && pm && am !== pm) cond = `${NAME[am] || am}, ${(NAME[pm] || pm).toLowerCase()} pm`;
+    else if (am || pm) cond = NAME[am || pm] || (am || pm);
+    if (cond.length > 26) cond = fit(`${NAME[am] || am} am, ${(NAME[pm] || pm).toLowerCase()} pm`, 26);
+  }
+  let rain = "";
+  if (ts.length) {
+    const mm = ts.filter((q) => q.rainMm != null), pr = ts.map((q) => q.rainProbPct).filter((v) => v != null);
+    const tot = mm.reduce((a, q) => a + q.rainMm, 0);
+    rain = [mm.length ? `${tot < 10 ? Math.round(tot * 10) / 10 : Math.round(tot)}mm` : "", pr.length ? `${Math.max(...pr)}%` : ""].filter(Boolean).join(", ");
+  }
+  let wnd = "";
+  if (ts.length) { const ws = A.windSummary(ts.map((q) => ({ dir: q.windDirDeg, kn: q.windKn }))); const g = Math.max(...ts.map((q) => q.gustKn ?? 0));
+    wnd = fit(ws.light ? "Light <5kn" : `${A.dir16(ws.dir)} ${ws.lo === ws.hi ? ws.hi : ws.lo + "-" + ws.hi}kn${g >= ws.hi + 3 ? ` g${Math.round(g)}` : ""}`, 22); }
+  const later = [];
+  let next = Math.ceil((now.min + 60) / 180) * 180;
+  for (let k = 0; k < 3; k++) {
+    const c = all.find((q) => q.abs === next) || all.filter((q) => Math.abs(q.abs - next) <= 60).sort((a, b) => Math.abs(a.abs - next) - Math.abs(b.abs - next))[0]
+      || all.filter((q) => q.abs >= next).sort((a, b) => a.abs - b.abs)[0];   // overnight gap: next slot there is
+    if (!c) break;
+    const t = A.hm(c.sl.time), night = t < A.hm(c.day.sunrise || "06:30") || t > A.hm(c.day.sunset || "19:30");
+    let w = W1[c.sl.sky] || "";
+    if (night && (w === "sunny" || w === "partly")) w = "clear";
+    else if (w && w !== "rain" && w !== "showers" && (c.sl.windKn ?? 0) >= 20) w = "windy";
+    const h = Math.floor(t / 60), h12 = h % 12 || 12;
+    later.push({ t: `${h12}${h >= 12 ? "pm" : "am"}`, c: num(c.sl.airC) == null ? null : Math.round(c.sl.airC), cond: w });
+    next = c.abs + 180;
+  }
+  return { now_c, hi_c, lo_c, cond, rain: fit(rain, 22), wind: wnd, sunset: td?.sunset ? (() => { const m = A.hm(td.sunset), h = Math.floor(m / 60); return `${h % 12 || 12}:${String(m % 60).padStart(2, "0")}${h >= 12 ? "pm" : "am"}`; })() : "", later };
+}
+
 const upd = new Intl.DateTimeFormat("en-NZ", { timeZone: "Pacific/Auckland", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).format(new Date());
 const [y, mo, d] = day.date.split("-").map(Number);
 const dt = new Date(Date.UTC(y, mo - 1, d, 12));
 const date = `${dt.toLocaleDateString("en-NZ", { timeZone: "UTC", weekday: "short" })} ${d} ${dt.toLocaleDateString("en-NZ", { timeZone: "UTC", month: "short" })}`;
-const out = { updated: opt("--at") || upd, date, picks: outPicks, wind: fit(wind, LIM.wind), swell: fit(swell, LIM.swell), tide };
+const out = { updated: opt("--at") || upd, date, picks: outPicks, wind: fit(wind, LIM.wind), swell: fit(swell, LIM.swell), tide, weather: weather() };
 fs.writeFileSync(OUT, JSON.stringify(out, null, 1) + "\n");
 console.log(`wrote ${path.relative(ROOT, OUT)}: ${Buffer.byteLength(JSON.stringify(out, null, 1) + "\n")} bytes`);
