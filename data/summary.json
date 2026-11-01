@@ -1,0 +1,24 @@
+{
+ "updated": "23:00",
+ "date": "Mon 2 Nov",
+ "picks": [
+  {
+   "name": "Scotts Landing",
+   "window": "6:30am-8:00pm",
+   "note": "NNE 11-14kn, sheltered, dry"
+  },
+  {
+   "name": "Baddeleys Beach",
+   "window": "6:30am-3:30pm",
+   "note": "NNE 12-14kn, sheltered, dry"
+  },
+  {
+   "name": "Campbells Beach",
+   "window": "6:30am-3:30pm",
+   "note": "NNE 12-14kn, sheltered, dry"
+  }
+ ],
+ "wind": "NNE 12-14kn g25",
+ "swell": "0.8m, small surf",
+ "tide": "High 3:30pm (est)"
+}

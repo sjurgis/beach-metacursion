@@ -151,3 +151,28 @@ Written by `scripts/observations.py` each run; omitted when nothing fresh (≤ 9
 Array of fetch records from `update_forecast.py`. Today one entry for tides:
 `{ "source": "tides4fishing", "url", "at", "ok": bool, "attempts": n, "error"?: "...", "fallback"?: {date: "previous"|"computed"|"none"}, "bySource": {date: "tides4fishing"|"previous"|"computed"|"none"} }`.
 A failed tide fetch never stops the run; the forecast and live readings still update.
+
+## data/summary.json (wall screen)
+
+Written every run by `scripts/summary.js` (called from `update_forecast.py` after forecast.json). It loads
+`app.js` and scores with the site's own hangout-mode logic and default prefs (Nearby drive, no dog, no favourites),
+so the picks match the page. Covers the rest of today, or tomorrow once it's about 7pm (or 30 min before sunset).
+Fetched directly over HTTPS by the ESPHome 480x480 screen. Flat, under 1.5 KB, plain UTF-8, no emoji, keys always
+present (empty string when data is missing).
+
+```json
+{
+  "updated": "07:19",                 // NZ local HH:MM of the run
+  "date": "Sun 1 Nov",                // the day the picks are for
+  "picks": [                          // exactly 3, best first; name ≤18, window ≤14, note ≤34
+    {"name": "Scotts Landing", "window": "8:00-10:30am", "note": "almost still, sheltered, sunny"}
+  ],
+  "wind": "NNE 10-12kn g24",          // ≤22, daylight range from now, gust max
+  "swell": "0.2m, no surf",           // ≤22, max open-coast swell
+  "tide": "High 2:30pm (est)"         // ≤22, "(est)" when tidesSource is "computed"
+}
+```
+
+Picks: top two hangout beaches (distinct), then the swim window at Algies/Snells when the tide gives ≥1.5 h
+(score ≥50), else the third hangout beach. Times are rounded to the half hour; "Now-…" means it's good already.
+Checked by `validate.py`.

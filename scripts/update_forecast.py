@@ -327,6 +327,16 @@ def main():
         json.dump(out, f, ensure_ascii=False, indent=1)
         f.write("\n")
     print(f"wrote {a.out}: {len(days)} days, updated {out['updated']}")
+    # tiny 3-pick summary for the wall screen, scored by app.js itself; never breaks the forecast run
+    try:
+        import subprocess
+        here = os.path.dirname(os.path.abspath(__file__))
+        r = subprocess.run(["node", os.path.join(here, "summary.js"), "--out",
+                            os.path.join(os.path.dirname(a.out) or ".", "summary.json")],
+                           capture_output=True, text=True, timeout=60)
+        print((r.stdout or "").strip() or f"warning: summary.js: {(r.stderr or '').strip()[-300:]}")
+    except Exception as e:
+        print("warning: summary.json:", e, file=sys.stderr)
 
 
 if __name__ == "__main__":

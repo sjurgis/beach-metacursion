@@ -204,6 +204,34 @@ def check_site_versions():
         warnings.append(f"manifest.webmanifest: {e}")
 
 
+SUMMARY_LIM = {"name": 18, "window": 14, "note": 34, "wind": 22, "swell": 22, "tide": 22}
+EMOJI = re.compile("[\U0001F000-\U0001FAFF\u2600-\u27BF\uFE0F]")
+
+
+def check_summary(s):
+    """data/summary.json: the wall-screen summary (see SCHEMA.md)."""
+    w = "summary.json"
+    if not isinstance(s, dict): err(f"{w}: not an object"); return
+    want = {"updated", "date", "picks", "wind", "swell", "tide"}
+    if set(s) != want: err(f"{w}: keys {sorted(s)} != {sorted(want)}")
+    if not re.match(r"^([01]\d|2[0-3]):[0-5]\d$", str(s.get("updated", ""))): err(f"{w}: updated must be HH:MM")
+    if not isinstance(s.get("date"), str) or not s["date"]: err(f"{w}: date missing")
+    for k in ("wind", "swell", "tide"):
+        v = s.get(k)
+        if not isinstance(v, str): err(f"{w}: {k} must be a string")
+        elif len(v) > SUMMARY_LIM[k]: err(f"{w}: {k} longer than {SUMMARY_LIM[k]}")
+    picks = s.get("picks")
+    if not isinstance(picks, list) or len(picks) != 3: err(f"{w}: picks must be exactly 3"); picks = []
+    for i, p in enumerate(picks):
+        if not isinstance(p, dict) or set(p) != {"name", "window", "note"}: err(f"{w}: picks[{i}] keys must be name/window/note"); continue
+        for k, v in p.items():
+            if not isinstance(v, str): err(f"{w}: picks[{i}].{k} must be a string")
+            elif len(v) > SUMMARY_LIM[k]: err(f"{w}: picks[{i}].{k} longer than {SUMMARY_LIM[k]}")
+    raw = json.dumps(s, ensure_ascii=False)
+    if EMOJI.search(raw): err(f"{w}: contains emoji")
+    if re.search(r"\b(IWARKW|ISNELL|NZAA)", raw): err(f"{w}: contains a station ID")
+
+
 def main():
     path = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "data" / "forecast.json"
     for p, fn in ((path, check_forecast), (ROOT / "data" / "beaches.json", check_beaches)):
@@ -212,6 +240,13 @@ def main():
         except Exception as e:
             err(f"{p}: cannot read/parse JSON: {e}"); continue
         fn(data)
+    sp = ROOT / "data" / "summary.json"
+    if sp.exists():
+        if sp.stat().st_size > 1536: err(f"summary.json: {sp.stat().st_size} bytes, over 1.5 KB")
+        try: check_summary(json.loads(sp.read_text(encoding="utf-8")))
+        except ValueError as e: err(f"summary.json: cannot parse: {e}")
+    else:
+        warn("data/summary.json missing")
     check_site_versions()
     for w in warnings: print("warning:", w)
     for e in errors: print("ERROR:", e)
