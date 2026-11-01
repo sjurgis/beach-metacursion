@@ -128,7 +128,7 @@ def page_station(sid, name, now, log, lat=None, lon=None):
     for i in range(4):   # fresh request each time (no cookies), so each try gets a new A/B assignment
         url = urls[i % len(urls)]
         try:
-            r = requests.get(url, headers=headers, timeout=15)
+            r = requests.get(url, headers=headers, timeout=15, proxies=_wu_proxies())
             variant = r.headers.get("x-origin-hint", "?")
             tries.append(f"{r.status_code}:{variant}")
             if r.status_code == 200: o = _parse_state(r.text, sid)
@@ -136,7 +136,7 @@ def page_station(sid, name, now, log, lat=None, lon=None):
             tries.append(f"err:{type(e).__name__}")
         if o: break
         if i < 3: time.sleep(2 * (i + 1))
-    entry = {"id": sid, "ok": False, "method": "page", "attempts": len(tries), "tries": tries}
+    entry = {"id": sid, "ok": False, "method": "page", "via": "home" if wu_proxy() else "direct", "attempts": len(tries), "tries": tries}
     log.append(entry)
     if not o: entry["error"] = NO_STATE; raise ValueError(entry["error"])
     return _reading_from_state(o, sid, name, now, entry, lat, lon)
@@ -175,9 +175,37 @@ def _reading_from_state(o, sid, name, now, entry, lat=None, lon=None):
 # Chrome runs the page like a normal visitor's browser; we only read the rendered DOM text
 # (or the page's own server-rendered state if that variant comes back). We never touch the
 # page's API key and never call api.weather.com ourselves. One render per station per run.
-CHROME = "/usr/bin/google-chrome"
-RENDER_TIMEOUT_S = 22
+# Google Chrome on the box force-installs policy extensions (/etc/opt/chrome/policies), which keep
+# --dump-dom from ever exiting, so prefer Playwright's chrome-headless-shell (ignores those policies).
+def _find_chrome():
+    import glob
+    hs = sorted(glob.glob(os.path.expanduser("~/.cache/ms-playwright/chromium_headless_shell-*/chrome-headless-shell-linux64/chrome-headless-shell")))
+    return os.environ.get("WU_CHROME") or (hs[-1] if hs else "/usr/bin/google-chrome")
+CHROME = _find_chrome()
+RENDER_TIMEOUT_S = 45
 RENDER_PARALLEL = 3
+
+# Jurgis's home connection (Tailscale exit node via userspace tailscaled HTTP proxy). Used ONLY for
+# wunderground.com fetches, and only when the proxy port answers; otherwise we go direct.
+WU_PROXY = os.environ.get("WU_PROXY", "http://localhost:1056")
+_proxy_ok = None
+
+
+def wu_proxy():
+    global _proxy_ok
+    if _proxy_ok is None:
+        import socket, urllib.parse
+        u = urllib.parse.urlparse(WU_PROXY)
+        try:
+            socket.create_connection((u.hostname, u.port), timeout=2).close(); _proxy_ok = bool(WU_PROXY)
+        except OSError:
+            _proxy_ok = False
+    return WU_PROXY if _proxy_ok else None
+
+
+def _wu_proxies():
+    p = wu_proxy()
+    return {"http": p, "https": p} if p else None
 
 
 def _parse_display(text, now):
@@ -210,13 +238,23 @@ def render_station(sid, name, now, entry, lat=None, lon=None):
     from bs4 import BeautifulSoup
     entry["method"] = "render"
     t0 = time.time()
-    with tempfile.TemporaryDirectory(prefix="wu-chrome-") as prof:
+    import signal
+    px = wu_proxy()
+    with tempfile.TemporaryDirectory(prefix="wu-chrome-", ignore_cleanup_errors=True) as prof:
+        cmd = [CHROME, "--headless=new", "--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage", "--no-first-run",
+               f"--user-data-dir={prof}", f"--user-agent={BROWSER_UA}", "--timeout=25000"]
+        if px: cmd.append(f"--proxy-server={px}")
+        cmd += ["--dump-dom", f"https://www.wunderground.com/dashboard/pws/{sid}"]
+        p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True, start_new_session=True)
         try:
-            html = subprocess.run([CHROME, "--headless=new", "--no-sandbox", "--disable-gpu", "--no-first-run",
-                                   f"--user-data-dir={prof}", f"--user-agent={BROWSER_UA}", "--virtual-time-budget=15000",
-                                   "--dump-dom", f"https://www.wunderground.com/dashboard/pws/{sid}"],
-                                  capture_output=True, text=True, timeout=RENDER_TIMEOUT_S).stdout
+            html, _ = p.communicate(timeout=RENDER_TIMEOUT_S)
         except subprocess.TimeoutExpired:
+            html = None
+        finally:   # kill the whole process group so no renderer/zygote is left orphaned
+            try: os.killpg(p.pid, signal.SIGKILL)
+            except OSError: pass
+            p.wait()
+        if html is None:
             entry["renderS"] = RENDER_TIMEOUT_S; entry["error"] = "render timed out"; raise ValueError(entry["error"])
     entry["renderS"] = round(time.time() - t0, 1)
     o = _parse_state(html, sid)                    # if the old variant came back, its own data is exact
