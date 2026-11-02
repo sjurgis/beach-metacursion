@@ -1,28 +1,28 @@
 {
- "updated": "10:23",
+ "updated": "11:21",
  "date": "Tue 3 Nov",
  "picks": [
   {
-   "name": "Scotts Landing",
-   "window": "Now-12:30pm",
-   "note": "NE 3-9kn, sheltered, dry"
-  },
-  {
    "name": "Mathesons Bay",
    "window": "Now-12:30pm",
-   "note": "WSW 9-11kn, sheltered, dry"
+   "note": "SW 7-8kn, sheltered, dry"
   },
   {
-   "name": "Algies Bay",
-   "window": "12:00-6:30pm",
-   "note": "swim, deep enough, NE 12-13kn"
+   "name": "Scotts Landing",
+   "window": "Now-12:30pm",
+   "note": "NE 5-6kn, sheltered, dry"
+  },
+  {
+   "name": "Snells Beach",
+   "window": "12:00-2:00pm",
+   "note": "swim, deep enough, NE 6-10kn"
   }
  ],
- "wind": "NE 12-13kn g25",
+ "wind": "NE 12-14kn g25",
  "swell": "1.0m 5s, surf up",
  "tide": "High 3:00pm",
  "weather": {
-  "now_c": 19.2,
+  "now_c": 20.4,
   "hi_c": 20,
   "lo_c": 15,
   "cond": "Cloudy, showers pm",
@@ -31,11 +31,6 @@
   "sunset": "7:55pm",
   "later": [
    {
-    "t": "12pm",
-    "c": 19,
-    "cond": "showers"
-   },
-   {
     "t": "3pm",
     "c": 20,
     "cond": "showers"
@@ -43,6 +38,11 @@
    {
     "t": "6pm",
     "c": 18,
+    "cond": "cloudy"
+   },
+   {
+    "t": "8pm",
+    "c": 16,
     "cond": "cloudy"
    }
   ]
