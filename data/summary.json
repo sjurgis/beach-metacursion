@@ -1,28 +1,28 @@
 {
- "updated": "15:24",
+ "updated": "16:22",
  "date": "Mon 2 Nov",
  "picks": [
   {
    "name": "Scotts Landing",
    "window": "Now-8:00pm",
-   "note": "N 4-11kn, sheltered, dry"
+   "note": "N 4-10kn, sheltered, dry"
   },
   {
    "name": "Tāwharanui",
-   "window": "Now-5:30pm",
-   "note": "WSW 5-9kn, offshore, dry"
+   "window": "Now-6:30pm",
+   "note": "SW 9-10kn, offshore, dry"
   },
   {
-   "name": "Snells Beach",
-   "window": "Now-5:00pm",
-   "note": "swim, deep enough, NW 4-6kn"
+   "name": "Baddeleys Beach",
+   "window": "7:30-8:00pm",
+   "note": "N 9-10kn, sheltered, dry"
   }
  ],
- "wind": "N 11-14kn g20",
+ "wind": "NE 7-10kn g18",
  "swell": "0.9m, small surf",
  "tide": "High 2:00pm",
  "weather": {
-  "now_c": 19,
+  "now_c": 18.7,
   "hi_c": 19,
   "lo_c": 14,
   "cond": "Cloudy",
