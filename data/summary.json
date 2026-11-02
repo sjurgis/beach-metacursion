@@ -1,28 +1,28 @@
 {
- "updated": "17:23",
+ "updated": "18:28",
  "date": "Mon 2 Nov",
  "picks": [
   {
    "name": "Scotts Landing",
    "window": "Now-8:00pm",
-   "note": "N 5-8kn, sheltered, dry"
+   "note": "N 4-5kn, sheltered, dry"
   },
   {
    "name": "Tāwharanui",
-   "window": "Now-7:30pm",
-   "note": "WSW 4-8kn, offshore, dry"
+   "window": "Now-8:00pm",
+   "note": "almost still, dry"
   },
   {
-   "name": "Martins Bay",
-   "window": "Now-7:30pm",
-   "note": "NNE 8-9kn, dry"
+   "name": "Goat Island",
+   "window": "Now-8:00pm",
+   "note": "almost still, dry"
   }
  ],
- "wind": "NE 6-7kn g11",
+ "wind": "NE 12kn g16",
  "swell": "0.9m, small surf",
  "tide": "High 2:00pm",
  "weather": {
-  "now_c": 18.2,
+  "now_c": 17.9,
   "hi_c": 19,
   "lo_c": 14,
   "cond": "Cloudy",
