@@ -1,28 +1,28 @@
 {
- "updated": "16:22",
+ "updated": "17:23",
  "date": "Mon 2 Nov",
  "picks": [
   {
    "name": "Scotts Landing",
    "window": "Now-8:00pm",
-   "note": "N 4-10kn, sheltered, dry"
+   "note": "N 5-8kn, sheltered, dry"
   },
   {
    "name": "Tāwharanui",
-   "window": "Now-6:30pm",
-   "note": "SW 9-10kn, offshore, dry"
+   "window": "Now-7:30pm",
+   "note": "WSW 4-8kn, offshore, dry"
   },
   {
-   "name": "Baddeleys Beach",
-   "window": "7:30-8:00pm",
-   "note": "N 9-10kn, sheltered, dry"
+   "name": "Martins Bay",
+   "window": "Now-7:30pm",
+   "note": "NNE 8-9kn, dry"
   }
  ],
- "wind": "NE 7-10kn g18",
+ "wind": "NE 6-7kn g11",
  "swell": "0.9m, small surf",
  "tide": "High 2:00pm",
  "weather": {
-  "now_c": 18.7,
+  "now_c": 18.2,
   "hi_c": 19,
   "lo_c": 14,
   "cond": "Cloudy",
@@ -30,11 +30,6 @@
   "wind": "NNE 8-13kn g26",
   "sunset": "7:54pm",
   "later": [
-   {
-    "t": "6pm",
-    "c": 17,
-    "cond": "cloudy"
-   },
    {
     "t": "8pm",
     "c": 16,
@@ -44,6 +39,11 @@
     "t": "6am",
     "c": 14,
     "cond": "cloudy"
+   },
+   {
+    "t": "9am",
+    "c": 18,
+    "cond": "rain"
    }
   ]
  }
