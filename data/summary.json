@@ -1,32 +1,32 @@
 {
- "updated": "01:23",
+ "updated": "04:28",
  "date": "Tue 3 Nov",
  "picks": [
   {
    "name": "Scotts Landing",
-   "window": "6:30-10:30am",
-   "note": "NNE 8-12kn, sheltered, showers 8%"
+   "window": "6:30-9:30am",
+   "note": "NNE 4-11kn, sheltered, dry"
   },
   {
-   "name": "Mathesons Bay",
-   "window": "6:30-8:30am",
-   "note": "NNE 8-11kn, dry"
+   "name": "Martins Bay",
+   "window": "6:30-7:30am",
+   "note": "NNE 5-10kn, onshore, dry"
   },
   {
-   "name": "Baddeleys Beach",
-   "window": "6:30-10:30am",
-   "note": "NNE 8-12kn, offshore, showers 8%"
+   "name": "Scandretts Bay",
+   "window": "6:30-7:30am",
+   "note": "NNE 5-10kn, onshore, dry"
   }
  ],
- "wind": "NNE 8-14kn g26",
+ "wind": "NNE 7-14kn g26",
  "swell": "1.0m 5s, surf up",
  "tide": "High 3:00pm",
  "weather": {
-  "now_c": 16.5,
+  "now_c": 16.3,
   "hi_c": 20,
   "lo_c": 15,
-  "cond": "Cloudy, rain pm",
-  "rain": "1.7mm, 59%",
+  "cond": "Cloudy, showers pm",
+  "rain": "1.7mm, 63%",
   "wind": "NNE 8-14kn g26",
   "sunset": "7:55pm",
   "later": [
