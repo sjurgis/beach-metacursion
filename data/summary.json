@@ -1,28 +1,28 @@
 {
- "updated": "04:28",
+ "updated": "06:22",
  "date": "Tue 3 Nov",
  "picks": [
   {
-   "name": "Scotts Landing",
-   "window": "6:30-9:30am",
-   "note": "NNE 4-11kn, sheltered, dry"
-  },
-  {
    "name": "Martins Bay",
-   "window": "6:30-7:30am",
-   "note": "NNE 5-10kn, onshore, dry"
+   "window": "Now-8:30am",
+   "note": "NE 5-9kn, dry"
   },
   {
    "name": "Scandretts Bay",
-   "window": "6:30-7:30am",
-   "note": "NNE 5-10kn, onshore, dry"
+   "window": "Now-8:30am",
+   "note": "NE 5-9kn, dry"
+  },
+  {
+   "name": "Scotts Landing",
+   "window": "Now-9:30am",
+   "note": "NNE 1-11kn, sheltered, dry"
   }
  ],
- "wind": "NNE 7-14kn g26",
+ "wind": "NNE 5-14kn g26",
  "swell": "1.0m 5s, surf up",
  "tide": "High 3:00pm",
  "weather": {
-  "now_c": 16.3,
+  "now_c": 16,
   "hi_c": 20,
   "lo_c": 15,
   "cond": "Cloudy, showers pm",
@@ -30,11 +30,6 @@
   "wind": "NNE 8-14kn g26",
   "sunset": "7:55pm",
   "later": [
-   {
-    "t": "6am",
-    "c": 15,
-    "cond": "clear"
-   },
    {
     "t": "9am",
     "c": 18,
@@ -44,6 +39,11 @@
     "t": "12pm",
     "c": 19,
     "cond": "rain"
+   },
+   {
+    "t": "3pm",
+    "c": 19,
+    "cond": "showers"
    }
   ]
  }
