@@ -1,33 +1,33 @@
 {
- "updated": "12:20",
+ "updated": "13:29",
  "date": "Mon 2 Nov",
  "picks": [
   {
    "name": "Scotts Landing",
    "window": "Now-8:00pm",
-   "note": "N 7-11kn, sheltered, dry"
+   "note": "N 5-11kn, sheltered, dry"
   },
   {
    "name": "Tāwharanui",
-   "window": "Now-2:30pm",
-   "note": "SW 11kn, offshore, dry"
+   "window": "Now-3:30pm",
+   "note": "WSW 4-8kn, offshore, dry"
   },
   {
    "name": "Algies Bay",
    "window": "3:00-5:00pm",
-   "note": "swim, deep enough, NNE 10-11kn"
+   "note": "swim, deep enough, NNE 11kn"
   }
  ],
- "wind": "NNE 10-12kn g21",
+ "wind": "NNE 11kn g22",
  "swell": "0.9m, small surf",
  "tide": "High 2:00pm",
  "weather": {
-  "now_c": 19.4,
+  "now_c": 20.1,
   "hi_c": 19,
-  "lo_c": 15,
+  "lo_c": 14,
   "cond": "Cloudy",
-  "rain": "0mm, 0%",
-  "wind": "NNE 8-12kn g23",
+  "rain": "0.1mm, 0%",
+  "wind": "NNE 8-13kn g26",
   "sunset": "7:54pm",
   "later": [
    {
