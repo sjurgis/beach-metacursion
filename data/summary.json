@@ -1,28 +1,28 @@
 {
- "updated": "18:28",
- "date": "Mon 2 Nov",
+ "updated": "19:29",
+ "date": "Tue 3 Nov",
  "picks": [
   {
    "name": "Scotts Landing",
-   "window": "Now-8:00pm",
-   "note": "N 4-5kn, sheltered, dry"
+   "window": "6:30-8:30am",
+   "note": "NNE 8-10kn, sheltered, showers 0%"
   },
   {
-   "name": "Tāwharanui",
-   "window": "Now-8:00pm",
-   "note": "almost still, dry"
+   "name": "Mathesons Bay",
+   "window": "6:30-8:30am",
+   "note": "NNE 8-10kn, showers 0%"
   },
   {
-   "name": "Goat Island",
-   "window": "Now-8:00pm",
-   "note": "almost still, dry"
+   "name": "Algies Bay",
+   "window": "6:30-7:30am",
+   "note": "NNE 8-9kn, dry"
   }
  ],
- "wind": "NE 12kn g16",
- "swell": "0.9m, small surf",
- "tide": "High 2:00pm",
+ "wind": "NNE 8-13kn g25",
+ "swell": "1.1m 5s, surf up",
+ "tide": "High 3:00pm",
  "weather": {
-  "now_c": 17.9,
+  "now_c": 17.4,
   "hi_c": 19,
   "lo_c": 14,
   "cond": "Cloudy",
