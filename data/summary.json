@@ -1,28 +1,28 @@
 {
- "updated": "04:24",
+ "updated": "06:21",
  "date": "Wed 4 Nov",
  "picks": [
   {
-   "name": "Mathesons Bay",
-   "window": "6:00-6:30am",
-   "note": "ESE 7-9kn, dry"
-  },
-  {
-   "name": "Scotts Landing",
-   "window": "6:00-7:30am",
-   "note": "NE 3-11kn, sheltered"
-  },
-  {
    "name": "Martins Bay",
-   "window": "6:00-6:30am",
-   "note": "NE 6-9kn, dry"
+   "window": "Now-8:30am",
+   "note": "ENE 4-10kn, onshore, showers 30%"
+  },
+  {
+   "name": "Scandretts Bay",
+   "window": "Now-8:30am",
+   "note": "ENE 4-10kn, onshore, showers 30%"
+  },
+  {
+   "name": "Tāwharanui",
+   "window": "Now-8:30am",
+   "note": "S 8-11kn, offshore, showers 30%"
   }
  ],
- "wind": "NE 9-14kn g26",
+ "wind": "ENE 6-14kn g26",
  "swell": "1.3m 6s, surf up",
  "tide": "High 4:00pm",
  "weather": {
-  "now_c": 16.6,
+  "now_c": 16.5,
   "hi_c": 20,
   "lo_c": 15,
   "cond": "Cloudy, showers pm",
@@ -31,17 +31,17 @@
   "sunset": "7:56pm",
   "later": [
    {
-    "t": "6am",
-    "c": 15,
-    "cond": "cloudy"
-   },
-   {
     "t": "9am",
     "c": 17,
     "cond": "rain"
    },
    {
     "t": "12pm",
+    "c": 19,
+    "cond": "showers"
+   },
+   {
+    "t": "3pm",
     "c": 19,
     "cond": "showers"
    }
