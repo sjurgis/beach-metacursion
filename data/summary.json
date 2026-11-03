@@ -1,40 +1,35 @@
 {
- "updated": "16:23",
+ "updated": "17:28",
  "date": "Tue 3 Nov",
  "picks": [
   {
    "name": "Tāwharanui",
-   "window": "Now-6:30pm",
-   "note": "SSW 5-9kn, offshore, dry"
-  },
-  {
-   "name": "Mathesons Bay",
-   "window": "Now-6:30pm",
-   "note": "SW 4-9kn, sheltered, dry"
+   "window": "Now-7:30pm",
+   "note": "SSW 5-8kn, offshore, dry"
   },
   {
    "name": "Snells Beach",
-   "window": "Now-6:30pm",
-   "note": "swim, deep enough, NNE 5-7kn, dry"
+   "window": "Now-7:30pm",
+   "note": "ENE 4-8kn, dry, high tide"
+  },
+  {
+   "name": "Mathesons Bay",
+   "window": "Now-7:30pm",
+   "note": "SSW 3-7kn, sheltered, dry"
   }
  ],
- "wind": "N 9-10kn g20",
+ "wind": "NE 8-9kn g14",
  "swell": "1.0m 6s, surf up",
  "tide": "High 3:00pm",
  "weather": {
-  "now_c": 19.8,
+  "now_c": 18.8,
   "hi_c": 20,
   "lo_c": 15,
   "cond": "Cloudy, rain pm",
-  "rain": "1mm, 65%",
+  "rain": "1.1mm, 65%",
   "wind": "NNE 6-13kn g26",
   "sunset": "7:55pm",
   "later": [
-   {
-    "t": "6pm",
-    "c": 18,
-    "cond": "cloudy"
-   },
    {
     "t": "8pm",
     "c": 16,
@@ -44,6 +39,11 @@
     "t": "6am",
     "c": 16,
     "cond": "cloudy"
+   },
+   {
+    "t": "9am",
+    "c": 18,
+    "cond": "partly"
    }
   ]
  }
