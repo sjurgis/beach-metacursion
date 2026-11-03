@@ -1,28 +1,28 @@
 {
- "updated": "18:27",
- "date": "Tue 3 Nov",
+ "updated": "19:28",
+ "date": "Wed 4 Nov",
  "picks": [
   {
-   "name": "Tāwharanui",
-   "window": "Now-8:00pm",
-   "note": "SSW 4-6kn, offshore, dry"
-  },
-  {
    "name": "Scotts Landing",
-   "window": "Now-8:00pm",
-   "note": "almost still, sheltered, dry"
+   "window": "6:00-7:30am",
+   "note": "NE 9-11kn, sheltered, showers 17%"
   },
   {
-   "name": "Mathesons Bay",
-   "window": "Now-8:00pm",
-   "note": "almost still, sheltered, dry"
+   "name": "Baddeleys Beach",
+   "window": "6:00-7:30am",
+   "note": "NE 9-11kn, offshore, showers 17%"
+  },
+  {
+   "name": "Campbells Beach",
+   "window": "6:00-7:30am",
+   "note": "NE 9-11kn, showers 17%, high tide"
   }
  ],
- "wind": "E 10kn g16",
- "swell": "1.0m 6s, surf up",
- "tide": "High 3:00pm",
+ "wind": "NE 10-13kn g26",
+ "swell": "1.4m 6s, surf up",
+ "tide": "High 4:00pm",
  "weather": {
-  "now_c": 17.9,
+  "now_c": 16.6,
   "hi_c": 20,
   "lo_c": 15,
   "cond": "Cloudy, rain pm",
