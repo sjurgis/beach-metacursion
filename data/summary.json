@@ -1,32 +1,32 @@
 {
- "updated": "11:22",
+ "updated": "12:29",
  "date": "Thu 5 Nov",
  "picks": [
   {
    "name": "Scotts Landing",
-   "window": "1:30-8:00pm",
-   "note": "NNE 3-9kn, sheltered, rain 83%"
+   "window": "5:30-8:00pm",
+   "note": "N 7-8kn, sheltered, rain 70%"
   },
   {
    "name": "Mathesons Bay",
-   "window": "2:30-8:00pm",
-   "note": "NNE 7-9kn, rain 64%"
+   "window": "6:30-8:00pm",
+   "note": "N 7-8kn, showers 58%"
   },
   {
    "name": "Algies Bay",
    "window": "2:00-8:00pm",
-   "note": "swim, deep enough, NNE 7-9kn"
+   "note": "swim, deep enough, NNE 6-9kn"
   }
  ],
- "wind": "NE 8-9kn g16",
+ "wind": "NNE 6-9kn g16",
  "swell": "1.1m 6s, surf up",
  "tide": "High 5:00pm",
  "weather": {
-  "now_c": 18.8,
+  "now_c": 19.7,
   "hi_c": 20,
   "lo_c": 17,
   "cond": "Rain, cloudy pm",
-  "rain": "2.2mm, 52%",
+  "rain": "2.2mm, 91%",
   "wind": "NNE 3-9kn g16",
   "sunset": "7:57pm",
   "later": [
