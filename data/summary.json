@@ -1,28 +1,28 @@
 {
- "updated": "16:27",
+ "updated": "17:28",
  "date": "Thu 5 Nov",
  "picks": [
   {
    "name": "Scotts Landing",
    "window": "7:30-8:00pm",
-   "note": "NNE 5-7kn, sheltered"
+   "note": "NNE 3-5kn, sheltered, rain 83%"
   },
   {
-   "name": "Mathesons Bay",
+   "name": "Tāwharanui",
    "window": "7:30-8:00pm",
-   "note": "N 6-7kn, rain 59%"
+   "note": "WNW 5-6kn, rain 83%"
   },
   {
-   "name": "Algies Bay",
+   "name": "Snells Beach",
    "window": "Now-8:00pm",
-   "note": "swim, deep enough, NE 5-7kn"
+   "note": "swim, deep enough, ENE 4-6kn"
   }
  ],
- "wind": "ENE 5-7kn g11",
+ "wind": "ENE 7kn g11",
  "swell": "1.0m 6s, surf up",
  "tide": "High 5:00pm",
  "weather": {
-  "now_c": 18.7,
+  "now_c": 18.4,
   "hi_c": 21,
   "lo_c": 17,
   "cond": "Rain, cloudy pm",
@@ -31,11 +31,6 @@
   "sunset": "7:57pm",
   "later": [
    {
-    "t": "6pm",
-    "c": 19,
-    "cond": "cloudy"
-   },
-   {
     "t": "8pm",
     "c": 18,
     "cond": "cloudy"
@@ -43,6 +38,11 @@
    {
     "t": "6am",
     "c": 16,
+    "cond": "cloudy"
+   },
+   {
+    "t": "9am",
+    "c": 19,
     "cond": "cloudy"
    }
   ]
