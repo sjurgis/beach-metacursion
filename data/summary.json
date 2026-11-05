@@ -1,28 +1,28 @@
 {
- "updated": "10:25",
+ "updated": "11:22",
  "date": "Fri 6 Nov",
  "picks": [
   {
-   "name": "Mathesons Bay",
-   "window": "Now-1:30pm",
-   "note": "NW 3-12kn, offshore, rain 100%"
+   "name": "Scotts Landing",
+   "window": "Now-8:00pm",
+   "note": "N 3-10kn, sheltered, rain 100%"
   },
   {
-   "name": "Snells Beach",
-   "window": "Now-12:30pm",
-   "note": "NNE 1-9kn, rain 96%"
+   "name": "Mathesons Bay",
+   "window": "Now-2:30pm",
+   "note": "WNW 6-11kn, offshore, rain 100%"
   },
   {
    "name": "Tāwharanui",
-   "window": "Now-12:30pm",
-   "note": "WSW 5-10kn, offshore, rain 96%"
+   "window": "Now-1:30pm",
+   "note": "WSW 8-11kn, offshore, rain 99%"
   }
  ],
- "wind": "N 4-12kn g21",
+ "wind": "N 8-11kn g20",
  "swell": "0.9m, small surf",
  "tide": "High 6:00pm",
  "weather": {
-  "now_c": 22.4,
+  "now_c": 22.8,
   "hi_c": 22,
   "lo_c": 16,
   "cond": "Rain",
@@ -30,11 +30,6 @@
   "wind": "N 5-13kn g21",
   "sunset": "7:58pm",
   "later": [
-   {
-    "t": "12pm",
-    "c": 21,
-    "cond": "showers"
-   },
    {
     "t": "3pm",
     "c": 19,
@@ -44,6 +39,11 @@
     "t": "6pm",
     "c": 19,
     "cond": "rain"
+   },
+   {
+    "t": "8pm",
+    "c": 18,
+    "cond": "cloudy"
    }
   ]
  }
