@@ -1,24 +1,24 @@
 {
- "updated": "17:28",
+ "updated": "18:29",
  "date": "Thu 5 Nov",
  "picks": [
   {
+   "name": "Tāwharanui",
+   "window": "Now-8:00pm",
+   "note": "SSW 5-6kn, offshore, rain 95%"
+  },
+  {
    "name": "Scotts Landing",
    "window": "7:30-8:00pm",
-   "note": "NNE 3-5kn, sheltered, rain 83%"
+   "note": "almost still, sheltered"
   },
   {
-   "name": "Tāwharanui",
-   "window": "7:30-8:00pm",
-   "note": "WNW 5-6kn, rain 83%"
-  },
-  {
-   "name": "Snells Beach",
+   "name": "Martins Bay",
    "window": "Now-8:00pm",
-   "note": "swim, deep enough, ENE 4-6kn"
+   "note": "NE 5-6kn, rain 95%"
   }
  ],
- "wind": "ENE 7kn g11",
+ "wind": "Light <5kn",
  "swell": "1.0m 6s, surf up",
  "tide": "High 5:00pm",
  "weather": {
