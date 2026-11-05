@@ -1,28 +1,28 @@
 {
- "updated": "04:20",
+ "updated": "06:43",
  "date": "Fri 6 Nov",
  "picks": [
   {
-   "name": "Martins Bay",
-   "window": "6:30-9:30am",
-   "note": "NNW 4-8kn, rain 70%"
+   "name": "Scotts Landing",
+   "window": "8:30-10:30am",
+   "note": "N 1-9kn, sheltered, rain 81%"
   },
   {
-   "name": "Scandretts Bay",
-   "window": "6:30-7:30am",
-   "note": "NNW 4-8kn, rain 70%"
+   "name": "Mathesons Bay",
+   "window": "8:30-10:30am",
+   "note": "N 1-9kn, rain 81%"
   },
   {
    "name": "Algies Bay",
-   "window": "6:00-9:00am",
-   "note": "swim, deep enough, NNW 4-8kn"
+   "window": "Now-9:00am",
+   "note": "swim, deep enough, almost still"
   }
  ],
- "wind": "N 6-13kn g24",
+ "wind": "N 1-13kn g24",
  "swell": "0.9m, small surf",
- "tide": "High 5:30am, 6:00pm",
+ "tide": "High 6:00pm",
  "weather": {
-  "now_c": 17.4,
+  "now_c": 17.9,
   "hi_c": 21,
   "lo_c": 15,
   "cond": "Rain",
@@ -31,11 +31,6 @@
   "sunset": "7:58pm",
   "later": [
    {
-    "t": "6am",
-    "c": 15,
-    "cond": "cloudy"
-   },
-   {
     "t": "9am",
     "c": 19,
     "cond": "cloudy"
@@ -43,6 +38,11 @@
    {
     "t": "12pm",
     "c": 21,
+    "cond": "rain"
+   },
+   {
+    "t": "3pm",
+    "c": 19,
     "cond": "rain"
    }
   ]
