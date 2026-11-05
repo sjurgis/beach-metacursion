@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "updated": "2026-11-05T21:21:49+13:00",
+ "updated": "2026-11-05T22:24:49+13:00",
  "timezone": "Pacific/Auckland",
  "location": {
   "name": "Snells Beach",
@@ -12,7 +12,7 @@
    "what": "Wind & weather (blended)",
    "name": "met.no Locationforecast (Snells Beach)",
    "url": "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=-36.42&lon=174.73",
-   "issued": "2026-11-05T20:17:26+13:00"
+   "issued": "2026-11-05T22:22:13+13:00"
   },
   {
    "what": "Wind (blended), gusts, rain chance, sun",
@@ -319,20 +319,16 @@
     },
     {
      "time": "20:00",
-     "windDirDeg": 7,
-     "windKn": 6.4,
+     "windDirDeg": 6,
+     "windKn": 5.3,
      "gustKn": 12.8,
      "rainMm": 0.0,
      "rainProbPct": 38,
      "airC": 17.3,
      "cloudPct": 83,
      "sky": "cloud",
-     "src": "metno+openmeteo",
+     "src": "openmeteo",
      "models": {
-      "metno": [
-       7,
-       7.6
-      ],
       "openmeteo": [
        6,
        5.3
@@ -1696,7 +1692,7 @@
   {
    "source": "tides4fishing",
    "url": "https://tides4fishing.com/nz/auckland/mahurangi-harbour",
-   "at": "2026-11-05T21:21:49+13:00",
+   "at": "2026-11-05T22:24:49+13:00",
    "ok": true,
    "attempts": 1,
    "bySource": {
@@ -1708,7 +1704,7 @@
   }
  ],
  "observations": {
-  "fetched": "2026-11-05T21:21:49+13:00",
+  "fetched": "2026-11-05T22:24:49+13:00",
   "kind": "home",
   "blend": true,
   "stations": [
@@ -1718,12 +1714,12 @@
     "kind": "home",
     "lat": -36.435,
     "lon": 174.74,
-    "time": "2026-11-05T21:21:00+13:00",
-    "windKn": 5.2,
-    "gustKn": 8.5,
-    "windDirDeg": 54,
-    "airC": 17.1,
-    "pressureHpa": 1017.6,
+    "time": "2026-11-05T22:24:00+13:00",
+    "windKn": 1.1,
+    "gustKn": 2.2,
+    "windDirDeg": 30,
+    "airC": 17.3,
+    "pressureHpa": 1018.3,
     "rainRateMmH": 1.3,
     "rainTodayMm": 0.0,
     "url": "https://www.wunderground.com/dashboard/pws/IWARKW15",
@@ -1735,12 +1731,12 @@
     "kind": "home",
     "lat": -36.415,
     "lon": 174.726,
-    "time": "2026-11-05T21:21:00+13:00",
+    "time": "2026-11-05T22:24:00+13:00",
     "windKn": 1.7,
-    "gustKn": 1.9,
-    "windDirDeg": 17,
-    "airC": 17.2,
-    "pressureHpa": 1013.2,
+    "gustKn": 2.5,
+    "windDirDeg": 3,
+    "airC": 17.6,
+    "pressureHpa": 1013.5,
     "rainRateMmH": 1.8,
     "rainTodayMm": 0.0,
     "url": "https://www.wunderground.com/dashboard/pws/ISNELL2",
@@ -1752,11 +1748,11 @@
     "kind": "home",
     "lat": -36.415,
     "lon": 174.726,
-    "time": "2026-11-05T21:21:00+13:00",
-    "windKn": 0.2,
+    "time": "2026-11-05T22:24:00+13:00",
+    "windKn": 0.6,
     "gustKn": 1.0,
-    "windDirDeg": 37,
-    "airC": 17.4,
+    "windDirDeg": 13,
+    "airC": 17.7,
     "pressureHpa": 1011.9,
     "rainRateMmH": 1.0,
     "rainTodayMm": 0.0,
@@ -1769,12 +1765,12 @@
     "kind": "home",
     "lat": -36.397,
     "lon": 174.724,
-    "time": "2026-11-05T21:21:00+13:00",
-    "windKn": 0.2,
-    "gustKn": 0.0,
-    "windDirDeg": 33,
-    "airC": 17.2,
-    "pressureHpa": 1022.4,
+    "time": "2026-11-05T22:24:00+13:00",
+    "windKn": 0.8,
+    "gustKn": 1.0,
+    "windDirDeg": 49,
+    "airC": 17.3,
+    "pressureHpa": 1022.7,
     "rainRateMmH": 1.5,
     "rainTodayMm": 0.0,
     "url": "https://www.wunderground.com/dashboard/pws/IWARKW128",
@@ -1786,12 +1782,12 @@
     "kind": "home",
     "lat": -36.473,
     "lon": 174.734,
-    "time": "2026-11-05T21:21:00+13:00",
-    "windKn": 5.8,
-    "gustKn": 8.0,
-    "windDirDeg": 9,
-    "airC": 16.9,
-    "pressureHpa": 1013.9,
+    "time": "2026-11-05T22:24:00+13:00",
+    "windKn": 6.3,
+    "gustKn": 9.0,
+    "windDirDeg": 15,
+    "airC": 17.2,
+    "pressureHpa": 1014.6,
     "rainRateMmH": 1.0,
     "rainTodayMm": 0.0,
     "url": "https://www.wunderground.com/dashboard/pws/IWARKW125",
@@ -1803,12 +1799,12 @@
     "kind": "home",
     "lat": -36.474,
     "lon": 174.735,
-    "time": "2026-11-05T21:21:00+13:00",
+    "time": "2026-11-05T22:25:00+13:00",
     "windKn": 0.6,
     "gustKn": 1.0,
-    "windDirDeg": 269,
+    "windDirDeg": 253,
     "airC": null,
-    "pressureHpa": 1020.3,
+    "pressureHpa": 1020.7,
     "rainRateMmH": 1.0,
     "rainTodayMm": 0.0,
     "url": "https://www.wunderground.com/dashboard/pws/IWARKW107",
@@ -1820,12 +1816,12 @@
     "kind": "home",
     "lat": -36.3425,
     "lon": 174.7594,
-    "time": "2026-11-05T21:15:00+13:00",
-    "windKn": 2.6,
-    "gustKn": 7.0,
+    "time": "2026-11-05T22:15:00+13:00",
+    "windKn": 0.0,
+    "gustKn": 0.0,
     "windDirDeg": 210,
-    "airC": 15.9,
-    "pressureHpa": 1016.6,
+    "airC": 16.1,
+    "pressureHpa": 1016.9,
     "rainRateMmH": 1.0,
     "rainTodayMm": 0.0,
     "url": "https://www.wunderground.com/dashboard/pws/IWARKWOR11",
@@ -1837,10 +1833,10 @@
     "kind": "home",
     "lat": -36.34,
     "lon": 174.742,
-    "time": "2026-11-05T21:21:00+13:00",
+    "time": "2026-11-05T22:25:00+13:00",
     "windKn": 0.0,
     "gustKn": 0.0,
-    "windDirDeg": 74,
+    "windDirDeg": 66,
     "airC": 17.6,
     "pressureHpa": 1011.9,
     "rainRateMmH": 2.3,
@@ -1895,7 +1891,7 @@
      "200:WuNext-Preview"
     ],
     "pageError": "no readings in served page (client-rendered variant)",
-    "renderS": 1.3,
+    "renderS": 1.2,
     "parse": "display"
    },
    {
@@ -1911,7 +1907,7 @@
      "200:WuNext-Preview"
     ],
     "pageError": "no readings in served page (client-rendered variant)",
-    "renderS": 1.0,
+    "renderS": 1.1,
     "parse": "display"
    },
    {
@@ -1927,7 +1923,7 @@
      "200:WuNext-Preview"
     ],
     "pageError": "no readings in served page (client-rendered variant)",
-    "renderS": 0.8,
+    "renderS": 1.0,
     "parse": "display"
    },
    {
@@ -1943,7 +1939,7 @@
      "200:WuNext-Preview"
     ],
     "pageError": "no readings in served page (client-rendered variant)",
-    "renderS": 1.0,
+    "renderS": 25.5,
     "parse": "display"
    },
    {
@@ -1959,7 +1955,7 @@
      "200:WuNext-Preview"
     ],
     "pageError": "no readings in served page (client-rendered variant)",
-    "renderS": 1.2,
+    "renderS": 1.1,
     "parse": "display"
    },
    {
@@ -1975,7 +1971,7 @@
      "200:WuNext-Preview"
     ],
     "pageError": "no readings in served page (client-rendered variant)",
-    "renderS": 0.9,
+    "renderS": 25.8,
     "parse": "display"
    }
   ]
