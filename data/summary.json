@@ -1,47 +1,47 @@
 {
- "updated": "07:34",
+ "updated": "08:27",
  "date": "Fri 6 Nov",
  "picks": [
   {
-   "name": "Martins Bay",
-   "window": "9:30-10:30am",
-   "note": "N 4-9kn, rain 80%"
-  },
-  {
    "name": "Mathesons Bay",
-   "window": "9:30-10:30am",
-   "note": "N 2-9kn, rain 80%"
+   "window": "9:30-11:30am",
+   "note": "NNW 1-11kn, rain 94%"
   },
   {
-   "name": "Scotts Landing",
-   "window": "9:30-10:30am",
-   "note": "N 2-9kn, sheltered, rain 80%"
+   "name": "Tāwharanui",
+   "window": "9:30-11:30am",
+   "note": "NNW 3-11kn, rain 94%"
+  },
+  {
+   "name": "Ōmaha",
+   "window": "9:30-11:30am",
+   "note": "NNW 1-11kn, rain 94%"
   }
  ],
- "wind": "N 3-13kn g24",
+ "wind": "N 4-13kn g21",
  "swell": "0.9m, small surf",
  "tide": "High 6:00pm",
  "weather": {
-  "now_c": 18.5,
-  "hi_c": 21,
-  "lo_c": 15,
+  "now_c": 19.5,
+  "hi_c": 22,
+  "lo_c": 16,
   "cond": "Rain",
-  "rain": "14mm, 100%",
-  "wind": "N 7-13kn g24",
+  "rain": "8.5mm, 100%",
+  "wind": "N 5-13kn g21",
   "sunset": "7:58pm",
   "later": [
    {
-    "t": "9am",
-    "c": 19,
-    "cond": "cloudy"
-   },
-   {
     "t": "12pm",
     "c": 21,
-    "cond": "rain"
+    "cond": "showers"
    },
    {
     "t": "3pm",
+    "c": 19,
+    "cond": "rain"
+   },
+   {
+    "t": "6pm",
     "c": 19,
     "cond": "rain"
    }
