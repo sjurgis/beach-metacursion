@@ -1,28 +1,28 @@
 {
- "updated": "18:29",
- "date": "Thu 5 Nov",
+ "updated": "19:22",
+ "date": "Fri 6 Nov",
  "picks": [
   {
-   "name": "Tāwharanui",
-   "window": "Now-8:00pm",
-   "note": "SSW 5-6kn, offshore, rain 95%"
-  },
-  {
-   "name": "Scotts Landing",
-   "window": "7:30-8:00pm",
-   "note": "almost still, sheltered"
-  },
-  {
    "name": "Martins Bay",
-   "window": "Now-8:00pm",
-   "note": "NE 5-6kn, rain 95%"
+   "window": "6:00-8:30am",
+   "note": "N 7-9kn, dry"
+  },
+  {
+   "name": "Mathesons Bay",
+   "window": "6:00-8:30am",
+   "note": "N 7-9kn, dry"
+  },
+  {
+   "name": "Algies Bay",
+   "window": "6:00-9:00am",
+   "note": "swim, deep enough, N 7-9kn, dry"
   }
  ],
- "wind": "Light <5kn",
- "swell": "1.0m 6s, surf up",
- "tide": "High 5:00pm",
+ "wind": "N 7-13kn g25",
+ "swell": "0.9m, small surf",
+ "tide": "High 5:30am, 6:00pm",
  "weather": {
-  "now_c": 18.4,
+  "now_c": 18.2,
   "hi_c": 21,
   "lo_c": 17,
   "cond": "Rain, cloudy pm",
