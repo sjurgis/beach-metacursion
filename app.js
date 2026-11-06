@@ -3,9 +3,9 @@
 "use strict";
 
 const TZ = "Pacific/Auckland";
-const APP_VERSION = "2026-11-06r1";   // bump with data/version.txt when app.js/style.css/index.html change
+const APP_VERSION = "2026-11-06r2";   // bump with data/version.txt when app.js/style.css/index.html change
 const PREF_KEY = "snells-beach-prefs-v1";
-const DEFAULT_PREFS = { activities: ["hangout"], favs: [], drive: 1, dog: false };
+const DEFAULT_PREFS = { activities: ["hangout"], drive: 1, dog: false };
 const ACT = {
   hangout: { label: "Hangout / picnic", verb: "hang out" },
   swim: { label: "Swim / family", verb: "swim" },
@@ -92,7 +92,6 @@ function loadPrefs() {
 function fixPrefs(p) {
   p.activities = (Array.isArray(p.activities) ? p.activities : []).filter((a) => ACT[a]);
   if (!p.activities.length) p.activities = ["hangout"];
-  p.favs = Array.isArray(p.favs) ? p.favs.filter((x) => typeof x === "string") : [];
   return p;
 }
 function savePrefs(p) { try { localStorage.setItem(PREF_KEY, JSON.stringify(p)); } catch { /* private mode */ } }
@@ -286,7 +285,6 @@ function evalBeachDay(b, day, act, tides, ctx) {
   const evals = slots.map((s) => {
     const e = evalSlot(b, day, s, act, tides);
     if (traffic) e.score *= 0.93;
-    if (ctx.favs?.has(b.id)) e.score = Math.min(100, e.score * 1.1);   // favourites get a nudge
     return e;
   });
   const dog = dogRule(b, day.date);
@@ -683,32 +681,46 @@ function liveBasis(fc, now, beachId = null) {
   return `<p class="basis">${icon("dot")}Forecast-based: no live readings right now</p>`;
 }
 
-/* Glanceable live strip for the top of the page: prefer fresh Snells Beach stations
-   for "at home", else the existing liveNow() blend. No station IDs, no pressure. */
-function liveHero(fc, now) {
+
+/* Word for rain that respects both the tip rate and the next few forecast hours.
+   Station mm/h often under-reads a wet afternoon, so "0.5 mm/h" must not win over a stormy forecast. */
+function rainWord(liveMm, day, now) {
+  const slots = day?.slots || [];
+  const upcoming = slots.filter((s) => { const t = hm(s.time); return t >= now.min - 30 && t <= now.min + 180; });
+  const maxMm = Math.max(liveMm ?? 0, 0, ...upcoming.map((s) => s.rainMm ?? 0));
+  const maxProb = Math.max(0, ...upcoming.map((s) => s.rainProbPct ?? 0));
+  const storm = upcoming.some((s) => s.sky === "storm");
+  const wetNow = (liveMm ?? 0) > 0.05 || upcoming.slice(0, 2).some((s) => (s.rainMm ?? 0) >= 0.2 || (s.rainProbPct ?? 0) >= 70);
+  if (storm || maxMm >= 4 || (maxProb >= 90 && maxMm >= 2)) return wetNow ? "Heavy rain" : "Heavy rain later";
+  if (maxMm >= 1.2 || (maxProb >= 85 && maxMm >= 0.8)) return wetNow ? "Rain" : "Rain later";
+  if (maxMm >= 0.3 || (liveMm ?? 0) > 0.05 || maxProb >= 60) return wetNow ? "Showers" : "Showers likely";
+  if (maxProb >= 40) return "Rain possible";
+  return "Dry";
+}
+
+function headerLive(fc, now, day) {
   const F = freshHome(fc, now);
-  if (F.mode !== "live") return "";
-  const snells = F.fresh.filter((x) => /snells/i.test(x.s.name || "") || /^ISNELL/i.test(x.s.id || ""));
-  const L = combine(snells.length ? snells : (F.fresh.filter((x) => LOCAL_IDS.includes(x.s.id)).length ? F.fresh.filter((x) => LOCAL_IDS.includes(x.s.id)) : F.fresh), snells.length ? "snells" : "local");
-  const temps = L.stations.map((s) => s.airC).filter((t) => t != null);
-  if (!temps.length && L.kn == null) return "";
-  const air = temps.length ? Math.round(median(temps)) : null;
-  const where = snells.length ? "Live at home" : "Live nearby";
-  const wind = L.kn == null ? "" : (L.kn < 1
-    ? `${icon("wind")}<b>Calm</b>`
-    : `${L.dir != null ? arrow(L.dir) : icon("wind")}<b>${L.dir != null ? dir16(L.dir) + " " : ""}${Math.round(L.kn)}</b><small>kn</small>${L.gust != null && L.gust > L.kn + 1 ? ` <small>gust ${Math.round(L.gust)}</small>` : ""}`);
-  let rain = "";
-  if (L.rain != null && L.rain > 0) rain = `${icon("rain")}<b>${Number(L.rain).toFixed(1).replace(/\.0$/, "")}</b><small>mm/h</small>`;
-  else if (L.stations.some((s) => s.raining)) rain = `${icon("rain")}<b>Raining</b>`;
-  else if (L.stations.some((s) => s.rainRateMmH === 0 || s.raining === false) || L.rain === 0) rain = `${icon("sun")}<b>Dry</b>`;
-  const bits = [wind, rain].filter(Boolean).map((x) => `<span class="live-hero-m">${x}</span>`).join("");
-  return `<section class="card live-hero" aria-label="Live conditions">
-    <div class="live-hero-tag">${icon("temp")}${where} · ${fmtTime(L.t0)}</div>
-    <div class="live-hero-row">
-      ${air != null ? `<div class="live-hero-temp">${air}<small>°</small></div>` : ""}
-      <div class="live-hero-meta">${bits}</div>
-    </div>
-  </section>`;
+  let air = null, windHtml = "", rainHtml = "", when = "", where = "";
+  if (F.mode === "live") {
+    const snells = F.fresh.filter((x) => /snells/i.test(x.s.name || "") || /^ISNELL/i.test(x.s.id || ""));
+    const local = F.fresh.filter((x) => LOCAL_IDS.includes(x.s.id));
+    const L = combine(snells.length ? snells : (local.length ? local : F.fresh), snells.length ? "snells" : "local");
+    const temps = L.stations.map((s) => s.airC).filter((t) => t != null);
+    air = temps.length ? Math.round(median(temps)) : null;
+    where = snells.length ? "at home" : "nearby";
+    when = fmtTime(L.t0);
+    if (L.kn != null) {
+      windHtml = L.kn < 1
+        ? `${icon("wind")}<b>Calm</b>`
+        : `${L.dir != null ? arrow(L.dir) : icon("wind")}<b>${L.dir != null ? dir16(L.dir) + " " : ""}${Math.round(L.kn)}</b><small>kn</small>${L.gust != null && L.gust > L.kn + 1 ? ` <small>g${Math.round(L.gust)}</small>` : ""}`;
+    }
+    const word = rainWord(L.rain, day, now);
+    rainHtml = `${icon(word === "Dry" ? "sun" : "rain")}<b>${word}</b>`;
+  } else if (day) {
+    const word = rainWord(0, day, now);
+    rainHtml = `${icon(word === "Dry" ? "sun" : "rain")}<b>${word}</b>`;
+  }
+  return { air, windHtml, rainHtml, when, where, live: F.mode === "live" };
 }
 
 function liveCard(fc, now) {
@@ -722,9 +734,12 @@ function liveCard(fc, now) {
     const c = [`<span class="chip c-plain">${wind}</span>`];
     if (s.airC != null) c.push(`<span class="chip c-plain c-temp">${icon("temp")}${Math.round(s.airC)}°</span>`);
     if (s.pressureHpa != null) c.push(`<span class="chip c-plain c-pres">${Math.round(s.pressureHpa)}<small>hPa</small></span>`);
-    if (s.rainRateMmH) c.push(`<span class="chip c-bad">${icon("rain")}${s.rainRateMmH}<small>mm/h</small></span>`);
-    else if (s.raining) c.push(`<span class="chip c-bad">${icon("rain")}Raining</span>`);
-    else if (s.rainRateMmH === 0 || s.raining === false) c.push(`<span class="chip c-good">${icon("sun")}Dry</span>`);
+    const rr = s.rainRateMmH;
+    if (rr != null && rr > 0) {
+      const w = rr >= 4 ? "Heavy" : rr >= 1.2 ? "Rain" : rr >= 0.3 ? "Showers" : "Drizzle";
+      c.push(`<span class="chip c-bad">${icon("rain")}${w} ${rr}<small>mm/h</small></span>`);
+    } else if (s.raining) c.push(`<span class="chip c-bad">${icon("rain")}Raining</span>`);
+    else if (rr === 0 || s.raining === false) c.push(`<span class="chip c-good">${icon("sun")}Dry</span>`);
     return `<li><a href="${esc(s.url)}" rel="noopener"><b>${esc(s.name)}</b></a> <small class="muted">${t != null ? fmtTime(t) : "earlier"}${old ? " · old" : ""}</small><div class="chips">${c.join("")}</div></li>`;
   }).join("");
   const head = home ? `Live from ${o.stations.length} home station${o.stations.length > 1 ? "s" : ""}` : "Live reading · airport";
@@ -734,7 +749,7 @@ function liveCard(fc, now) {
 
 /* ---------- render ---------- */
 let STATE = null;
-const bname = (b) => (STATE?.prefs?.favs || []).includes(b.id) ? `★ ${esc(b.name)}` : esc(b.name);
+const bname = (b) => esc(b.name);
 
 function render() {
   const { beaches, fc, prefs } = STATE;
@@ -754,7 +769,7 @@ function render() {
   const ageH = (Date.now() - updated.getTime()) / 3.6e6;
 
   const results = days.slice(0, 4).map((day) => {
-    const ctx = { isToday: day.date === now.date, nowMin: now.min, weekend: isWeekend(day.date), maxDrive: stop.maxMin, dog: prefs.dog, favs: new Set(prefs.favs) };
+    const ctx = { isToday: day.date === now.date, nowMin: now.min, weekend: isWeekend(day.date), maxDrive: stop.maxMin, dog: prefs.dog };
     const from = ctx.isToday ? now.min - 30 : -Infinity;
     // every selected activity is scored; each beach shows the activity it suits best right then
     const all = [], picks = [];
@@ -777,7 +792,24 @@ function render() {
   const dLabel = (d, ctx) => ctx.isToday ? "Today" : (dayNum(d.date) - dayNum(now.date) === 1 ? "Tomorrow" : fmtDate(d.date, { weekday: "long" }));
   $("#title").textContent = today.ctx.isToday ? `Where to ${acts.length === 1 ? ACT[act].verb : "go"} today` : `Where to ${acts.length === 1 ? ACT[act].verb : "go"} · ${fmtDate(today.day.date, { weekday: "long" })}`;
   const updHM = new Intl.DateTimeFormat("en-NZ", { timeZone: TZ, hour: "numeric", minute: "2-digit" }).format(updated).replace(" ", "");
-  $("#subtitle").innerHTML = `<span class="updlbl">${icon("clock")}Updated ${esc(updHM)}</span> · ${esc(fmtDate(today.day.date, { weekday: "short", day: "numeric", month: "short" }))}${today.day.airMaxC != null ? ` · ${icon("temp")}${Math.round(today.day.airMaxC)}° air` : ""}${today.day.waterTempC != null ? ` · ${icon("wave")}${Math.round(today.day.waterTempC)}° water` : ""} · ${icon("sun")}${fmtTime(hm(today.day.sunrise))}–${fmtTime(hm(today.day.sunset))}`;
+  const HL = today.ctx.isToday ? headerLive(fc, now, today.day) : { air: null, windHtml: "", rainHtml: "", when: "", where: "", live: false };
+  const airNum = HL.air != null ? HL.air : (today.day.airMaxC != null ? Math.round(today.day.airMaxC) : null);
+  const airKind = HL.air != null ? "" : (today.day.airMaxC != null ? " high" : "");
+  const meta = [
+    HL.windHtml,
+    HL.rainHtml,
+    today.day.waterTempC != null ? `${icon("wave")}<b>${Math.round(today.day.waterTempC)}°</b><small> water</small>` : "",
+  ].filter(Boolean).join('<span class="sep">·</span>');
+  const foot = [
+    HL.live && HL.when ? `Live ${HL.where} ${HL.when}` : `Updated ${updHM}`,
+    fmtDate(today.day.date, { weekday: "short", day: "numeric", month: "short" }),
+    `${fmtTime(hm(today.day.sunrise))}–${fmtTime(hm(today.day.sunset))}`,
+  ].filter(Boolean).join(" · ");
+  $("#subtitle").innerHTML = `<div class="head-live">
+      ${airNum != null ? `<div class="head-temp">${airNum}<small>°${airKind}</small></div>` : ""}
+      <div class="head-meta">${meta}</div>
+    </div>
+    <div class="head-foot"><span class="updlbl">${icon("clock")}${esc(foot)}</span></div>`;
 
   let html = "";
   if (OFFLINE["data/forecast.json"]) {
@@ -791,8 +823,6 @@ function render() {
 
   const heur = acts.filter((a) => ACT[a].heuristic);
   if (heur.length) html += `<div class="notice">${icon("dot")}<span>${esc(heur.map((a) => ACT[a].label).join(", "))}: rough heuristic scores, not proper forecasts for ${heur.length > 1 ? "these" : "this"}.</span></div>`;
-  if (today.ctx.isToday) html += liveHero(fc, now);
-
   const elig = today.picks.filter((r) => r.eligible);
   if (acts.includes("snorkel")) {
     const goat = today.picks.find((r) => r.b.doc);
@@ -945,16 +975,6 @@ function showError(err) {
   $("#retry")?.addEventListener("click", () => location.reload());
 }
 
-function wireFavs() {
-  const box = $("#favlist"); if (!box) return;
-  const prefs = STATE.prefs;
-  box.innerHTML = STATE.beaches.beaches.map((b) => `<label class="fav"><input type="checkbox" value="${esc(b.id)}"${prefs.favs.includes(b.id) ? " checked" : ""}><span>${esc(b.name)}</span></label>`).join("");
-  const cnt = () => { $("#favcount").textContent = prefs.favs.length ? `${prefs.favs.length} picked` : "none"; };
-  cnt();
-  for (const el of box.querySelectorAll("input")) el.addEventListener("change", () => {
-    prefs.favs = [...box.querySelectorAll("input:checked")].map((x) => x.value); cnt(); savePrefs(prefs); render();
-  });
-}
 
 function wirePrefs() {
   const prefs = STATE.prefs;
@@ -990,7 +1010,6 @@ async function main() {
     if (!fc?.days?.length) throw new Error("forecast.json has no days in it");
     blendObservations(fc, nzNow(), beaches);
     Object.assign(STATE, { beaches, fc });
-    wireFavs();
     render();
     setInterval(refresh, 5 * 60 * 1000);   // pick up new hourly data and keep "now" fresh
     document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") refresh(); });

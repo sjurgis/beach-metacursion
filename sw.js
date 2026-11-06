@@ -1,6 +1,6 @@
 /* Snells Beach service worker: offline app shell + last data. No push, sync or badges.
    VERSION must equal APP_VERSION in app.js and data/version.txt (scripts/validate.py checks). */
-const VERSION = "2026-11-06r1";
+const VERSION = "2026-11-06r2";
 const CACHE = "snells-beach-" + VERSION;
 const SHELL = ["./", "index.html", "app.js", "style.css", "manifest.webmanifest",
   "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png", "icons/apple-touch-icon.png", "icons/favicon-32.png",
