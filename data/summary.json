@@ -1,16 +1,16 @@
 {
- "updated": "06:26",
+ "updated": "07:22",
  "date": "Sat 7 Nov",
  "picks": [
   {
    "name": "Scotts Landing",
-   "window": "9:30-11:30am",
-   "note": "N 9-13kn, sheltered, rain 81%"
+   "window": "10:30am-12:30p",
+   "note": "N 9-12kn, sheltered, rain 90%"
   },
   {
    "name": "Baddeleys Beach",
-   "window": "9:30-11:30am",
-   "note": "N 9-13kn, sheltered, rain 81%"
+   "window": "10:30am-12:30p",
+   "note": "N 10-12kn, sheltered, rain 90%"
   },
   {
    "name": "Algies Bay",
@@ -18,15 +18,15 @@
    "note": "swim, deep enough, NW 4-10kn"
   }
  ],
- "wind": "NNW 1-13kn g25",
+ "wind": "NNW 0-12kn g25",
  "swell": "1.1m 7s, surf up",
  "tide": "High 6:30am, 7:00pm",
  "weather": {
-  "now_c": 16.1,
+  "now_c": 16.5,
   "hi_c": 21,
   "lo_c": 17,
   "cond": "Rain, showers pm",
-  "rain": "8.1mm, 100%",
+  "rain": "8.6mm, 100%",
   "wind": "NNW 4-13kn g25",
   "sunset": "7:59pm",
   "later": [
