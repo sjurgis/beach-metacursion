@@ -3,7 +3,7 @@
 "use strict";
 
 const TZ = "Pacific/Auckland";
-const APP_VERSION = "2026-11-01r1";   // bump with data/version.txt when app.js/style.css/index.html change
+const APP_VERSION = "2026-11-06r1";   // bump with data/version.txt when app.js/style.css/index.html change
 const PREF_KEY = "snells-beach-prefs-v1";
 const DEFAULT_PREFS = { activities: ["hangout"], favs: [], drive: 1, dog: false };
 const ACT = {
@@ -682,6 +682,35 @@ function liveBasis(fc, now, beachId = null) {
   if (L.mode === "stale") return `<p class="basis">${icon("dot")}Forecast-based: home-station readings are over 90 min old</p>`;
   return `<p class="basis">${icon("dot")}Forecast-based: no live readings right now</p>`;
 }
+
+/* Glanceable live strip for the top of the page: prefer fresh Snells Beach stations
+   for "at home", else the existing liveNow() blend. No station IDs, no pressure. */
+function liveHero(fc, now) {
+  const F = freshHome(fc, now);
+  if (F.mode !== "live") return "";
+  const snells = F.fresh.filter((x) => /snells/i.test(x.s.name || "") || /^ISNELL/i.test(x.s.id || ""));
+  const L = combine(snells.length ? snells : (F.fresh.filter((x) => LOCAL_IDS.includes(x.s.id)).length ? F.fresh.filter((x) => LOCAL_IDS.includes(x.s.id)) : F.fresh), snells.length ? "snells" : "local");
+  const temps = L.stations.map((s) => s.airC).filter((t) => t != null);
+  if (!temps.length && L.kn == null) return "";
+  const air = temps.length ? Math.round(median(temps)) : null;
+  const where = snells.length ? "Live at home" : "Live nearby";
+  const wind = L.kn == null ? "" : (L.kn < 1
+    ? `${icon("wind")}<b>Calm</b>`
+    : `${L.dir != null ? arrow(L.dir) : icon("wind")}<b>${L.dir != null ? dir16(L.dir) + " " : ""}${Math.round(L.kn)}</b><small>kn</small>${L.gust != null && L.gust > L.kn + 1 ? ` <small>gust ${Math.round(L.gust)}</small>` : ""}`);
+  let rain = "";
+  if (L.rain != null && L.rain > 0) rain = `${icon("rain")}<b>${Number(L.rain).toFixed(1).replace(/\.0$/, "")}</b><small>mm/h</small>`;
+  else if (L.stations.some((s) => s.raining)) rain = `${icon("rain")}<b>Raining</b>`;
+  else if (L.stations.some((s) => s.rainRateMmH === 0 || s.raining === false) || L.rain === 0) rain = `${icon("sun")}<b>Dry</b>`;
+  const bits = [wind, rain].filter(Boolean).map((x) => `<span class="live-hero-m">${x}</span>`).join("");
+  return `<section class="card live-hero" aria-label="Live conditions">
+    <div class="live-hero-tag">${icon("temp")}${where} · ${fmtTime(L.t0)}</div>
+    <div class="live-hero-row">
+      ${air != null ? `<div class="live-hero-temp">${air}<small>°</small></div>` : ""}
+      <div class="live-hero-meta">${bits}</div>
+    </div>
+  </section>`;
+}
+
 function liveCard(fc, now) {
   const o = fc.observations;
   if (!o?.stations?.length) return "";
@@ -762,6 +791,8 @@ function render() {
 
   const heur = acts.filter((a) => ACT[a].heuristic);
   if (heur.length) html += `<div class="notice">${icon("dot")}<span>${esc(heur.map((a) => ACT[a].label).join(", "))}: rough heuristic scores, not proper forecasts for ${heur.length > 1 ? "these" : "this"}.</span></div>`;
+  if (today.ctx.isToday) html += liveHero(fc, now);
+
   const elig = today.picks.filter((r) => r.eligible);
   if (acts.includes("snorkel")) {
     const goat = today.picks.find((r) => r.b.doc);
