@@ -1,28 +1,28 @@
 {
- "updated": "10:24",
+ "updated": "11:25",
  "date": "Sat 7 Nov",
  "picks": [
   {
-   "name": "Scotts Landing",
-   "window": "1:30-2:30pm",
-   "note": "N 10-13kn, sheltered, rain 98%"
-  },
-  {
    "name": "Martins Bay",
    "window": "2:30-7:30pm",
-   "note": "NW 6-13kn, rain 100%"
+   "note": "NW 6-12kn, rain 100%"
   },
   {
-   "name": "Campbells Beach",
-   "window": "1:30-7:30pm",
-   "note": "NW 6-13kn, offshore, rain 100%"
+   "name": "Snells Beach",
+   "window": "2:30-7:30pm",
+   "note": "NW 6-11kn, rain 100%, high tide"
+  },
+  {
+   "name": "Mathesons Bay",
+   "window": "2:30-7:30pm",
+   "note": "NW 6-10kn, offshore, rain 100%"
   }
  ],
  "wind": "NNW 6-13kn g24",
  "swell": "1.1m 7s, surf up",
  "tide": "High 7:00pm",
  "weather": {
-  "now_c": 18.9,
+  "now_c": 21.3,
   "hi_c": 22,
   "lo_c": 16,
   "cond": "Rain, showers pm",
@@ -31,11 +31,6 @@
   "sunset": "7:59pm",
   "later": [
    {
-    "t": "12pm",
-    "c": 20,
-    "cond": "rain"
-   },
-   {
     "t": "3pm",
     "c": 20,
     "cond": "showers"
@@ -43,6 +38,11 @@
    {
     "t": "6pm",
     "c": 19,
+    "cond": "showers"
+   },
+   {
+    "t": "8pm",
+    "c": 17,
     "cond": "showers"
    }
   ]
