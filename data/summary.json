@@ -1,20 +1,20 @@
 {
- "updated": "04:25",
+ "updated": "06:23",
  "date": "Sun 8 Nov",
  "picks": [
   {
    "name": "Martins Bay",
-   "window": "6:00-8:30am",
+   "window": "Now-8:30am",
    "note": "NW 7kn, dry"
   },
   {
    "name": "Snells Beach",
-   "window": "6:00-8:30am",
+   "window": "Now-8:30am",
    "note": "NW 7kn, dry, high tide"
   },
   {
    "name": "Algies Bay",
-   "window": "6:00-10:30am",
+   "window": "Now-10:30am",
    "note": "swim, deep enough, NW 7kn"
   }
  ],
@@ -22,7 +22,7 @@
  "swell": "0.9m, small surf",
  "tide": "High 7:30am, 7:30pm",
  "weather": {
-  "now_c": null,
+  "now_c": 13.8,
   "hi_c": 21,
   "lo_c": 14,
   "cond": "Partly cloudy, showers pm",
@@ -31,17 +31,17 @@
   "sunset": "8:00pm",
   "later": [
    {
-    "t": "6am",
-    "c": 14,
-    "cond": "cloudy"
-   },
-   {
     "t": "9am",
     "c": 17,
     "cond": "partly"
    },
    {
     "t": "12pm",
+    "c": 20,
+    "cond": "showers"
+   },
+   {
+    "t": "3pm",
     "c": 20,
     "cond": "showers"
    }
