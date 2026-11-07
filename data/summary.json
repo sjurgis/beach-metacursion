@@ -1,5 +1,5 @@
 {
- "updated": "14:29",
+ "updated": "15:26",
  "date": "Sat 7 Nov",
  "picks": [
   {
@@ -18,15 +18,15 @@
    "note": "NNW 6-7kn, rain 98%"
   }
  ],
- "wind": "N 6-12kn g17",
+ "wind": "NNE 7-9kn g17",
  "swell": "1.2m 6s, surf up",
  "tide": "High 7:00pm",
  "weather": {
-  "now_c": 20.8,
+  "now_c": 21.2,
   "hi_c": 21,
   "lo_c": 16,
-  "cond": "Rain, showers pm",
-  "rain": "16mm, 100%",
+  "cond": "Rain, storms pm",
+  "rain": "17mm, 100%",
   "wind": "N 4-13kn g26",
   "sunset": "7:59pm",
   "later": [
