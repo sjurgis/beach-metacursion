@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "updated": "2026-11-08T09:20:58+13:00",
+ "updated": "2026-11-08T10:25:27+13:00",
  "timezone": "Pacific/Auckland",
  "location": {
   "name": "Snells Beach",
@@ -103,20 +103,16 @@
     },
     {
      "time": "08:00",
-     "windDirDeg": 316,
-     "windKn": 7.4,
+     "windDirDeg": 319,
+     "windKn": 6.7,
      "gustKn": 13.0,
      "rainMm": 0.0,
      "rainProbPct": 8,
      "airC": 16.3,
      "cloudPct": 56,
      "sky": "partly",
-     "src": "metno+openmeteo",
+     "src": "openmeteo",
      "models": {
-      "metno": [
-       314,
-       8.2
-      ],
       "openmeteo": [
        319,
        6.7
@@ -126,18 +122,18 @@
     {
      "time": "09:00",
      "windDirDeg": 315,
-     "windKn": 7.7,
+     "windKn": 7.8,
      "gustKn": 14.6,
      "rainMm": 0.1,
      "rainProbPct": 17,
-     "airC": 17.6,
-     "cloudPct": 61,
-     "sky": "showers",
+     "airC": 17.7,
+     "cloudPct": 59,
+     "sky": "rain",
      "src": "metno+openmeteo",
      "models": {
       "metno": [
        314,
-       8.4
+       8.7
       ],
       "openmeteo": [
        316,
@@ -147,8 +143,8 @@
     },
     {
      "time": "10:00",
-     "windDirDeg": 315,
-     "windKn": 7.7,
+     "windDirDeg": 316,
+     "windKn": 7.8,
      "gustKn": 14.4,
      "rainMm": 0.2,
      "rainProbPct": 25,
@@ -158,8 +154,8 @@
      "src": "metno+openmeteo",
      "models": {
       "metno": [
-       316,
-       8.7
+       318,
+       8.9
       ],
       "openmeteo": [
        313,
@@ -1721,7 +1717,7 @@
   {
    "source": "tides4fishing",
    "url": "https://tides4fishing.com/nz/auckland/mahurangi-harbour",
-   "at": "2026-11-08T09:20:58+13:00",
+   "at": "2026-11-08T10:25:27+13:00",
    "ok": true,
    "attempts": 1,
    "bySource": {
@@ -1733,7 +1729,7 @@
   }
  ],
  "observations": {
-  "fetched": "2026-11-08T09:20:58+13:00",
+  "fetched": "2026-11-08T10:25:27+13:00",
   "kind": "airport",
   "blend": false,
   "stations": [
@@ -1743,12 +1739,12 @@
     "kind": "airport",
     "lat": -37.008,
     "lon": 174.792,
-    "time": "2026-11-08T09:00:00+13:00",
-    "windKn": 8.0,
+    "time": "2026-11-08T10:00:00+13:00",
+    "windKn": 7.0,
     "gustKn": null,
-    "windDirDeg": 330,
-    "airC": 18,
-    "pressureHpa": 1016,
+    "windDirDeg": 320,
+    "airC": 20,
+    "pressureHpa": 1017,
     "rainRateMmH": null,
     "rainTodayMm": null,
     "raining": false,
