@@ -1,32 +1,32 @@
 {
- "updated": "18:28",
- "date": "Sat 7 Nov",
+ "updated": "19:29",
+ "date": "Sun 8 Nov",
  "picks": [
   {
    "name": "Martins Bay",
-   "window": "Now-8:00pm",
-   "note": "almost still, rain 95%"
-  },
-  {
-   "name": "Scandretts Bay",
-   "window": "Now-8:00pm",
-   "note": "almost still, sheltered, rain 95%"
+   "window": "6:00-8:30am",
+   "note": "NW 8kn, showers 35%"
   },
   {
    "name": "Snells Beach",
-   "window": "Now-8:00pm",
-   "note": "almost still, rain 95%, high tide"
+   "window": "6:00-8:30am",
+   "note": "NW 8kn, showers 35%, high tide"
+  },
+  {
+   "name": "Algies Bay",
+   "window": "6:00-10:30am",
+   "note": "swim, deep enough, NW 8kn"
   }
  ],
- "wind": "Light <5kn",
- "swell": "1.2m 6s, surf up",
- "tide": "High 7:00pm",
+ "wind": "NNW 7-8kn g15",
+ "swell": "0.9m, small surf",
+ "tide": "High 7:30am, 7:30pm",
  "weather": {
-  "now_c": 17.1,
+  "now_c": 17,
   "hi_c": 21,
   "lo_c": 16,
   "cond": "Rain, storms pm",
-  "rain": "17mm, 100%",
+  "rain": "16mm, 100%",
   "wind": "N 4-12kn g26",
   "sunset": "7:59pm",
   "later": [
