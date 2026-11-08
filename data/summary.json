@@ -1,5 +1,5 @@
 {
- "updated": "12:27",
+ "updated": "13:23",
  "date": "Sun 8 Nov",
  "picks": [
   {
@@ -19,10 +19,10 @@
   }
  ],
  "wind": "N 5-8kn g14",
- "swell": "0.9m, small surf",
+ "swell": "1.0m, small surf",
  "tide": "High 7:30pm",
  "weather": {
-  "now_c": 20,
+  "now_c": 20.5,
   "hi_c": 21,
   "lo_c": 14,
   "cond": "Rain, showers pm",
