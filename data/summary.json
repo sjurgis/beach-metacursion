@@ -1,33 +1,33 @@
 {
- "updated": "15:28",
+ "updated": "16:28",
  "date": "Sun 8 Nov",
  "picks": [
   {
    "name": "Scotts Landing",
-   "window": "7:30-8:00pm",
-   "note": "NNE 7kn, sheltered, dry, high tide"
+   "window": "6:30-8:00pm",
+   "note": "NNE 7-8kn, sheltered"
   },
   {
    "name": "Martins Bay",
    "window": "7:30-8:00pm",
-   "note": "NNE 7kn, dry"
+   "note": "NNE 7kn, showers 51%"
   },
   {
    "name": "Algies Bay",
-   "window": "6:00-8:00pm",
-   "note": "swim, deep enough, NNE 7-8kn"
+   "window": "4:30-8:00pm",
+   "note": "swim, deep enough, N 7-8kn"
   }
  ],
- "wind": "N 7-8kn g15",
+ "wind": "N 7-9kn g15",
  "swell": "1.0m, small surf",
  "tide": "High 7:30pm",
  "weather": {
-  "now_c": 19.9,
+  "now_c": 19.3,
   "hi_c": 21,
   "lo_c": 14,
   "cond": "Partly cloudy, rain pm",
-  "rain": "4.3mm, 53%",
-  "wind": "NNW 5-8kn g15",
+  "rain": "4mm, 61%",
+  "wind": "NNW 5-9kn g15",
   "sunset": "8:00pm",
   "later": [
    {
