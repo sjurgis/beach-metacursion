@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "updated": "2026-11-08T18:23:32+13:00",
+ "updated": "2026-11-08T19:28:17+13:00",
  "timezone": "Pacific/Auckland",
  "location": {
   "name": "Snells Beach",
@@ -265,20 +265,16 @@
     },
     {
      "time": "17:00",
-     "windDirDeg": 8,
-     "windKn": 7.8,
+     "windDirDeg": 4,
+     "windKn": 6.9,
      "gustKn": 14.8,
      "rainMm": 0.7,
      "rainProbPct": 60,
      "airC": 18.9,
      "cloudPct": 59,
      "sky": "rain",
-     "src": "metno+openmeteo",
+     "src": "openmeteo",
      "models": {
-      "metno": [
-       12,
-       8.7
-      ],
       "openmeteo": [
        4,
        6.9
@@ -287,18 +283,18 @@
     },
     {
      "time": "18:00",
-     "windDirDeg": 11,
+     "windDirDeg": 10,
      "windKn": 7.5,
      "gustKn": 14.0,
      "rainMm": 0.2,
      "rainProbPct": 58,
-     "airC": 18.5,
-     "cloudPct": 91,
+     "airC": 18.7,
+     "cloudPct": 94,
      "sky": "rain",
      "src": "metno+openmeteo",
      "models": {
       "metno": [
-       11,
+       10,
        8.7
       ],
       "openmeteo": [
@@ -310,7 +306,7 @@
     {
      "time": "19:00",
      "windDirDeg": 12,
-     "windKn": 7.2,
+     "windKn": 7.3,
      "gustKn": 12.4,
      "rainMm": 0.1,
      "rainProbPct": 51,
@@ -321,7 +317,7 @@
      "models": {
       "metno": [
        13,
-       9.0
+       9.1
       ],
       "openmeteo": [
        11,
@@ -1689,7 +1685,7 @@
   {
    "source": "tides4fishing",
    "url": "https://tides4fishing.com/nz/auckland/mahurangi-harbour",
-   "at": "2026-11-08T18:23:32+13:00",
+   "at": "2026-11-08T19:28:17+13:00",
    "ok": true,
    "attempts": 1,
    "bySource": {
@@ -1701,7 +1697,7 @@
   }
  ],
  "observations": {
-  "fetched": "2026-11-08T18:23:32+13:00",
+  "fetched": "2026-11-08T19:28:17+13:00",
   "kind": "airport",
   "blend": false,
   "stations": [
@@ -1711,11 +1707,11 @@
     "kind": "airport",
     "lat": -37.008,
     "lon": 174.792,
-    "time": "2026-11-08T18:00:00+13:00",
-    "windKn": 7.0,
+    "time": "2026-11-08T19:00:00+13:00",
+    "windKn": 3.0,
     "gustKn": null,
-    "windDirDeg": 210,
-    "airC": 21,
+    "windDirDeg": 220,
+    "airC": 19,
     "pressureHpa": 1017,
     "rainRateMmH": null,
     "rainTodayMm": null,
