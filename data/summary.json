@@ -1,40 +1,35 @@
 {
- "updated": "07:26",
+ "updated": "08:24",
  "date": "Mon 9 Nov",
  "picks": [
   {
    "name": "Scotts Landing",
-   "window": "Now-7:30am",
-   "note": "NE 8-9kn, sheltered, dry"
+   "window": "Now-11:30am",
+   "note": "NNE 11-13kn, sheltered, rain 67%"
   },
   {
-   "name": "Martins Bay",
-   "window": "Now-7:30am",
-   "note": "NE 8-9kn, dry"
+   "name": "Baddeleys Beach",
+   "window": "Now-12:30pm",
+   "note": "NNE 11-13kn, offshore, rain 92%"
   },
   {
    "name": "Algies Bay",
    "window": "Now-11:30am",
-   "note": "swim, deep enough, NE 8-12kn"
+   "note": "swim, deep enough, NNE 11-13kn"
   }
  ],
- "wind": "NNE 8-13kn g24",
+ "wind": "NNE 11-14kn g25",
  "swell": "0.8m, no surf",
  "tide": "High 8:30am, 8:30pm",
  "weather": {
-  "now_c": 16.6,
+  "now_c": 17.8,
   "hi_c": 20,
-  "lo_c": 15,
-  "cond": "Rain",
-  "rain": "7.4mm, 100%",
-  "wind": "NNE 6-13kn g24",
+  "lo_c": 16,
+  "cond": "Cloudy, rain pm",
+  "rain": "11mm, 100%",
+  "wind": "NNE 6-14kn g25",
   "sunset": "8:01pm",
   "later": [
-   {
-    "t": "9am",
-    "c": 18,
-    "cond": "rain"
-   },
    {
     "t": "12pm",
     "c": 19,
@@ -43,6 +38,11 @@
    {
     "t": "3pm",
     "c": 18,
+    "cond": "rain"
+   },
+   {
+    "t": "6pm",
+    "c": 17,
     "cond": "rain"
    }
   ]
