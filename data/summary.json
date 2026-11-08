@@ -1,5 +1,5 @@
 {
- "updated": "16:28",
+ "updated": "17:28",
  "date": "Sun 8 Nov",
  "picks": [
   {
@@ -14,27 +14,22 @@
   },
   {
    "name": "Algies Bay",
-   "window": "4:30-8:00pm",
+   "window": "Now-8:00pm",
    "note": "swim, deep enough, N 7-8kn"
   }
  ],
- "wind": "N 7-9kn g15",
+ "wind": "N 7-8kn g15",
  "swell": "1.0m, small surf",
  "tide": "High 7:30pm",
  "weather": {
-  "now_c": 19.3,
+  "now_c": 18.8,
   "hi_c": 21,
   "lo_c": 14,
   "cond": "Partly cloudy, rain pm",
-  "rain": "4mm, 61%",
-  "wind": "NNW 5-9kn g15",
+  "rain": "4.1mm, 61%",
+  "wind": "NNW 5-8kn g15",
   "sunset": "8:00pm",
   "later": [
-   {
-    "t": "6pm",
-    "c": 19,
-    "cond": "rain"
-   },
    {
     "t": "8pm",
     "c": 17,
@@ -43,6 +38,11 @@
    {
     "t": "6am",
     "c": 14,
+    "cond": "cloudy"
+   },
+   {
+    "t": "9am",
+    "c": 18,
     "cond": "cloudy"
    }
   ]
