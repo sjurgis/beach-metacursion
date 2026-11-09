@@ -1,5 +1,5 @@
 {
- "updated": "14:22",
+ "updated": "15:22",
  "date": "Mon 9 Nov",
  "picks": [
   {
@@ -18,15 +18,15 @@
    "note": "NNE 10-14kn, sheltered"
   }
  ],
- "wind": "NNE 10-14kn g23",
+ "wind": "NNE 10-14kn g21",
  "swell": "0.8m, small surf",
  "tide": "High 8:30pm",
  "weather": {
-  "now_c": 17.5,
+  "now_c": 17.7,
   "hi_c": 20,
   "lo_c": 16,
   "cond": "Cloudy, rain pm",
-  "rain": "8.5mm, 100%",
+  "rain": "9.1mm, 100%",
   "wind": "NNE 6-14kn g24",
   "sunset": "8:01pm",
   "later": [
