@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "updated": "2026-11-10T10:27:23+13:00",
+ "updated": "2026-11-10T11:21:45+13:00",
  "timezone": "Pacific/Auckland",
  "location": {
   "name": "Snells Beach",
@@ -12,7 +12,7 @@
    "what": "Wind & weather (blended)",
    "name": "met.no Locationforecast (Snells Beach)",
    "url": "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=-36.42&lon=174.73",
-   "issued": "2026-11-10T08:19:56+13:00"
+   "issued": "2026-11-10T08:20:25+13:00"
   },
   {
    "what": "Wind (blended), gusts, rain chance, sun",
@@ -121,20 +121,16 @@
     },
     {
      "time": "09:00",
-     "windDirDeg": 24,
-     "windKn": 18.2,
+     "windDirDeg": 26,
+     "windKn": 14.1,
      "gustKn": 25.3,
      "rainMm": 2.1,
      "rainProbPct": 100,
      "airC": 17.2,
      "cloudPct": 100,
      "sky": "showers",
-     "src": "metno+openmeteo",
+     "src": "openmeteo",
      "models": {
-      "metno": [
-       23,
-       22.4
-      ],
       "openmeteo": [
        26,
        14.1
@@ -144,18 +140,18 @@
     {
      "time": "10:00",
      "windDirDeg": 23,
-     "windKn": 19.5,
+     "windKn": 19.8,
      "gustKn": 29.7,
-     "rainMm": 2.2,
+     "rainMm": 1.6,
      "rainProbPct": 100,
-     "airC": 17.3,
+     "airC": 17.4,
      "cloudPct": 100,
-     "sky": "rain",
+     "sky": "showers",
      "src": "metno+openmeteo",
      "models": {
       "metno": [
        22,
-       22.9
+       23.3
       ],
       "openmeteo": [
        24,
@@ -176,7 +172,7 @@
      "src": "metno+openmeteo",
      "models": {
       "metno": [
-       21,
+       20,
        22.6
       ],
       "openmeteo": [
@@ -1713,7 +1709,7 @@
   {
    "source": "tides4fishing",
    "url": "https://tides4fishing.com/nz/auckland/mahurangi-harbour",
-   "at": "2026-11-10T10:27:23+13:00",
+   "at": "2026-11-10T11:21:45+13:00",
    "ok": true,
    "attempts": 1,
    "bySource": {
@@ -1725,7 +1721,7 @@
   }
  ],
  "observations": {
-  "fetched": "2026-11-10T10:27:23+13:00",
+  "fetched": "2026-11-10T11:21:45+13:00",
   "kind": "airport",
   "blend": false,
   "stations": [
@@ -1735,7 +1731,7 @@
     "kind": "airport",
     "lat": -37.008,
     "lon": 174.792,
-    "time": "2026-11-10T10:00:00+13:00",
+    "time": "2026-11-10T11:00:00+13:00",
     "windKn": 19.0,
     "gustKn": null,
     "windDirDeg": 30,
@@ -1757,7 +1753,7 @@
     "tries": [
      "200:WuNext-Preview",
      "200:WuNext-Preview",
-     "err:ReadTimeout",
+     "200:WuNext-Preview",
      "200:WuNext-Preview"
     ],
     "pageError": "no readings in served page (client-rendered variant)",
