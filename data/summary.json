@@ -1,5 +1,5 @@
 {
- "updated": "04:30",
+ "updated": "06:28",
  "date": "Tue 10 Nov",
  "picks": [
   {
@@ -31,17 +31,17 @@
   "sunset": "8:02pm",
   "later": [
    {
-    "t": "6am",
-    "c": 17,
-    "cond": "rain"
-   },
-   {
     "t": "9am",
     "c": 17,
     "cond": "rain"
    },
    {
     "t": "12pm",
+    "c": 18,
+    "cond": "rain"
+   },
+   {
+    "t": "3pm",
     "c": 18,
     "cond": "rain"
    }
