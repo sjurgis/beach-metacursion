@@ -1,5 +1,5 @@
 {
- "updated": "09:29",
+ "updated": "10:30",
  "date": "Tue 10 Nov",
  "picks": [
   {
@@ -20,12 +20,12 @@
  ],
  "wind": "NNE 17-21kn g35",
  "swell": "0.5m, no surf",
- "tide": "High 9:00am, 9:00pm",
+ "tide": "High 9:00pm",
  "weather": {
-  "now_c": 17.2,
+  "now_c": 17.3,
   "hi_c": 18,
   "lo_c": 17,
-  "cond": "Rain",
+  "cond": "Showers, rain pm",
   "rain": "35mm, 100%",
   "wind": "NNE 11-21kn g35",
   "sunset": "8:02pm",
