@@ -3,7 +3,7 @@
 "use strict";
 
 const TZ = "Pacific/Auckland";
-const APP_VERSION = "2026-11-06r2";   // bump with data/version.txt when app.js/style.css/index.html change
+const APP_VERSION = "2026-11-09r1";   // bump with data/version.txt when app.js/style.css/index.html change
 const PREF_KEY = "snells-beach-prefs-v1";
 const DEFAULT_PREFS = { activities: ["hangout"], drive: 1, dog: false };
 const ACT = {
