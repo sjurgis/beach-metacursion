@@ -1,5 +1,5 @@
 {
- "updated": "22:28",
+ "updated": "01:27",
  "date": "Wed 11 Nov",
  "picks": [
   {
@@ -8,27 +8,27 @@
    "note": "NNW 7-9kn, sheltered, dry"
   },
   {
-   "name": "Snells Beach",
+   "name": "Algies Bay",
    "window": "6:00-10:30am",
    "note": "NNW 7-9kn, dry"
   },
   {
-   "name": "Algies Bay",
+   "name": "Snells Beach",
    "window": "6:30am-12:30pm",
    "note": "swim, deep enough, NNW 7-10kn"
   }
  ],
  "wind": "NNW 7-11kn g20",
- "swell": "1.3m 6s, surf up",
+ "swell": "1.4m 6s, surf up",
  "tide": "High 9:30am, 10:00pm",
  "weather": {
-  "now_c": 17.3,
-  "hi_c": 19,
-  "lo_c": 17,
-  "cond": "Showers, rain pm",
-  "rain": "24mm, 100%",
-  "wind": "NNE 11-17kn g33",
-  "sunset": "8:02pm",
+  "now_c": 16.6,
+  "hi_c": 22,
+  "lo_c": 15,
+  "cond": "Partly cloudy, showers pm",
+  "rain": "7mm, 100%",
+  "wind": "NNW 7-11kn g20",
+  "sunset": "8:03pm",
   "later": [
    {
     "t": "6am",
