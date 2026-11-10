@@ -1,28 +1,28 @@
 {
- "updated": "09:30",
+ "updated": "10:21",
  "date": "Wed 11 Nov",
  "picks": [
   {
    "name": "Tāwharanui",
    "window": "Now-11:30am",
-   "note": "NNW 1-6kn, sunny"
+   "note": "SW 5-6kn, offshore, sunny"
   },
   {
-   "name": "Martins Bay",
+   "name": "Mathesons Bay",
    "window": "Now-11:30am",
-   "note": "NE 6-8kn, sunny"
+   "note": "almost still, sheltered, sunny"
   },
   {
    "name": "Algies Bay",
    "window": "Now-12:30pm",
-   "note": "swim, deep enough, NNE 6-10kn"
+   "note": "swim, deep enough, NNW 10kn, sunny"
   }
  ],
- "wind": "NNW 6-10kn g18",
+ "wind": "NW 7-10kn g18",
  "swell": "1.4m 6s, surf up",
  "tide": "High 9:30am, 10:00pm",
  "weather": {
-  "now_c": 21.3,
+  "now_c": 20.9,
   "hi_c": 22,
   "lo_c": 15,
   "cond": "Sunny, showers pm",
