@@ -1,31 +1,31 @@
 {
- "updated": "11:25",
+ "updated": "12:23",
  "date": "Wed 11 Nov",
  "picks": [
   {
+   "name": "Martins Bay",
+   "window": "Now-1:30pm",
+   "note": "N 6-7kn, dry"
+  },
+  {
    "name": "Tāwharanui",
    "window": "Now-1:30pm",
-   "note": "W 2-7kn, offshore, showers 29%"
+   "note": "SW 9kn, offshore, dry"
   },
   {
    "name": "Mathesons Bay",
    "window": "Now-1:30pm",
-   "note": "NW 2-7kn, offshore, showers 29%"
-  },
-  {
-   "name": "Ōmaha",
-   "window": "Now-1:30pm",
-   "note": "NW 2-7kn, showers 29%"
+   "note": "WSW 7-8kn, sheltered, dry"
   }
  ],
  "wind": "NNW 7-10kn g18",
  "swell": "1.4m 6s, surf up",
  "tide": "High 10:00pm",
  "weather": {
-  "now_c": 22.8,
+  "now_c": 23.7,
   "hi_c": 22,
   "lo_c": 15,
-  "cond": "Rain, showers pm",
+  "cond": "Partly cloudy, showers pm",
   "rain": "5.4mm, 100%",
   "wind": "NNW 7-10kn g18",
   "sunset": "8:03pm",
