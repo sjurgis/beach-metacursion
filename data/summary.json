@@ -1,40 +1,35 @@
 {
- "updated": "10:21",
+ "updated": "11:25",
  "date": "Wed 11 Nov",
  "picks": [
   {
    "name": "Tāwharanui",
-   "window": "Now-11:30am",
-   "note": "SW 5-6kn, offshore, sunny"
+   "window": "Now-1:30pm",
+   "note": "W 2-7kn, offshore, showers 29%"
   },
   {
    "name": "Mathesons Bay",
-   "window": "Now-11:30am",
-   "note": "almost still, sheltered, sunny"
+   "window": "Now-1:30pm",
+   "note": "NW 2-7kn, offshore, showers 29%"
   },
   {
-   "name": "Algies Bay",
-   "window": "Now-12:30pm",
-   "note": "swim, deep enough, NNW 10kn, sunny"
+   "name": "Ōmaha",
+   "window": "Now-1:30pm",
+   "note": "NW 2-7kn, showers 29%"
   }
  ],
- "wind": "NW 7-10kn g18",
+ "wind": "NNW 7-10kn g18",
  "swell": "1.4m 6s, surf up",
- "tide": "High 9:30am, 10:00pm",
+ "tide": "High 10:00pm",
  "weather": {
-  "now_c": 20.9,
+  "now_c": 22.8,
   "hi_c": 22,
   "lo_c": 15,
-  "cond": "Sunny, showers pm",
+  "cond": "Rain, showers pm",
   "rain": "5.4mm, 100%",
   "wind": "NNW 7-10kn g18",
   "sunset": "8:03pm",
   "later": [
-   {
-    "t": "12pm",
-    "c": 22,
-    "cond": "showers"
-   },
    {
     "t": "3pm",
     "c": 21,
@@ -44,6 +39,11 @@
     "t": "6pm",
     "c": 18,
     "cond": "showers"
+   },
+   {
+    "t": "8pm",
+    "c": 16,
+    "cond": "sunny"
    }
   ]
  }
