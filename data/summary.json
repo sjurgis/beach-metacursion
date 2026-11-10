@@ -1,24 +1,24 @@
 {
- "updated": "17:24",
+ "updated": "18:25",
  "date": "Tue 10 Nov",
  "picks": [
   {
-   "name": "Scotts Landing",
+   "name": "Snells Beach",
    "window": "Now-8:00pm",
-   "note": "NNE 5-14kn, sheltered, rain 98%"
+   "note": "N 6-9kn, rain 96%"
   },
   {
-   "name": "Snells Beach",
-   "window": "Now-7:30pm",
-   "note": "NNE 5-14kn, rain 98%"
+   "name": "Scotts Landing",
+   "window": "Now-8:00pm",
+   "note": "NNW 5-8kn, rain 96%"
   },
   {
    "name": "Mathesons Bay",
-   "window": "Now-7:30pm",
-   "note": "S 7-14kn, sheltered, rain 98%"
+   "window": "Now-8:00pm",
+   "note": "WSW 4-7kn, sheltered, rain 96%"
   }
  ],
- "wind": "N 15-17kn g24",
+ "wind": "NNE 11-13kn g16",
  "swell": "0.5m, no surf",
  "tide": "High 9:00pm",
  "weather": {
