@@ -1,49 +1,49 @@
 {
- "updated": "19:22",
+ "updated": "20:26",
  "date": "Wed 11 Nov",
  "picks": [
   {
    "name": "Scotts Landing",
    "window": "6:00-10:30am",
-   "note": "NNW 8-10kn, sheltered, sunny"
+   "note": "NNW 7-9kn, sheltered, dry"
   },
   {
    "name": "Snells Beach",
    "window": "6:00-10:30am",
-   "note": "NNW 8-10kn, sunny, high tide"
+   "note": "NNW 7-9kn, dry"
   },
   {
    "name": "Algies Bay",
    "window": "6:30am-12:30pm",
-   "note": "swim, deep enough, NNW 8-10kn"
+   "note": "swim, deep enough, NNW 7-10kn"
   }
  ],
- "wind": "NNW 7-10kn g19",
+ "wind": "NNW 7-11kn g20",
  "swell": "1.3m 6s, surf up",
  "tide": "High 9:30am, 10:00pm",
  "weather": {
-  "now_c": 17.9,
-  "hi_c": 18,
+  "now_c": 17.6,
+  "hi_c": 19,
   "lo_c": 17,
   "cond": "Showers, rain pm",
   "rain": "24mm, 100%",
-  "wind": "NNE 11-18kn g32",
+  "wind": "NNE 11-19kn g33",
   "sunset": "8:02pm",
   "later": [
    {
-    "t": "8pm",
-    "c": 17,
-    "cond": "rain"
-   },
-   {
     "t": "6am",
-    "c": 16,
+    "c": 15,
     "cond": "cloudy"
    },
    {
     "t": "9am",
-    "c": 18,
+    "c": 17,
     "cond": "sunny"
+   },
+   {
+    "t": "12pm",
+    "c": 21,
+    "cond": "showers"
    }
   ]
  }
