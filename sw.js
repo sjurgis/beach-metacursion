@@ -1,6 +1,6 @@
 /* Snells Beach service worker: offline app shell + last data. No push, sync or badges.
    VERSION must equal APP_VERSION in app.js and data/version.txt (scripts/validate.py checks). */
-const VERSION = "2026-11-09r1";
+const VERSION = "2026-11-11r1";
 const CACHE = "snells-beach-" + VERSION;
 const SHELL = ["./", "index.html", "app.js", "style.css", "manifest.webmanifest",
   "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png", "icons/apple-touch-icon.png", "icons/favicon-32.png",
@@ -54,6 +54,9 @@ async function networkFirst(req, key) {
 self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET") return;
+  // Never intercept page loads: Safari fails any SW-served navigation that arrived via a redirect
+  // (old sjurgis.github.io link -> beach.metacursion.com). Let the browser load pages itself.
+  if (req.mode === "navigate") return;
   const url = new URL(req.url);
   if (url.hostname.endsWith("cloudflareinsights.com")) return; // never touch analytics beacon
   if (url.origin !== location.origin || !url.pathname.startsWith(new URL("./", self.registration.scope).pathname)) return;
