@@ -1,28 +1,28 @@
 {
- "updated": "04:28",
+ "updated": "06:28",
  "date": "Thu 12 Nov",
  "picks": [
   {
    "name": "Martins Bay",
-   "window": "6:30-8:00pm",
-   "note": "WSW 6-8kn, offshore, sunny"
+   "window": "Now-8:30am",
+   "note": "almost still, dry"
   },
   {
    "name": "Scandretts Bay",
-   "window": "6:30-8:00pm",
-   "note": "WSW 6-8kn, offshore, sunny"
+   "window": "Now-8:30am",
+   "note": "almost still, dry"
   },
   {
-   "name": "Tāwharanui",
-   "window": "6:30-8:00pm",
-   "note": "WSW 6-8kn, offshore, sunny"
+   "name": "Snells Beach",
+   "window": "Now-8:30am",
+   "note": "almost still, dry"
   }
  ],
- "wind": "W 3-9kn g19",
+ "wind": "W 0-9kn g19",
  "swell": "0.9m, small surf",
  "tide": "High 10:30am",
  "weather": {
-  "now_c": 14.7,
+  "now_c": 15,
   "hi_c": 21,
   "lo_c": 14,
   "cond": "Cloudy, rain pm",
@@ -30,11 +30,6 @@
   "wind": "W 5-9kn g19",
   "sunset": "8:04pm",
   "later": [
-   {
-    "t": "6am",
-    "c": 14,
-    "cond": "cloudy"
-   },
    {
     "t": "9am",
     "c": 17,
@@ -44,6 +39,11 @@
     "t": "12pm",
     "c": 20,
     "cond": "rain"
+   },
+   {
+    "t": "3pm",
+    "c": 20,
+    "cond": "showers"
    }
   ]
  }
