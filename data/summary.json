@@ -1,32 +1,32 @@
 {
- "updated": "15:25",
+ "updated": "16:21",
  "date": "Wed 11 Nov",
  "picks": [
   {
    "name": "Mathesons Bay",
-   "window": "Now-4:30pm",
-   "note": "SSW 5-6kn, sheltered, showers 23%"
+   "window": "Now-5:30pm",
+   "note": "almost still, sheltered"
   },
   {
    "name": "Tāwharanui",
-   "window": "Now-4:30pm",
-   "note": "SW 7-8kn, offshore, showers 23%"
+   "window": "Now-5:30pm",
+   "note": "almost still, showers 26%"
   },
   {
    "name": "Ōmaha",
-   "window": "Now-4:30pm",
-   "note": "SSW 5-6kn, showers 23%"
+   "window": "Now-5:30pm",
+   "note": "almost still, showers 26%"
   }
  ],
- "wind": "NW 2-9kn g18",
+ "wind": "W 7-8kn g16",
  "swell": "1.2m 6s, surf up",
  "tide": "High 10:00pm",
  "weather": {
-  "now_c": 23,
+  "now_c": 22.6,
   "hi_c": 22,
   "lo_c": 15,
-  "cond": "Partly cloudy, rain pm",
-  "rain": "4.3mm, 100%",
+  "cond": "Rain",
+  "rain": "4.5mm, 100%",
   "wind": "NNW 7-11kn g22",
   "sunset": "8:03pm",
   "later": [
