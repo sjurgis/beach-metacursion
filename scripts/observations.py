@@ -1,8 +1,9 @@
 """Live observations for the Snells Beach page.
 
-Home weather stations (Weather Underground PWS) need an API key: weather.com only gives
-PWS API keys to people who register a station (free). Set WU_API_KEY to switch them on.
-Without a key we read the public station pages (below), then fall back to the official airport METAR (aviationweather.gov, keyless),
+Home weather stations (Weather Underground PWS): the official PWS API is the primary source. The key comes from
+$WU_API_KEY or ~/.config/snells-beach/wu_api_key (never committed, never printed, never in an error message).
+Stations the API doesn't answer for fall back to the public station pages, then headless Chrome (below), and with
+no home station at all to the official airport METAR (aviationweather.gov, keyless),
 which is 50+ km away, so it is shown but NOT blended into near-term scoring.
 Nothing is invented: missing or stale readings are dropped.
 """
@@ -11,13 +12,6 @@ from zoneinfo import ZoneInfo
 
 TZ = ZoneInfo("Pacific/Auckland")
 KMH_TO_KN = 0.539957
-# Seen on wunderground.com / weatherwatch.co.nz (Oct 2026), nearest first.
-WU_STATIONS = [
-    ("ISNELL2", "Snells Beach"), ("ISNELL4", "HeronLane, Snells Beach"),
-    ("IWARKW35", "Algies Bay"), ("IWARKW15", "Algies Bay"),
-    ("IWARKW133", "Warkworth WS3900"), ("IWARKW119", "Warkworth"), ("IWARKW126", "Warkworth"),
-    ("IWARKW18", "Warkworth"), ("IWARKW82", "Pohuehue"), ("IMATAK12", "MartySpace, Matakana"),
-]
 METAR_IDS = ["NZWP", "NZAA"]
 MAX_AGE_MIN = 90
 
@@ -32,28 +26,71 @@ def _fresh(t, now):
     return t is not None and (now - t).total_seconds() / 60 <= MAX_AGE_MIN
 
 
-def wu(key, now):
-    out = []
-    for sid, name in WU_STATIONS:
+KEY_FILE = os.path.expanduser("~/.config/snells-beach/wu_api_key")
+API = "https://api.weather.com/v2/pws/"
+API_CALLS = {}        # endpoint -> calls this run (reported in fetchLog and the run output); limit ~1500/day, 30/min
+
+
+def api_key():
+    k = os.environ.get("WU_API_KEY", "").strip()
+    if not k:
         try:
-            j = _get("https://api.weather.com/v2/pws/observations/current?stationId=" + sid
-                     + "&format=json&units=m&numericPrecision=decimal&apiKey=" + key)
-        except Exception as e:  # offline stations answer 204/404
-            print(f"warning: WU {sid}: {e}", file=sys.stderr); continue
+            with open(KEY_FILE, encoding="utf-8") as f: k = f.read().strip()
+        except OSError: k = ""
+    return k
+
+
+def api_get(endpoint, params, key):
+    """GET one PWS API endpoint. Errors never include the URL (it carries the key)."""
+    import urllib.error, urllib.parse
+    API_CALLS[endpoint] = API_CALLS.get(endpoint, 0) + 1
+    q = urllib.parse.urlencode({**params, "format": "json", "units": "m", "numericPrecision": "decimal"})
+    req = urllib.request.Request(f"{API}{endpoint}?{q}&apiKey={urllib.parse.quote(key)}",
+                                 headers={"User-Agent": "snells-beach/1.0 github.com/sjurgis/snells-beach"})
+    try:
+        with urllib.request.urlopen(req, timeout=20) as r:
+            if r.status == 204: return None
+            return json.loads(r.read().decode("utf-8") or "null")
+    except urllib.error.HTTPError as e:
+        raise RuntimeError(f"PWS API {endpoint} HTTP {e.code}") from None
+    except Exception as e:  # noqa: BLE001
+        raise RuntimeError(f"PWS API {endpoint} {type(e).__name__}") from None
+
+
+def wu(key, now, stations, log):
+    """Current readings from the official PWS API, one call per station (in parallel, well under 30/min)."""
+    from concurrent.futures import ThreadPoolExecutor
+    def one(st):
+        sid, name, lat, lon = st
+        entry = {"id": sid, "ok": False, "method": "api"}
+        try:
+            j = api_get("observations/current", {"stationId": sid}, key)
+        except Exception as e:  # noqa: BLE001
+            entry["error"] = str(e); return None, entry
         for o in (j or {}).get("observations", []):
             t = dt.datetime.fromisoformat(o["obsTimeUtc"].replace("Z", "+00:00")).astimezone(TZ)
             m = o.get("metric") or {}
-            if not _fresh(t, now) or m.get("windSpeed") is None: continue
-            out.append({
-                "id": sid, "name": o.get("neighborhood") or name, "kind": "home",
-                "lat": o.get("lat"), "lon": o.get("lon"), "time": t.replace(microsecond=0).isoformat(),
+            if not _fresh(t, now): entry["error"] = f"latest reading old ({t:%H:%M})"; continue
+            if m.get("windSpeed") is None: entry["error"] = "no wind in latest reading"; continue
+            entry["ok"] = True
+            return {
+                "id": sid, "name": name, "kind": "home",
+                "lat": o.get("lat") or lat, "lon": o.get("lon") or lon, "time": t.replace(microsecond=0).isoformat(),
                 "windKn": round(m["windSpeed"] * KMH_TO_KN, 1),
                 "gustKn": None if m.get("windGust") is None else round(m["windGust"] * KMH_TO_KN, 1),
-                "windDirDeg": o.get("winddir"), "airC": m.get("temp"), "pressureHpa": m.get("pressure"),
-                "rainRateMmH": m.get("precipRate"), "rainTodayMm": m.get("precipTotal"),
-                "url": f"https://www.wunderground.com/dashboard/pws/{sid}",
-            })
-    return out
+                "windDirDeg": o.get("winddir"), "airC": m.get("temp"),
+                "pressureHpa": None if m.get("pressure") is None else round(m["pressure"], 1),
+                "rainRateMmH": None if m.get("precipRate") is None else round(m["precipRate"], 1),
+                "rainTodayMm": None if m.get("precipTotal") is None else round(m["precipTotal"], 1),
+                "url": f"https://www.wunderground.com/dashboard/pws/{sid}", "via": "api",
+            }, entry
+        entry.setdefault("error", "no observations (station offline)"); return None, entry
+    with ThreadPoolExecutor(max_workers=4) as ex:
+        res = list(ex.map(one, stations))
+    for r, e in res:
+        log.append(e)
+        if not r: print(f"warning: WU API {e['id']}: {e.get('error')}", file=sys.stderr)
+    return [r for r, _ in res if r]
 
 
 def metar(now):
@@ -229,8 +266,20 @@ def _parse_display(text, now):
         "windKn": r1(float(w.group(1)), k), "gustKn": r1(float(w.group(2)), k), "windDirDeg": int(w.group(3)) % 360,
         "airC": None if temp is None else round((temp - 32) * 5 / 9 if imperial else temp, 1),
         "pressureHpa": r1(pres, pk),
-        "rainRateMmH": r1(float(pr.group(1)), rk) if pr else None, "rainTodayMm": r1(float(pr.group(2)), rk) if pr else None,
+        # the widget shows today's total first (main value), then the rate (secondary)
+        "rainTodayMm": r1(float(pr.group(1)), rk) if pr else None, "rainRateMmH": r1(float(pr.group(2)), rk) if pr else None,
     }
+
+
+def _rain_widget(rw):
+    """Rain from the precipitation widget's own attributes (data-precip-rate / data-precip-total), {} if absent."""
+    if rw is None: return {}
+    f = IN_TO_MM if (rw.get("data-unit") or "e") == "e" else 1
+    out = {}
+    for attr, key in (("data-precip-rate", "rainRateMmH"), ("data-precip-total", "rainTodayMm")):
+        try: out[key] = round(float(rw.get(attr)) * f, 1)
+        except (TypeError, ValueError): pass
+    return out
 
 
 def render_station(sid, name, now, entry, lat=None, lon=None):
@@ -261,11 +310,13 @@ def render_station(sid, name, now, entry, lat=None, lon=None):
     entry["parse"] = "state" if o else "display"
     if o: return _reading_from_state(o, sid, name, now, entry, lat, lon)
     soup = BeautifulSoup(html, "html.parser")
+    rw = soup.find("rain-widget-view")
     for tag in soup(["script", "style", "svg"]): tag.decompose()
     try:
         when, v = _parse_display(soup.get_text(" "), now)
     except ValueError as e:
         entry["error"] = f"render: {e}"; raise
+    v.update(_rain_widget(rw))
     if not _fresh(when, now): entry["error"] = f"render: latest reading old ({when:%H:%M})"; raise ValueError(entry["error"])
     entry["ok"] = True
     entry.pop("error", None)
@@ -273,19 +324,21 @@ def render_station(sid, name, now, entry, lat=None, lon=None):
             "url": f"https://www.wunderground.com/dashboard/pws/{sid}", "via": "render"}
 
 
-def pages(now, log):
+def pages(now, log, stations=None):
     """Plain page fetches for all stations in parallel; any that only got the client-rendered
     variant are then rendered in headless Chrome, at most RENDER_PARALLEL at once."""
     from concurrent.futures import ThreadPoolExecutor
+    stations = PAGE_STATIONS if stations is None else stations
+    if not stations: return []
     def one(st):
         sid, name, lat, lon = st
         sub = []
         try: return page_station(sid, name, now, sub, lat, lon), sub
         except Exception as e:
             print(f"warning: WU page {sid}: {e}", file=sys.stderr); return None, sub
-    with ThreadPoolExecutor(max_workers=len(PAGE_STATIONS)) as ex:
-        res = list(ex.map(one, PAGE_STATIONS))
-    todo = [(st, sub[0]) for st, (r, sub) in zip(PAGE_STATIONS, res) if r is None and sub and sub[0].get("error") == NO_STATE]
+    with ThreadPoolExecutor(max_workers=len(stations)) as ex:
+        res = list(ex.map(one, stations))
+    todo = [(st, sub[0]) for st, (r, sub) in zip(stations, res) if r is None and sub and sub[0].get("error") == NO_STATE]
     def rend(item):
         (sid, name, lat, lon), entry = item
         entry["pageError"] = entry.pop("error", None)
@@ -297,29 +350,35 @@ def pages(now, log):
         with ThreadPoolExecutor(max_workers=RENDER_PARALLEL) as ex:
             rendered = dict(ex.map(rend, todo))
     for _, sub in res: log.extend(sub)
-    return [r or rendered.get(st[0]) for st, (r, _) in zip(PAGE_STATIONS, res) if (r or rendered.get(st[0]))]
+    return [r or rendered.get(st[0]) for st, (r, _) in zip(stations, res) if (r or rendered.get(st[0]))]
 
 
 def collect(now=None):
-    """(observations dict or None, sources entry or None)."""
+    """(observations dict or None, sources entry or None). API first; stations it misses go to the pages."""
     now = now or dt.datetime.now(TZ)
-    key = os.environ.get("WU_API_KEY", "").strip()
-    st = wu(key, now) if key else []
+    key = api_key()
     log = []
-    if not st:
-        st = pages(now, log)
-        if st:
-            return ({"fetched": now.replace(microsecond=0).isoformat(), "kind": "home", "blend": True, "stations": st, "fetchLog": log},
-                    {"what": "Live wind & rain (home stations)", "name": "Weather Underground station pages: " + ", ".join(f"{x['name']} ({x['id']})" for x in st),
-                     "url": st[0]["url"]})
+    st = wu(key, now, PAGE_STATIONS, log) if key else []
+    got = {x["id"] for x in st}
+    missing = [x for x in PAGE_STATIONS if x[0] not in got]
+    if missing:
+        st += pages(now, log, missing)
+    order = [x[0] for x in PAGE_STATIONS]
+    st.sort(key=lambda x: order.index(x["id"]) if x["id"] in order else 99)
+    calls = dict(API_CALLS)
     if st:
-        kind = "home"
-        src = {"what": "Live wind & rain (home stations)", "name": f"Weather Underground PWS, {len(st)} stations", "url": "https://www.wunderground.com/wundermap"}
-    else:
-        st = metar(now); kind = "airport"
-        src = {"what": "Live wind (airport, shown only)", "name": "aviationweather.gov METAR", "url": "https://aviationweather.gov/"}
+        vias = {x.get("via") for x in st}
+        how = "Weather Underground PWS API" if vias == {"api"} else (
+              "Weather Underground PWS API + station pages" if "api" in vias else "Weather Underground station pages")
+        return ({"fetched": now.replace(microsecond=0).isoformat(), "kind": "home", "blend": True, "stations": st,
+                 "fetchLog": log, "apiCalls": calls},
+                {"what": "Live wind & rain (home stations)", "name": f"{how}: " + ", ".join(dict.fromkeys(x["name"] for x in st)),
+                 "url": "https://www.wunderground.com/wundermap"})
+    st = metar(now)
     if not st: return None, None
-    return {"fetched": now.replace(microsecond=0).isoformat(), "kind": kind, "blend": kind == "home", "stations": st, "fetchLog": log}, src
+    return ({"fetched": now.replace(microsecond=0).isoformat(), "kind": "airport", "blend": False, "stations": st,
+             "fetchLog": log, "apiCalls": calls},
+            {"what": "Live wind (airport, shown only)", "name": "aviationweather.gov METAR", "url": "https://aviationweather.gov/"})
 
 
 DIRS = "N NNE NE ENE E ESE SE SSE S SSW SW WSW W WNW NW NNW".split()

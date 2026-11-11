@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "updated": "2026-11-11T22:28:50+13:00",
+ "updated": "2026-11-11T22:51:33+13:00",
  "timezone": "Pacific/Auckland",
  "location": {
   "name": "Snells Beach",
@@ -31,8 +31,8 @@
   },
   {
    "what": "Live wind & rain (home stations)",
-   "name": "Weather Underground station pages: Algies Bay (IWARKW15), Snells Beach (ISNELL2), Snells Beach (ISNELL1), Sandspit (IWARKW128), Mahurangi East (IWARKW125), Mahurangi East (IWARKW107), Point Wells (Omaha) (IWARKWOR11), Omaha Flats (IWARKW99)",
-   "url": "https://www.wunderground.com/dashboard/pws/IWARKW15"
+   "name": "Weather Underground PWS API: Algies Bay, Snells Beach, Sandspit, Mahurangi East, Point Wells (Omaha), Omaha Flats",
+   "url": "https://www.wunderground.com/wundermap"
   }
  ],
  "days": [
@@ -1693,7 +1693,7 @@
   {
    "source": "tides4fishing",
    "url": "https://tides4fishing.com/nz/auckland/mahurangi-harbour",
-   "at": "2026-11-11T22:28:50+13:00",
+   "at": "2026-11-11T22:51:33+13:00",
    "ok": true,
    "attempts": 1,
    "bySource": {
@@ -1705,7 +1705,7 @@
   }
  ],
  "observations": {
-  "fetched": "2026-11-11T22:28:50+13:00",
+  "fetched": "2026-11-11T22:51:33+13:00",
   "kind": "home",
   "blend": true,
   "stations": [
@@ -1715,16 +1715,16 @@
     "kind": "home",
     "lat": -36.435,
     "lon": 174.74,
-    "time": "2026-11-11T22:28:00+13:00",
+    "time": "2026-11-11T22:51:37+13:00",
     "windKn": 0.0,
     "gustKn": 0.0,
-    "windDirDeg": 120,
-    "airC": 16.8,
+    "windDirDeg": 113,
+    "airC": 16.3,
     "pressureHpa": 1018.3,
-    "rainRateMmH": 1.5,
-    "rainTodayMm": 0.0,
+    "rainRateMmH": 0.0,
+    "rainTodayMm": 1.5,
     "url": "https://www.wunderground.com/dashboard/pws/IWARKW15",
-    "via": "render"
+    "via": "api"
    },
    {
     "id": "ISNELL2",
@@ -1732,16 +1732,16 @@
     "kind": "home",
     "lat": -36.415,
     "lon": 174.726,
-    "time": "2026-11-11T22:28:00+13:00",
-    "windKn": 0.3,
-    "gustKn": 0.6,
-    "windDirDeg": 309,
-    "airC": 16.7,
-    "pressureHpa": 1013.9,
-    "rainRateMmH": 0.3,
-    "rainTodayMm": 0.0,
+    "time": "2026-11-11T22:51:33+13:00",
+    "windKn": 1.0,
+    "gustKn": 1.4,
+    "windDirDeg": 311,
+    "airC": 16.2,
+    "pressureHpa": 1013.5,
+    "rainRateMmH": 0.0,
+    "rainTodayMm": 0.2,
     "url": "https://www.wunderground.com/dashboard/pws/ISNELL2",
-    "via": "render"
+    "via": "api"
    },
    {
     "id": "ISNELL1",
@@ -1749,16 +1749,16 @@
     "kind": "home",
     "lat": -36.415,
     "lon": 174.726,
-    "time": "2026-11-11T22:28:00+13:00",
-    "windKn": 0.0,
-    "gustKn": 0.0,
+    "time": "2026-11-11T22:51:35+13:00",
+    "windKn": 1.6,
+    "gustKn": 1.9,
     "windDirDeg": 357,
-    "airC": 17.0,
+    "airC": 16.7,
     "pressureHpa": 1012.2,
-    "rainRateMmH": 7.4,
-    "rainTodayMm": 0.0,
+    "rainRateMmH": 0.0,
+    "rainTodayMm": 7.3,
     "url": "https://www.wunderground.com/dashboard/pws/ISNELL1",
-    "via": "render"
+    "via": "api"
    },
    {
     "id": "IWARKW128",
@@ -1766,16 +1766,16 @@
     "kind": "home",
     "lat": -36.397,
     "lon": 174.724,
-    "time": "2026-11-11T22:28:00+13:00",
+    "time": "2026-11-11T22:51:38+13:00",
     "windKn": 0.0,
     "gustKn": 0.0,
     "windDirDeg": 34,
-    "airC": 15.9,
-    "pressureHpa": 1022.7,
-    "rainRateMmH": 2.0,
-    "rainTodayMm": 0.0,
+    "airC": 15.5,
+    "pressureHpa": 1022.8,
+    "rainRateMmH": 0.0,
+    "rainTodayMm": 2.0,
     "url": "https://www.wunderground.com/dashboard/pws/IWARKW128",
-    "via": "render"
+    "via": "api"
    },
    {
     "id": "IWARKW125",
@@ -1783,16 +1783,16 @@
     "kind": "home",
     "lat": -36.473,
     "lon": 174.734,
-    "time": "2026-11-11T22:29:00+13:00",
-    "windKn": 0.6,
+    "time": "2026-11-11T22:51:26+13:00",
+    "windKn": 1.0,
     "gustKn": 1.0,
-    "windDirDeg": 241,
-    "airC": 16.8,
-    "pressureHpa": 1014.6,
+    "windDirDeg": 260,
+    "airC": 16.5,
+    "pressureHpa": 1014.5,
     "rainRateMmH": 0.0,
     "rainTodayMm": 0.0,
     "url": "https://www.wunderground.com/dashboard/pws/IWARKW125",
-    "via": "render"
+    "via": "api"
    },
    {
     "id": "IWARKW107",
@@ -1800,33 +1800,33 @@
     "kind": "home",
     "lat": -36.474,
     "lon": 174.735,
-    "time": "2026-11-11T22:29:00+13:00",
+    "time": "2026-11-11T22:51:34+13:00",
     "windKn": 0.0,
     "gustKn": 0.0,
     "windDirDeg": 258,
     "airC": null,
-    "pressureHpa": 1021.0,
-    "rainRateMmH": 0.3,
-    "rainTodayMm": 0.0,
+    "pressureHpa": 1020.9,
+    "rainRateMmH": 0.0,
+    "rainTodayMm": 0.3,
     "url": "https://www.wunderground.com/dashboard/pws/IWARKW107",
-    "via": "render"
+    "via": "api"
    },
    {
     "id": "IWARKWOR11",
     "name": "Point Wells (Omaha)",
     "kind": "home",
-    "lat": -36.3425,
-    "lon": 174.7594,
-    "time": "2026-11-11T22:15:00+13:00",
+    "lat": -36.342522,
+    "lon": 174.759415,
+    "time": "2026-11-11T22:45:21+13:00",
     "windKn": 0.0,
     "gustKn": 0.0,
     "windDirDeg": 210,
-    "airC": 16.1,
+    "airC": 15.7,
     "pressureHpa": 1017.3,
-    "rainRateMmH": 1.0,
-    "rainTodayMm": 0.0,
+    "rainRateMmH": 0.0,
+    "rainTodayMm": 1.0,
     "url": "https://www.wunderground.com/dashboard/pws/IWARKWOR11",
-    "via": "render"
+    "via": "api"
    },
    {
     "id": "IWARKW99",
@@ -1834,147 +1834,62 @@
     "kind": "home",
     "lat": -36.34,
     "lon": 174.742,
-    "time": "2026-11-11T22:28:00+13:00",
+    "time": "2026-11-11T22:51:31+13:00",
     "windKn": 0.0,
     "gustKn": 0.0,
-    "windDirDeg": 229,
-    "airC": 16.4,
-    "pressureHpa": 1012.2,
-    "rainRateMmH": 0.5,
-    "rainTodayMm": 0.0,
+    "windDirDeg": 144,
+    "airC": 16.0,
+    "pressureHpa": 1012.3,
+    "rainRateMmH": 0.0,
+    "rainTodayMm": 0.6,
     "url": "https://www.wunderground.com/dashboard/pws/IWARKW99",
-    "via": "render"
+    "via": "api"
    }
   ],
   "fetchLog": [
    {
     "id": "IWARKW15",
     "ok": true,
-    "method": "render",
-    "via": "home",
-    "attempts": 4,
-    "tries": [
-     "200:WuNext-Preview",
-     "200:WuNext-Preview",
-     "200:WuNext-Preview",
-     "200:WuNext-Preview"
-    ],
-    "pageError": "no readings in served page (client-rendered variant)",
-    "renderS": 1.1,
-    "parse": "display"
+    "method": "api"
    },
    {
     "id": "ISNELL2",
     "ok": true,
-    "method": "render",
-    "via": "home",
-    "attempts": 4,
-    "tries": [
-     "200:WuNext-Preview",
-     "200:WuNext-Preview",
-     "200:WuNext-Preview",
-     "200:WuNext-Preview"
-    ],
-    "pageError": "no readings in served page (client-rendered variant)",
-    "renderS": 1.3,
-    "parse": "display"
+    "method": "api"
    },
    {
     "id": "ISNELL1",
     "ok": true,
-    "method": "render",
-    "via": "home",
-    "attempts": 4,
-    "tries": [
-     "200:WuNext-Preview",
-     "200:WuNext-Preview",
-     "200:WuNext-Preview",
-     "200:WuNext-Preview"
-    ],
-    "pageError": "no readings in served page (client-rendered variant)",
-    "renderS": 1.2,
-    "parse": "display"
+    "method": "api"
    },
    {
     "id": "IWARKW128",
     "ok": true,
-    "method": "render",
-    "via": "home",
-    "attempts": 4,
-    "tries": [
-     "200:WuNext-Preview",
-     "200:WuNext-Preview",
-     "200:WuNext-Preview",
-     "200:WuNext-Preview"
-    ],
-    "pageError": "no readings in served page (client-rendered variant)",
-    "renderS": 0.8,
-    "parse": "display"
+    "method": "api"
    },
    {
     "id": "IWARKW125",
     "ok": true,
-    "method": "render",
-    "via": "home",
-    "attempts": 4,
-    "tries": [
-     "200:WuNext-Preview",
-     "200:WuNext-Preview",
-     "200:WuNext-Preview",
-     "200:WuNext-Preview"
-    ],
-    "pageError": "no readings in served page (client-rendered variant)",
-    "renderS": 25.8,
-    "parse": "display"
+    "method": "api"
    },
    {
     "id": "IWARKW107",
     "ok": true,
-    "method": "render",
-    "via": "home",
-    "attempts": 4,
-    "tries": [
-     "200:WuNext-Preview",
-     "200:WuNext-Preview",
-     "200:WuNext-Preview",
-     "200:WuNext-Preview"
-    ],
-    "pageError": "no readings in served page (client-rendered variant)",
-    "renderS": 25.6,
-    "parse": "display"
+    "method": "api"
    },
    {
     "id": "IWARKWOR11",
     "ok": true,
-    "method": "render",
-    "via": "home",
-    "attempts": 4,
-    "tries": [
-     "200:WuNext-Preview",
-     "200:WuNext-Preview",
-     "200:WuNext-Preview",
-     "200:WuNext-Preview"
-    ],
-    "pageError": "no readings in served page (client-rendered variant)",
-    "renderS": 0.8,
-    "parse": "display"
+    "method": "api"
    },
    {
     "id": "IWARKW99",
     "ok": true,
-    "method": "render",
-    "via": "home",
-    "attempts": 4,
-    "tries": [
-     "200:WuNext-Preview",
-     "200:WuNext-Preview",
-     "200:WuNext-Preview",
-     "200:WuNext-Preview"
-    ],
-    "pageError": "no readings in served page (client-rendered variant)",
-    "renderS": 1.0,
-    "parse": "display"
+    "method": "api"
    }
-  ]
+  ],
+  "apiCalls": {
+   "observations/current": 8
+  }
  }
 }

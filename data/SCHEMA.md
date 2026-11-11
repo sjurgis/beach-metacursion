@@ -185,3 +185,32 @@ present (empty string when data is missing).
 Picks: top two hangout beaches (distinct), then the swim window at Algies/Snells when the tide gives ≥1.5 h
 (score ≥50), else the third hangout beach. Times are rounded to the half hour; "Now-…" means it's good already.
 Checked by `validate.py`.
+
+## data/rain_history.json (header rain heatline)
+
+Rewritten every run by `scripts/rain_history.py` (called from `update_forecast.py` after forecast.json). The page
+draws the last 24 clock hours, ending now, as a thin heatline in the header: solid cells are home-station
+measurements, hatched cells are model estimates, outlined empty cells have no data.
+
+| field | type | meaning |
+|---|---|---|
+| `schemaVersion` | number | always `1` |
+| `updated` | string | ISO 8601 with offset, when the file was made |
+| `timezone` | string | `"Pacific/Auckland"` |
+| `sources` | object | `{ "station": "...", "model": "..." }`, plain-words description (no station IDs) |
+| `hours[]` | array | one entry per clock hour that has data, oldest first, last ~48 h. Hours with no data are simply absent. |
+| `hours[].start` | string | ISO hour start with offset, e.g. `"2026-11-11T21:00:00+13:00"`; the entry covers `start` to `start` + 1 h |
+| `hours[].mm` | number | rain in that hour, mm (0.1 mm steps) |
+| `hours[].src` | string | `"station"` (measured) or `"model"` (Open-Meteo past-hour precipitation, an estimate) |
+| `hours[].n` | number | station hours only: how many home stations went into it |
+| `hours[].how` | string | station hours only: `"total"` (from the stations' "rain today" totals, preferred) or `"rate"` (rain rate × time, an estimate) |
+| `hours[].cover` | number 0–1 | station hours only, when under 1: share of the hour the station readings cover (the current hour counts only up to now) |
+| `runs[]` | array | the raw inputs, last ~54 h: `{ "at": ISO, "stations": { "<id>": { "t": ISO, "totalMm": n\|null, "rateMmH": n\|null } } }`. Station IDs live only here, never in shown text. |
+
+How station hours are made: for each pair of consecutive runs (at most 4.5 h apart), take the median "rain today"
+total over the home stations (Algies Bay, Snells Beach, Sandspit, Mahurangi East) that both runs have, and use the
+change. Across midnight the totals reset, so only the new day's total counts and the part before midnight is left
+uncovered. The change is spread evenly over the clock hours the interval overlaps. A clock hour counts as measured
+when the readings cover at least half of it; otherwise it uses the model value, and with neither it is a gap.
+If no station gives a total, the median rate × time for the hour before the reading is used (`how: "rate"`).
+Seed or rebuild once from earlier commits with `python3 scripts/rain_history.py --seed-from-git`.

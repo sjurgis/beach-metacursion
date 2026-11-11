@@ -247,6 +247,37 @@ def check_summary(s):
     if re.search(r"\b(IWARKW|ISNELL|NZAA)", raw): err(f"{w}: contains a station ID")
 
 
+def check_rain_history(rh):
+    """data/rain_history.json: rolling per-hour rain for the header heatline (see SCHEMA.md)."""
+    w = "rain_history.json"
+    if not isinstance(rh, dict): err(f"{w}: not an object"); return
+    if rh.get("schemaVersion") != 1: err(f"{w}: schemaVersion must be 1")
+    for k in ("updated",):
+        try: dt.datetime.fromisoformat(rh.get(k, "")).utcoffset() is None and err(f"{w}: {k} needs an offset")
+        except (TypeError, ValueError): err(f"{w}: {k} must be ISO 8601 with offset")
+    hours = rh.get("hours")
+    if not isinstance(hours, list): err(f"{w}: hours must be a list"); return
+    if len(hours) > 72: err(f"{w}: {len(hours)} hours, should be pruned to ~48")
+    prev = None
+    for i, h in enumerate(hours):
+        where = f"{w}: hours[{i}]"
+        if not isinstance(h, dict): err(f"{where}: not an object"); continue
+        try:
+            t = dt.datetime.fromisoformat(h.get("start", ""))
+            if t.utcoffset() is None: err(f"{where}.start needs an offset")
+            elif t.minute or t.second: err(f"{where}.start must be on the hour")
+            elif prev and t <= prev: err(f"{where}.start not after the previous hour")
+            prev = t if t.utcoffset() is not None else prev
+        except (TypeError, ValueError): err(f"{where}.start must be ISO 8601 with offset")
+        num(h.get("mm"), 0, 200, f"{where}.mm")
+        if h.get("src") not in ("station", "model"): err(f"{where}.src must be 'station' or 'model'")
+        if h.get("src") == "station":
+            num(h.get("n"), 1, 20, f"{where}.n")
+            if h.get("how") not in ("total", "rate"): err(f"{where}.how must be 'total' or 'rate'")
+        if "cover" in h: num(h["cover"], 0, 1, f"{where}.cover")
+    if not isinstance(rh.get("runs", []), list): err(f"{w}: runs must be a list")
+
+
 def main():
     path = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "data" / "forecast.json"
     for p, fn in ((path, check_forecast), (ROOT / "data" / "beaches.json", check_beaches)):
@@ -262,6 +293,12 @@ def main():
         except ValueError as e: err(f"summary.json: cannot parse: {e}")
     else:
         warn("data/summary.json missing")
+    rp = ROOT / "data" / "rain_history.json"
+    if rp.exists():
+        try: check_rain_history(json.loads(rp.read_text(encoding="utf-8")))
+        except ValueError as e: err(f"rain_history.json: cannot parse: {e}")
+    else:
+        warn("data/rain_history.json missing (header rain line will be hidden)")
     check_site_versions()
     for w in warnings: print("warning:", w)
     for e in errors: print("ERROR:", e)

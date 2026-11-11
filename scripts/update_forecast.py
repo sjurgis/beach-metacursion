@@ -7,6 +7,7 @@ Sources:
   swell, sea    Open-Meteo marine: Kawau Bay (inner) and off Te Arai (open coast)
   sun           Open-Meteo daily sunrise/sunset
   tides         tides4fishing.com Mahurangi Harbour table
+  rain history  data/rain_history.json: home-station rain totals per run + Open-Meteo past hours (scripts/rain_history.py)
 
 Usage:  python3 scripts/update_forecast.py [--days 4] [--start YYYY-MM-DD] [--out data/forecast.json]
 Then:   python3 scripts/validate.py
@@ -327,6 +328,18 @@ def main():
         json.dump(out, f, ensure_ascii=False, indent=1)
         f.write("\n")
     print(f"wrote {a.out}: {len(days)} days, updated {out['updated']}")
+    # rolling 48 h rain history for the header heatline; never breaks the forecast run
+    try:
+        from rain_history import update as rain_update
+        rh = rain_update(os.path.join(os.path.dirname(a.out) or ".", "rain_history.json"), obs, now)
+        print(f"wrote rain_history.json: {len(rh['hours'])} hours ({sum(h['src'] == 'station' for h in rh['hours'])} from stations)")
+    except Exception as e:
+        print("warning: rain_history.json:", e, file=sys.stderr)
+    try:
+        from observations import API_CALLS
+        print(f"PWS API calls this run: {sum(API_CALLS.values())} " + json.dumps(API_CALLS, sort_keys=True))
+    except Exception:  # noqa: BLE001
+        pass
     # tiny 3-pick summary for the wall screen, scored by app.js itself; never breaks the forecast run
     try:
         import subprocess

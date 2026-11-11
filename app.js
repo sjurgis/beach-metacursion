@@ -3,7 +3,7 @@
 "use strict";
 
 const TZ = "Pacific/Auckland";
-const APP_VERSION = "2026-11-11r1";   // bump with data/version.txt when app.js/style.css/index.html change
+const APP_VERSION = "2026-11-11r2";   // bump with data/version.txt when app.js/style.css/index.html change
 const PREF_KEY = "snells-beach-prefs-v1";
 const DEFAULT_PREFS = { activities: ["hangout"], drive: 1, dog: false };
 const ACT = {
@@ -104,6 +104,8 @@ async function getJSON(path) {
   OFFLINE[path] = r.headers.get("x-sw-offline") === "1";
   return r.json();
 }
+
+const getRain = () => getJSON("data/rain_history.json").catch(() => null);   // optional: header just skips the rain line
 
 /* ---------- tides ---------- */
 function buildTides(days) {
@@ -723,6 +725,34 @@ function headerLive(fc, now, day) {
   return { air, windHtml, rainHtml, when, where, live: F.mode === "live" };
 }
 
+/* Header rain heatline: last 24 clock hours ending now, from data/rain_history.json.
+   Station hours solid, model hours hatched (estimates), hours with no data left as gaps. */
+const RAIN_STEPS = [[0.05, 0], [0.5, 1], [2, 2], [5, 3], [Infinity, 4]];
+function rainHistoryLine(rh) {
+  if (!rh || !Array.isArray(rh.hours)) return "";
+  const HMS = 3.6e6, end = Math.floor(Date.now() / HMS) * HMS;
+  const by = new Map(rh.hours.map((h) => [Math.floor(new Date(h.start).getTime() / HMS) * HMS, h]));
+  const hf = new Intl.DateTimeFormat("en-NZ", { timeZone: TZ, weekday: "short", hour: "numeric" });
+  const lab = (t) => hf.format(new Date(t)).replace(/\s?([ap]m)/i, "$1").replace(",", "");
+  let total = 0, any = false, est = false;
+  const cells = [];
+  for (let i = 23; i >= 0; i--) {
+    const t = end - i * HMS, h = by.get(t);
+    const span = `${lab(t)}–${i ? lab(t + HMS).replace(/^\S+\s/, "") : "now"}`;
+    if (!h || typeof h.mm !== "number") { cells.push(`<i class="rh-gap" title="${esc(span)}: no data"></i>`); continue; }
+    any = true; total += h.mm;
+    const model = h.src !== "station"; if (model) est = true;
+    const lvl = RAIN_STEPS.find(([lim]) => h.mm < lim)[1];
+    cells.push(`<i class="rh-${lvl}${model ? " rh-est" : ""}" title="${esc(span)}: ${h.mm} mm${model ? " (model estimate)" : ""}"></i>`);
+  }
+  const tot = !any ? "no data" : `${est ? "≈" : ""}${total < 9.95 ? (Math.round(total * 10) / 10) : Math.round(total)} mm`;
+  return `<div class="rainhist" role="img" aria-label="Rain over the last 24 hours: ${esc(tot)}${est ? ", some hours are model estimates" : ""}">
+      <div class="rh-head"><span>${icon("rain")}Rain, last 24h</span><b>${esc(tot)}</b></div>
+      <div class="rh-cells">${cells.join("")}</div>
+      <div class="rh-ax" aria-hidden="true"><span>${esc(lab(end - 23 * HMS))}</span>${est ? `<span class="rh-key"><i class="rh-2 rh-est"></i>estimate</span>` : ""}<span>now</span></div>
+    </div>`;
+}
+
 function liveCard(fc, now) {
   const o = fc.observations;
   if (!o?.stations?.length) return "";
@@ -809,6 +839,7 @@ function render() {
       ${airNum != null ? `<div class="head-temp">${airNum}<small>°${airKind}</small></div>` : ""}
       <div class="head-meta">${meta}</div>
     </div>
+    ${rainHistoryLine(STATE.rain)}
     <div class="head-foot"><span class="updlbl">${icon("clock")}${esc(foot)}</span></div>`;
 
   let html = "";
@@ -929,6 +960,7 @@ async function refresh() {
     if (vr?.ok && vr.headers.get("x-sw-offline") !== "1") { const v = (await vr.text()).trim(); if (v && v !== APP_VERSION && await updateApp(v)) return; }
     const fc = await getJSON("data/forecast.json");
     if (fc?.days?.length && (fc.updated !== STATE.fc?.updated || fc.observations?.fetched !== STATE.fc?.observations?.fetched)) { blendObservations(fc, nzNow()); STATE.fc = fc; }
+    const rain = await getRain(); if (rain) STATE.rain = rain;
     if (STATE.fc) render();
   } catch (e) { console.warn("refresh failed", e); }
   finally { refreshing = false; }
@@ -1006,10 +1038,10 @@ async function main() {
   wirePrefs();
   registerSW();
   try {
-    const [beaches, fc] = await Promise.all([getJSON("data/beaches.json"), getJSON("data/forecast.json")]);
+    const [beaches, fc, rain] = await Promise.all([getJSON("data/beaches.json"), getJSON("data/forecast.json"), getRain()]);
     if (!fc?.days?.length) throw new Error("forecast.json has no days in it");
     blendObservations(fc, nzNow(), beaches);
-    Object.assign(STATE, { beaches, fc });
+    Object.assign(STATE, { beaches, fc, rain });
     render();
     setInterval(refresh, 5 * 60 * 1000);   // pick up new hourly data and keep "now" fresh
     document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") refresh(); });

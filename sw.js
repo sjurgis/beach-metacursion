@@ -1,10 +1,10 @@
 /* Snells Beach service worker: offline app shell + last data. No push, sync or badges.
    VERSION must equal APP_VERSION in app.js and data/version.txt (scripts/validate.py checks). */
-const VERSION = "2026-11-11r1";
+const VERSION = "2026-11-11r2";
 const CACHE = "snells-beach-" + VERSION;
 const SHELL = ["./", "index.html", "app.js", "style.css", "manifest.webmanifest",
   "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png", "icons/apple-touch-icon.png", "icons/favicon-32.png",
-  "data/beaches.json", "data/forecast.json", "data/live.txt", "data/version.txt"];
+  "data/beaches.json", "data/forecast.json", "data/live.txt", "data/rain_history.json", "data/version.txt"];
 const TIMEOUT_MS = 6000;   // flaky beach-car-park signal: fall back to the cached copy rather than hang
 
 self.addEventListener("install", (e) => {
