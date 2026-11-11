@@ -1,32 +1,32 @@
 {
- "updated": "18:27",
- "date": "Wed 11 Nov",
+ "updated": "19:24",
+ "date": "Thu 12 Nov",
  "picks": [
   {
-   "name": "Scotts Landing",
-   "window": "Now-8:00pm",
-   "note": "almost still, rain 61%"
-  },
-  {
    "name": "Martins Bay",
-   "window": "Now-8:00pm",
-   "note": "almost still, rain 95%"
+   "window": "6:30-8:00pm",
+   "note": "WSW 6-7kn, offshore, dry"
   },
   {
    "name": "Scandretts Bay",
-   "window": "Now-8:00pm",
-   "note": "almost still, rain 95%"
+   "window": "6:30-8:00pm",
+   "note": "WSW 6-7kn, offshore, dry"
+  },
+  {
+   "name": "Tāwharanui",
+   "window": "6:30-8:00pm",
+   "note": "WSW 6-7kn, offshore, dry"
   }
  ],
- "wind": "WNW 5kn",
- "swell": "1.2m 6s, surf up",
- "tide": "High 10:00pm",
+ "wind": "W 6-8kn g18",
+ "swell": "0.9m, small surf",
+ "tide": "High 10:30am",
  "weather": {
-  "now_c": 22.1,
+  "now_c": 20.4,
   "hi_c": 22,
   "lo_c": 15,
   "cond": "Rain",
-  "rain": "4.8mm, 100%",
+  "rain": "4.7mm, 100%",
   "wind": "NNW 6-11kn g22",
   "sunset": "8:03pm",
   "later": [
