@@ -1,5 +1,5 @@
 {
- "updated": "09:21",
+ "updated": "10:29",
  "date": "Thu 12 Nov",
  "picks": [
   {
@@ -13,19 +13,19 @@
    "note": "WSW 6-8kn, offshore, sunny"
   },
   {
-   "name": "Algies Bay",
-   "window": "Now-1:30pm",
-   "note": "swim, deep enough, W 3-9kn"
+   "name": "Tāwharanui",
+   "window": "Now-11:30am",
+   "note": "almost still, dry"
   }
  ],
  "wind": "W 3-9kn g19",
  "swell": "0.9m, small surf",
  "tide": "High 10:30am",
  "weather": {
-  "now_c": 19.5,
+  "now_c": 17.3,
   "hi_c": 21,
   "lo_c": 14,
-  "cond": "Foggy, showers pm",
+  "cond": "Cloudy, showers pm",
   "rain": "1.2mm, 76%",
   "wind": "W 3-9kn g19",
   "sunset": "8:04pm",
