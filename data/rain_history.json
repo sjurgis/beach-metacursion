@@ -1,19 +1,12 @@
 {
  "schemaVersion": 1,
- "updated": "2026-11-12T18:28:21+13:00",
+ "updated": "2026-11-12T19:24:13+13:00",
  "timezone": "Pacific/Auckland",
  "sources": {
   "station": "Weather Underground home stations (Algies Bay, Snells Beach, Sandspit, Mahurangi East)",
   "model": "Open-Meteo forecast, past-hour precipitation (estimate)"
  },
  "hours": [
-  {
-   "start": "2026-11-10T19:00:00+13:00",
-   "mm": 1.6,
-   "src": "station",
-   "n": 6,
-   "how": "total"
-  },
   {
    "start": "2026-11-10T20:00:00+13:00",
    "mm": 1.1,
@@ -334,6 +327,13 @@
   },
   {
    "start": "2026-11-12T18:00:00+13:00",
+   "mm": 0.0,
+   "src": "station",
+   "n": 6,
+   "how": "total"
+  },
+  {
+   "start": "2026-11-12T19:00:00+13:00",
    "mm": 0.0,
    "src": "station",
    "n": 6,
@@ -1871,6 +1871,41 @@
     },
     "IWARKW107": {
      "t": "2026-11-12T18:28:23+13:00",
+     "totalMm": 4.3,
+     "rateMmH": 0.0
+    }
+   }
+  },
+  {
+   "at": "2026-11-12T19:24:13+13:00",
+   "stations": {
+    "IWARKW15": {
+     "t": "2026-11-12T19:24:07+13:00",
+     "totalMm": 6.3,
+     "rateMmH": 0.0
+    },
+    "ISNELL2": {
+     "t": "2026-11-12T19:23:30+13:00",
+     "totalMm": 4.6,
+     "rateMmH": 0.0
+    },
+    "ISNELL1": {
+     "t": "2026-11-12T19:24:04+13:00",
+     "totalMm": 3.3,
+     "rateMmH": 0.0
+    },
+    "IWARKW128": {
+     "t": "2026-11-12T19:24:08+13:00",
+     "totalMm": 3.0,
+     "rateMmH": 0.0
+    },
+    "IWARKW125": {
+     "t": "2026-11-12T19:24:13+13:00",
+     "totalMm": 4.5,
+     "rateMmH": 0.0
+    },
+    "IWARKW107": {
+     "t": "2026-11-12T19:24:12+13:00",
      "totalMm": 4.3,
      "rateMmH": 0.0
     }
