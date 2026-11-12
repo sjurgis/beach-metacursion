@@ -1,5 +1,5 @@
 {
- "updated": "06:24",
+ "updated": "07:29",
  "date": "Fri 13 Nov",
  "picks": [
   {
@@ -15,14 +15,14 @@
   {
    "name": "Snells Beach",
    "window": "8:00am-2:00pm",
-   "note": "swim, deep enough, SSW 2-7kn, dry"
+   "note": "swim, deep enough, SSW 1-7kn, dry"
   }
  ],
- "wind": "S 2-8kn g14",
+ "wind": "SSW 2-8kn g14",
  "swell": "0.9m, small surf",
  "tide": "High 11:00am",
  "weather": {
-  "now_c": 12.1,
+  "now_c": 15.1,
   "hi_c": 21,
   "lo_c": 12,
   "cond": "Partly cloudy",
