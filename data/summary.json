@@ -1,5 +1,5 @@
 {
- "updated": "19:19",
+ "updated": "20:27",
  "date": "Sat 14 Nov",
  "picks": [
   {
@@ -18,23 +18,18 @@
    "note": "swim, deep enough, SE 6-9kn, sunny"
   }
  ],
- "wind": "SE 3-9kn g17",
+ "wind": "SE 4-9kn g17",
  "swell": "0.8m, no surf",
  "tide": "High 11:30am",
  "weather": {
-  "now_c": 18.8,
+  "now_c": 17,
   "hi_c": 21,
   "lo_c": 12,
-  "cond": "Sunny, cloudy pm",
+  "cond": "Sunny, rain pm",
   "rain": "0.7mm, 4%",
-  "wind": "SSW 3-8kn g14",
+  "wind": "SSW 3-7kn g14",
   "sunset": "8:05pm",
   "later": [
-   {
-    "t": "8pm",
-    "c": 16,
-    "cond": "cloudy"
-   },
    {
     "t": "6am",
     "c": 10,
@@ -43,6 +38,11 @@
    {
     "t": "9am",
     "c": 16,
+    "cond": "sunny"
+   },
+   {
+    "t": "12pm",
+    "c": 18,
     "cond": "sunny"
    }
   ]
