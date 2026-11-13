@@ -1,5 +1,5 @@
 {
- "updated": "10:27",
+ "updated": "11:23",
  "date": "Sat 14 Nov",
  "picks": [
   {
@@ -9,20 +9,20 @@
   },
   {
    "name": "Martins Bay",
-   "window": "Now-1:30pm",
-   "note": "SE 3-7kn, sunny"
+   "window": "Now-2:30pm",
+   "note": "SE 4-7kn, sunny"
   },
   {
    "name": "Snells Beach",
    "window": "Now-2:30pm",
-   "note": "swim, deep enough, ESE 3-7kn"
+   "note": "swim, deep enough, ESE 6-7kn"
   }
  ],
- "wind": "ESE 3-7kn g16",
+ "wind": "ESE 4-7kn g16",
  "swell": "0.8m, small surf",
  "tide": "High 11:30am",
  "weather": {
-  "now_c": 19.2,
+  "now_c": 20.2,
   "hi_c": 19,
   "lo_c": 11,
   "cond": "Sunny",
@@ -31,11 +31,6 @@
   "sunset": "8:06pm",
   "later": [
    {
-    "t": "12pm",
-    "c": 19,
-    "cond": "sunny"
-   },
-   {
     "t": "3pm",
     "c": 19,
     "cond": "sunny"
@@ -43,6 +38,11 @@
    {
     "t": "6pm",
     "c": 19,
+    "cond": "sunny"
+   },
+   {
+    "t": "8pm",
+    "c": 16,
     "cond": "sunny"
    }
   ]
