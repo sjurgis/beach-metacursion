@@ -1,28 +1,28 @@
 {
- "updated": "15:27",
+ "updated": "16:27",
  "date": "Sat 14 Nov",
  "picks": [
   {
    "name": "Scandretts Bay",
-   "window": "Now-6:30pm",
-   "note": "SE 6-7kn, sheltered, sunny"
+   "window": "Now-8:00pm",
+   "note": "NE 4-6kn, sunny"
   },
   {
    "name": "Martins Bay",
-   "window": "Now-5:30pm",
-   "note": "SE 7kn, sunny"
+   "window": "Now-8:00pm",
+   "note": "NE 4-6kn, sunny"
   },
   {
    "name": "Scotts Landing",
    "window": "Now-8:00pm",
-   "note": "ENE 3-6kn, sheltered, sunny"
+   "note": "almost still, sheltered, sunny"
   }
  ],
- "wind": "SE 4-8kn g14",
+ "wind": "ENE 4-8kn g13",
  "swell": "0.9m, small surf",
  "tide": "High 11:30am, 12:00am",
  "weather": {
-  "now_c": 22,
+  "now_c": 21.5,
   "hi_c": 19,
   "lo_c": 11,
   "cond": "Partly cloudy, sunny pm",
