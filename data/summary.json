@@ -1,5 +1,5 @@
 {
- "updated": "22:20",
+ "updated": "01:28",
  "date": "Mon 16 Nov",
  "picks": [
   {
@@ -22,13 +22,13 @@
  "swell": "1.0m, small surf",
  "tide": "High 1:00pm",
  "weather": {
-  "now_c": 18.3,
-  "hi_c": 22,
-  "lo_c": 15,
-  "cond": "Cloudy, rain pm",
-  "rain": "1.7mm, 99%",
-  "wind": "NE 2-8kn g17",
-  "sunset": "8:07pm",
+  "now_c": 17,
+  "hi_c": 23,
+  "lo_c": 14,
+  "cond": "Foggy, sunny pm",
+  "rain": "0.4mm, 8%",
+  "wind": "W 3-10kn g19",
+  "sunset": "8:08pm",
   "later": [
    {
     "t": "6am",
