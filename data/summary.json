@@ -1,33 +1,33 @@
 {
- "updated": "15:29",
+ "updated": "16:19",
  "date": "Sun 15 Nov",
  "picks": [
   {
    "name": "Snells Beach",
-   "window": "Now-4:30pm",
+   "window": "Now-5:30pm",
    "note": "almost still, dry"
   },
   {
    "name": "Scotts Landing",
-   "window": "Now-4:30pm",
+   "window": "Now-5:30pm",
    "note": "almost still, sheltered, dry"
   },
   {
-   "name": "Martins Bay",
-   "window": "Now-4:30pm",
-   "note": "NNE 6kn, dry"
+   "name": "Mathesons Bay",
+   "window": "Now-5:30pm",
+   "note": "SSW 7-8kn, sheltered, dry"
   }
  ],
- "wind": "NE 5-6kn g12",
+ "wind": "NNE 5-9kn g13",
  "swell": "0.9m, small surf",
  "tide": "High 12:30pm",
  "weather": {
-  "now_c": 21.8,
+  "now_c": 22.5,
   "hi_c": 21,
   "lo_c": 15,
   "cond": "Cloudy",
   "rain": "0.5mm, 99%",
-  "wind": "NE 2-8kn g17",
+  "wind": "NE 2-7kn g17",
   "sunset": "8:07pm",
   "later": [
    {
