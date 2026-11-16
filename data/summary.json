@@ -1,5 +1,5 @@
 {
- "updated": "12:27",
+ "updated": "13:27",
  "date": "Mon 16 Nov",
  "picks": [
   {
@@ -15,14 +15,14 @@
   {
    "name": "Algies Bay",
    "window": "Now-4:00pm",
-   "note": "swim, deep enough, WNW 6-8kn"
+   "note": "swim, deep enough, W 7-8kn"
   }
  ],
  "wind": "W 6-8kn g16",
- "swell": "1.0m, small surf",
+ "swell": "1.0m 7s, surf up",
  "tide": "High 1:00pm",
  "weather": {
-  "now_c": 24.2,
+  "now_c": 25.6,
   "hi_c": 23,
   "lo_c": 15,
   "cond": "Rain, partly cloudy pm",
