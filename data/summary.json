@@ -1,32 +1,32 @@
 {
- "updated": "14:29",
+ "updated": "15:27",
  "date": "Mon 16 Nov",
  "picks": [
   {
    "name": "Martins Bay",
    "window": "Now-8:00pm",
-   "note": "W 7-11kn, offshore, dry"
+   "note": "WSW 6-8kn, offshore, dry"
   },
   {
    "name": "Scandretts Bay",
-   "window": "2:30-8:00pm",
-   "note": "W 7-11kn, dry"
+   "window": "Now-8:00pm",
+   "note": "WSW 6-8kn, offshore, dry"
   },
   {
-   "name": "Algies Bay",
-   "window": "Now-4:00pm",
-   "note": "swim, deep enough, WNW 10kn"
+   "name": "Tāwharanui",
+   "window": "Now-8:00pm",
+   "note": "W 0-8kn, offshore, dry"
   }
  ],
- "wind": "WNW 7-10kn g17",
+ "wind": "WSW 5-8kn g15",
  "swell": "1.0m 7s, surf up",
  "tide": "High 1:00pm",
  "weather": {
-  "now_c": 26.1,
+  "now_c": 25.6,
   "hi_c": 23,
   "lo_c": 15,
-  "cond": "Rain, partly cloudy pm",
-  "rain": "0.7mm, 8%",
+  "cond": "Foggy, partly cloudy pm",
+  "rain": "0.6mm, 8%",
   "wind": "WNW 3-9kn g18",
   "sunset": "8:08pm",
   "later": [
