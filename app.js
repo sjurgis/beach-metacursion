@@ -3,7 +3,7 @@
 "use strict";
 
 const TZ = "Pacific/Auckland";
-const APP_VERSION = "2026-11-16r1";   // bump with data/version.txt when app.js/style.css/index.html change
+const APP_VERSION = "2026-11-16r3";   // bump with data/version.txt when app.js/style.css/index.html change
 const PREF_KEY = "snells-beach-prefs-v1";
 const DEFAULT_PREFS = { activities: ["hangout"], drive: 1, dog: false };
 const ACT = {
@@ -774,7 +774,7 @@ function liveCard(fc, now) {
   }).join("");
   const head = home ? `Live from ${o.stations.length} home station${o.stations.length > 1 ? "s" : ""}` : "Live reading · airport";
   const note = home ? (o.applied ? "Used as the wind and rain for right now, fading back to the forecast over ~3 h." : "Shown only; too old to change the scores.") : "This airport is a long way from Snells, so it's shown but not used in the scores.";
-  return `<section class="card live${home ? "" : " far"}" aria-label="Live station readings"><h3>${icon("wind")}${head}</h3><ul>${rows}</ul><p class="muted sm">${note}</p></section>`;
+  return `<section class="card live${home ? "" : " far"}" data-section="live_stations" aria-label="Live station readings"><h3>${icon("wind")}${head}</h3><ul>${rows}</ul><p class="muted sm">${note}</p></section>`;
 }
 
 /* ---------- render ---------- */
@@ -899,7 +899,7 @@ function render() {
 
   const ahead = results.slice(1, 4);
   if (ahead.length) {
-    html += `<h3 class="sec">Next days</h3><div class="days">${ahead.map((res) => {
+    html += `<h3 class="sec">Next days</h3><div class="days" data-section="next_days">${ahead.map((res) => {
       const { day, ctx, picks } = res;
       const top = picks.find((r) => r.eligible);
       const mid = (day.slots || []).reduce((a, s) => (a && Math.abs(hm(a.time) - 13 * 60) < Math.abs(hm(s.time) - 13 * 60) ? a : s), null);
@@ -917,9 +917,9 @@ function render() {
     }).join("")}</div>`;
   }
 
-  html += `<h3 class="sec">All beaches · ${today.ctx.isToday ? "today" : esc(fmtDate(today.day.date, { weekday: "short" }))}</h3><div class="list">${today.picks.map((r) => {
+  html += `<h3 class="sec">All beaches · ${today.ctx.isToday ? "today" : esc(fmtDate(today.day.date, { weekday: "short" }))}</h3><div class="list" data-section="all_beaches">${today.picks.map((r, i) => {
     const dogLine = r.dog ? `<p class="dogrule">${icon("dog")}<span>${esc(r.dog.text)}${r.b.dog?.source ? ` · <a href="${esc(r.b.dog.source)}" rel="noopener">source</a>` : ""}${r.b.dog?.verified === false ? " · <b>unverified, check signs</b>" : ""}</span></p>` : "";
-    return `<details class="row ${r.eligible ? "r-" + r.rating.key : "off"}">
+    return `<details class="row ${r.eligible ? "r-" + r.rating.key : "off"}" data-beach="${esc(r.b.id || r.b.name)}" data-rank="${i + 1}" data-top="${r.eligible && r === elig[0] ? "yes" : "no"}" data-eligible="${r.eligible ? "yes" : "no"}">
       <summary>
         <span class="rname"><b>${bname(r.b)}</b><small>${esc(r.b.area)} · ${r.b.driveMin} min</small></span>
         ${r.eligible ? `<span class="bar"><i style="width:${r.score}%"></i></span><span class="rs">${r.score}</span>${pill(r)}` : `<span class="why">${esc(r.filters.join(" · "))}</span>`}
@@ -939,6 +939,7 @@ function render() {
   if (today.ctx.isToday && today.all.some((R) => R.eligible)) html += `<h3 class="sec">Hour by hour · every beach</h3>` + timeline(today, now, { limit: 99, label: "Hour by hour, every beach that fits" });
   if (today.ctx.isToday) html += liveCard(fc, now);   // live station readings sit at the bottom
   app.innerHTML = html;
+  afterRenderAnalytics({ today, elig, fc, now, prefs });
 
   const src = (fc.sources || []).map((s) => `<li><b>${esc(s.what)}</b>: ${s.url ? `<a href="${esc(s.url)}" rel="noopener">${esc(s.name)}</a>` : esc(s.name)}</li>`).join("");
   $("#foot").innerHTML = `
@@ -959,7 +960,7 @@ async function refresh() {
     const vr = await fetch(`data/version.txt?t=${Date.now()}`, { cache: "no-store" }).catch(() => null);
     if (vr?.ok && vr.headers.get("x-sw-offline") !== "1") { const v = (await vr.text()).trim(); if (v && v !== APP_VERSION && await updateApp(v)) return; }
     const fc = await getJSON("data/forecast.json");
-    if (fc?.days?.length && (fc.updated !== STATE.fc?.updated || fc.observations?.fetched !== STATE.fc?.observations?.fetched)) { blendObservations(fc, nzNow()); STATE.fc = fc; }
+    if (fc?.days?.length && (fc.updated !== STATE.fc?.updated || fc.observations?.fetched !== STATE.fc?.observations?.fetched)) { blendObservations(fc, nzNow()); STATE.fc = fc; trackDataRefreshed(); }
     const rain = await getRain(); if (rain) STATE.rain = rain;
     if (STATE.fc) render();
   } catch (e) { console.warn("refresh failed", e); }
@@ -1002,11 +1003,93 @@ function registerSW() {
 }
 
 function showError(err) {
+  track("forecast_error", { error_type: errorType(err), error_message: String(err?.message || err).slice(0, 100) });
   $("#app").innerHTML = `<section class="card errorcard"><h2>Can't load today's forecast</h2><p>${esc(err?.message || err)}</p><p class="muted">It's usually a blip with the connection. Try again in a moment.</p><button type="button" id="retry">Try again</button></section>`;
   $("#subtitle").textContent = "Forecast unavailable";
-  $("#retry")?.addEventListener("click", () => location.reload());
+  $("#retry")?.addEventListener("click", () => { track("retry_click", { screen: "forecast_error" }); setTimeout(() => location.reload(), 300); });
 }
 
+
+/* Analytics: GA4 events via the Google tag loaded by Tag Manager (index.html). No-ops if blocked.
+   Params are short, low-cardinality labels only: no personal data, no station IDs. */
+function gtag() { (window.dataLayer = window.dataLayer || []).push(arguments); }
+function track(name, params = {}) { try { gtag("event", name, params); } catch { /* ignore */ } }
+const DRIVE_LABELS = ["Local", "Nearby", "Road trip"];
+const driveLabel = (i) => (STATE?.beaches?.drive?.stops?.[i]?.label) || DRIVE_LABELS[i] || String(i);
+function displayMode() {
+  if (navigator.standalone || matchMedia("(display-mode: standalone)").matches) return "installed";
+  return "browser";
+}
+const prefParams = (p = STATE.prefs) => ({ activities: p.activities.join(","), drive: driveLabel(p.drive), dog: p.dog ? "on" : "off" });
+function hourBucket(min) {
+  const h = Math.floor(min / 60);
+  return h >= 5 && h < 11 ? "morning" : h >= 11 && h < 14 ? "midday" : h >= 14 && h < 17 ? "afternoon" : h >= 17 && h < 21 ? "evening" : "night";
+}
+function errorType(err) {
+  const m = String(err?.message || err || "");
+  if (typeof navigator !== "undefined" && navigator.onLine === false) return "offline";
+  if (/HTTP \d+/.test(m)) return "http";
+  if (err instanceof SyntaxError) return "bad_json";
+  if (/no days/.test(m)) return "empty_forecast";
+  if (err instanceof TypeError) return "network";
+  return "other";
+}
+function fromOldUrl() {
+  // The old sjurgis.github.io stub forwards with location.replace and adds no marker, so the referrer is the signal.
+  try { return /(^|\.)sjurgis\.github\.io$/.test(new URL(document.referrer).hostname); } catch { return false; }
+}
+
+const SENT = { mode: null, nothing: new Set(), sections: new Set(), scroll: new Set(), refreshedAt: 0 };
+let sectionObs = null;
+function afterRenderAnalytics({ today, elig, fc, now, prefs }) {
+  // header data mode: live home stations, stale home stations, airport only, or forecast only
+  const F = today.ctx.isToday ? freshHome(fc, now) : { mode: "none" };
+  const mode = { live: "live", stale: "stale", airport: "airport", none: "forecast_only" }[F.mode] || "forecast_only";
+  if (mode !== SENT.mode) { SENT.mode = mode; track("header_data_mode", { data_mode: mode }); }
+  // "Nothing fits": once per settings combination per page view
+  if (!elig.length) {
+    const pp = prefParams(prefs), key = JSON.stringify(pp);
+    if (!SENT.nothing.has(key)) { SENT.nothing.add(key); track("nothing_fits", pp); }
+  }
+  // sections reached (once each per page view)
+  if ("IntersectionObserver" in window) {
+    sectionObs?.disconnect();
+    sectionObs = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        const name = e.target.dataset.section;
+        if (!e.isIntersecting || SENT.sections.has(name)) continue;
+        SENT.sections.add(name); sectionObs.unobserve(e.target);
+        track("section_reached", { section: name });
+      }
+    }, { threshold: 0.15 });
+    for (const el of document.querySelectorAll("[data-section]")) if (!SENT.sections.has(el.dataset.section)) sectionObs.observe(el);
+  }
+}
+function trackDataRefreshed() {
+  if (Date.now() - SENT.refreshedAt < 3600e3) return;   // at most once an hour
+  SENT.refreshedAt = Date.now();
+  track("data_refreshed", { display_mode: displayMode() });
+}
+function wireAnalytics() {
+  // beach row expanded in "All beaches" (toggle doesn't bubble, so capture it)
+  $("#app").addEventListener("toggle", (e) => {
+    const d = e.target;
+    if (!(d instanceof HTMLDetailsElement) || !d.open || !d.dataset.beach) return;
+    track("beach_open", { beach: d.dataset.beach, rank: +d.dataset.rank, top_pick: d.dataset.top, fits: d.dataset.eligible });
+  }, true);
+  // scroll depth 25/50/75/100, once each per page view
+  let ticking = false;
+  const check = () => {
+    ticking = false;
+    const doc = document.documentElement, max = doc.scrollHeight - innerHeight;
+    if (max <= 0 || !STATE?.fc) return;
+    const pct = (scrollY / max) * 100;
+    for (const t of [25, 50, 75, 100]) if (pct >= (t === 100 ? 98 : t) && !SENT.scroll.has(t)) { SENT.scroll.add(t); track("scroll_depth", { percent: t }); }
+  };
+  addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(check); } }, { passive: true });
+  addEventListener("beforeinstallprompt", () => track("install_prompt_shown"));
+  addEventListener("appinstalled", () => track("app_installed"));
+}
 
 function wirePrefs() {
   const prefs = STATE.prefs;
@@ -1016,12 +1099,14 @@ function wirePrefs() {
       const on = [...document.querySelectorAll('input[name="activity"]:checked')].map((x) => x.value);
       if (!on.length) { el.checked = true; return; }   // keep at least one
       prefs.activities = on; savePrefs(prefs); if (STATE.fc) render();
+      track("select_activity", { activity: el.value, selected: el.checked ? "on" : "off", activities: on.join(",") });
     });
   }
   const drive = $("#drive"); drive.value = prefs.drive;
   drive.addEventListener("input", () => { prefs.drive = +drive.value; savePrefs(prefs); render(); });
+  drive.addEventListener("change", () => track("set_drive_distance", { drive: driveLabel(+drive.value) }));
   const dog = $("#dog"); dog.checked = !!prefs.dog;
-  dog.addEventListener("change", () => { prefs.dog = dog.checked; savePrefs(prefs); render(); });
+  dog.addEventListener("change", () => { prefs.dog = dog.checked; savePrefs(prefs); render(); track("toggle_dog", { dog: dog.checked ? "on" : "off" }); });
 }
 
 async function main() {
@@ -1032,11 +1117,19 @@ async function main() {
   if (q.has("drive")) prefs.drive = clamp(parseInt(q.get("drive"), 10) || 0, 0, 2);
   if (q.has("dog")) prefs.dog = q.get("dog") === "1" || q.get("dog") === "true";
   fixPrefs(prefs);
-  if (q.has("activity") || q.has("drive") || q.has("dog")) savePrefs(prefs);
+  const sharedKeys = ["activity", "drive", "dog"].filter((k) => q.has(k));
+  if (sharedKeys.length) savePrefs(prefs);
   if (/^\d{1,2}:\d{2}$/.test(q.get("at") || "")) NOW_OVERRIDE = hm(q.get("at"));
   STATE = { prefs };
   wirePrefs();
   registerSW();
+  wireAnalytics();
+  const nz = nzNow(), oldUrl = fromOldUrl();
+  gtag("set", "user_properties", { display_mode: displayMode() });
+  track("app_open", { display_mode: displayMode(), ...prefParams(prefs), hour_bucket: hourBucket(nz.min), day_type: isWeekend(nz.date) ? "weekend" : "weekday",
+    shared_link: sharedKeys.length ? "yes" : "no", from_old_url: oldUrl ? "yes" : "no" });
+  if (sharedKeys.length) track("shared_link_open", { shared_params: sharedKeys.join(","), ...prefParams(prefs) });
+  if (oldUrl) track("old_url_arrival", { landing_path: location.pathname });
   try {
     const [beaches, fc, rain] = await Promise.all([getJSON("data/beaches.json"), getJSON("data/forecast.json"), getRain()]);
     if (!fc?.days?.length) throw new Error("forecast.json has no days in it");
