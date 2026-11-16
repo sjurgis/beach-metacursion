@@ -296,6 +296,111 @@
    }
   },
   {
+   "id": "mahurangiwest",
+   "name": "Mahurangi West",
+   "area": "Mahurangi West Regional Park",
+   "lat": -36.51050,
+   "lon": 174.72361,
+   "driveMin": 34,
+   "driveKm": 27.8,
+   "viaMatakana": false,
+   "facingDeg": 90,
+   "shelteredFrom": [
+    "W",
+    "SW",
+    "NW"
+   ],
+   "tide": {
+    "mode": "all"
+   },
+   "highTideSand": "some",
+   "exposure": {
+    "source": "inner",
+    "factor": 0.2
+   },
+   "suits": {
+    "surf": 0.0,
+    "swim": 0.95,
+    "snorkel": 0.2,
+    "sup": 1.0,
+    "hangout": 1.0,
+    "sailing": 0.7,
+    "fishing": 0.7,
+    "walking": 0.85
+   },
+   "notes": [
+    "Sullivans Bay and Mita Bay, west side of the harbour",
+    "Very sheltered, flat water — good for swim, SUP and kayak",
+    "Any tide at Sullivans Bay"
+   ],
+   "closed": true,
+   "closedUntil": "2026-12-19",
+   "closedReason": "Vehicle access closed until 19 December 2026 because of a slip on Mahurangi West Road after heavy rain in January. Boat access only.",
+   "closedSource": "https://www.aucklandcouncil.govt.nz/en/parks-recreation/find-park-beach/park-detail/216.html",
+   "dog": {
+    "verified": true,
+    "checked": "2026-11-16",
+    "source": "https://www.aucklandcouncil.govt.nz/en/parks-recreation/find-park-beach/park-detail/216.html",
+    "rules": [
+     {
+      "status": "banned",
+      "chip": "No dogs at Sullivans Bay",
+      "text": "No dogs at Sullivans Bay, other park beaches, roads or car parks (even in cars). Mita Bay and the Mita Bay Loop Track: on-lead 1 Dec – 30 Jun, no dogs 1 Jul – 30 Nov (lambing)"
+     }
+    ]
+   }
+  },
+  {
+   "id": "wenderholm",
+   "name": "Wenderholm",
+   "area": "Wenderholm Regional Park",
+   "lat": -36.53208,
+   "lon": 174.71355,
+   "driveMin": 32,
+   "driveKm": 29.2,
+   "viaMatakana": false,
+   "facingDeg": 80,
+   "shelteredFrom": [
+    "W",
+    "SW"
+   ],
+   "tide": {
+    "mode": "all"
+   },
+   "highTideSand": "some",
+   "exposure": {
+    "source": "inner",
+    "factor": 0.65
+   },
+   "suits": {
+    "surf": 0.15,
+    "swim": 0.95,
+    "snorkel": 0.25,
+    "sup": 0.75,
+    "hangout": 1.0,
+    "sailing": 0.45,
+    "fishing": 0.65,
+    "walking": 0.85
+   },
+   "notes": [
+    "Faces east/northeast onto the Hauraki Gulf",
+    "Sheltered from westerlies and southwesterlies",
+    "Tide matters at the Puhoi estuary; watch currents at the river mouth"
+   ],
+   "dog": {
+    "verified": true,
+    "checked": "2026-11-16",
+    "source": "https://www.aucklandcouncil.govt.nz/en/parks-recreation/find-park-beach/park-detail/3411.html",
+    "rules": [
+     {
+      "status": "banned",
+      "chip": "No dogs",
+      "text": "No dogs on Wenderholm Beach, the foreshore, Puhoi estuary or in vehicles. A small off-lead grass area by the entrance and some on-lead tracks are away from the beach"
+     }
+    ]
+   }
+  },
+  {
    "id": "baddeleys",
    "name": "Baddeleys Beach",
    "area": "South Tāwharanui",

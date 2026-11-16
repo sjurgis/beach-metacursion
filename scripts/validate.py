@@ -181,6 +181,8 @@ def check_beaches(b):
         for r in dog.get("rules", []):
             if r.get("status") not in ("offlead", "leash", "limited", "banned"): err(f"{w}.dog.rules status {r.get('status')!r}")
         if dog.get("rules") and "from" in dog["rules"][-1]: err(f"{w}.dog.rules: last rule must be the catch-all (no from/to)")
+        if "closed" in x and not isinstance(x.get("closed"), bool): err(f"{w}.closed: bool")
+        if x.get("closedUntil") and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(x["closedUntil"])): err(f"{w}.closedUntil: YYYY-MM-DD")
     if not ids: err("beaches.json: no beaches")
 
 

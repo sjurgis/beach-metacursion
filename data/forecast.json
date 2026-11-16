@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "updated": "2026-11-16T22:21:36+13:00",
+ "updated": "2026-11-16T22:27:09+13:00",
  "timezone": "Pacific/Auckland",
  "location": {
   "name": "Snells Beach",
@@ -44,24 +44,24 @@
    "waterTempC": 19.6,
    "tides": [
     {
-     "time": "00:31",
+     "time": "00:20",
      "type": "high",
      "heightM": 2.5
     },
     {
-     "time": "06:35",
+     "time": "06:22",
      "type": "low",
-     "heightM": 0.9
+     "heightM": 0.8
     },
     {
-     "time": "13:00",
+     "time": "12:49",
      "type": "high",
      "heightM": 2.6
     },
     {
-     "time": "19:14",
+     "time": "19:01",
      "type": "low",
-     "heightM": 1.0
+     "heightM": 0.9
     }
    ],
    "slots": [
@@ -417,22 +417,22 @@
    "waterTempC": 19.5,
    "tides": [
     {
-     "time": "01:14",
+     "time": "01:03",
      "type": "high",
      "heightM": 2.4
     },
     {
-     "time": "07:20",
+     "time": "07:07",
      "type": "low",
-     "heightM": 1.0
+     "heightM": 0.9
     },
     {
-     "time": "13:47",
+     "time": "13:36",
      "type": "high",
      "heightM": 2.5
     },
     {
-     "time": "20:03",
+     "time": "19:50",
      "type": "low",
      "heightM": 1.0
     }
@@ -850,22 +850,22 @@
    "waterTempC": 19.6,
    "tides": [
     {
-     "time": "02:01",
+     "time": "01:49",
      "type": "high",
      "heightM": 2.4
     },
     {
-     "time": "08:11",
+     "time": "07:58",
      "type": "low",
-     "heightM": 1.1
+     "heightM": 1.0
     },
     {
-     "time": "14:37",
+     "time": "14:26",
      "type": "high",
      "heightM": 2.5
     },
     {
-     "time": "20:54",
+     "time": "20:41",
      "type": "low",
      "heightM": 1.0
     }
@@ -1283,24 +1283,24 @@
    "waterTempC": 19.2,
    "tides": [
     {
-     "time": "02:52",
+     "time": "02:40",
      "type": "high",
      "heightM": 2.4
     },
     {
-     "time": "09:08",
+     "time": "08:55",
      "type": "low",
-     "heightM": 1.1
+     "heightM": 1.0
     },
     {
-     "time": "15:29",
+     "time": "15:18",
      "type": "high",
      "heightM": 2.5
     },
     {
-     "time": "21:46",
+     "time": "21:34",
      "type": "low",
-     "heightM": 1.0
+     "heightM": 0.9
     }
    ],
    "slots": [
@@ -1689,7 +1689,7 @@
   {
    "source": "tides4fishing",
    "url": "https://tides4fishing.com/nz/auckland/mahurangi-harbour",
-   "at": "2026-11-16T22:21:36+13:00",
+   "at": "2026-11-16T22:27:09+13:00",
    "ok": true,
    "attempts": 1,
    "bySource": {
@@ -1701,7 +1701,7 @@
   }
  ],
  "observations": {
-  "fetched": "2026-11-16T22:21:36+13:00",
+  "fetched": "2026-11-16T22:27:09+13:00",
   "kind": "home",
   "blend": true,
   "stations": [
@@ -1711,11 +1711,11 @@
     "kind": "home",
     "lat": -36.435,
     "lon": 174.74,
-    "time": "2026-11-16T22:21:37+13:00",
+    "time": "2026-11-16T22:27:13+13:00",
     "windKn": 1.1,
     "gustKn": 2.2,
-    "windDirDeg": 177,
-    "airC": 16.3,
+    "windDirDeg": 301,
+    "airC": 16.2,
     "pressureHpa": 1017.3,
     "rainRateMmH": 0.0,
     "rainTodayMm": 0.0,
@@ -1728,12 +1728,12 @@
     "kind": "home",
     "lat": -36.415,
     "lon": 174.726,
-    "time": "2026-11-16T22:21:07+13:00",
+    "time": "2026-11-16T22:27:07+13:00",
     "windKn": 0.0,
     "gustKn": 0.0,
-    "windDirDeg": 291,
-    "airC": 15.6,
-    "pressureHpa": 1012.9,
+    "windDirDeg": 27,
+    "airC": 15.5,
+    "pressureHpa": 1012.5,
     "rainRateMmH": 0.0,
     "rainTodayMm": 0.0,
     "url": "https://www.wunderground.com/dashboard/pws/ISNELL2",
@@ -1745,12 +1745,12 @@
     "kind": "home",
     "lat": -36.415,
     "lon": 174.726,
-    "time": "2026-11-16T22:21:31+13:00",
+    "time": "2026-11-16T22:27:10+13:00",
     "windKn": 0.2,
     "gustKn": 1.0,
-    "windDirDeg": 321,
-    "airC": 16.6,
-    "pressureHpa": 1011.0,
+    "windDirDeg": 323,
+    "airC": 16.5,
+    "pressureHpa": 1010.9,
     "rainRateMmH": 0.0,
     "rainTodayMm": 0.0,
     "url": "https://www.wunderground.com/dashboard/pws/ISNELL1",
@@ -1762,12 +1762,12 @@
     "kind": "home",
     "lat": -36.397,
     "lon": 174.724,
-    "time": "2026-11-16T22:21:40+13:00",
+    "time": "2026-11-16T22:27:00+13:00",
     "windKn": 0.0,
     "gustKn": 0.0,
-    "windDirDeg": 66,
-    "airC": 15.0,
-    "pressureHpa": 1021.5,
+    "windDirDeg": 109,
+    "airC": 14.9,
+    "pressureHpa": 1021.3,
     "rainRateMmH": 0.0,
     "rainTodayMm": 0.0,
     "url": "https://www.wunderground.com/dashboard/pws/IWARKW128",
@@ -1779,12 +1779,12 @@
     "kind": "home",
     "lat": -36.473,
     "lon": 174.734,
-    "time": "2026-11-16T22:21:39+13:00",
-    "windKn": 1.9,
-    "gustKn": 2.9,
-    "windDirDeg": 289,
-    "airC": 16.9,
-    "pressureHpa": 1013.4,
+    "time": "2026-11-16T22:27:06+13:00",
+    "windKn": 1.0,
+    "gustKn": 1.0,
+    "windDirDeg": 233,
+    "airC": 16.8,
+    "pressureHpa": 1013.3,
     "rainRateMmH": 0.0,
     "rainTodayMm": 0.0,
     "url": "https://www.wunderground.com/dashboard/pws/IWARKW125",
@@ -1796,12 +1796,12 @@
     "kind": "home",
     "lat": -36.474,
     "lon": 174.735,
-    "time": "2026-11-16T22:21:36+13:00",
+    "time": "2026-11-16T22:27:05+13:00",
     "windKn": 0.0,
     "gustKn": 0.0,
-    "windDirDeg": 291,
+    "windDirDeg": 270,
     "airC": null,
-    "pressureHpa": 1019.5,
+    "pressureHpa": 1019.6,
     "rainRateMmH": 0.0,
     "rainTodayMm": 0.0,
     "url": "https://www.wunderground.com/dashboard/pws/IWARKW107",
@@ -1830,12 +1830,12 @@
     "kind": "home",
     "lat": -36.34,
     "lon": 174.742,
-    "time": "2026-11-16T22:21:34+13:00",
+    "time": "2026-11-16T22:27:10+13:00",
     "windKn": 0.0,
     "gustKn": 0.0,
-    "windDirDeg": 101,
-    "airC": 14.7,
-    "pressureHpa": 1011.0,
+    "windDirDeg": 64,
+    "airC": 14.8,
+    "pressureHpa": 1010.8,
     "rainRateMmH": 0.0,
     "rainTodayMm": 0.0,
     "url": "https://www.wunderground.com/dashboard/pws/IWARKW99",

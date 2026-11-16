@@ -3,7 +3,7 @@
 "use strict";
 
 const TZ = "Pacific/Auckland";
-const APP_VERSION = "2026-11-16r3";   // bump with data/version.txt when app.js/style.css/index.html change
+const APP_VERSION = "2026-11-16r4";   // bump with data/version.txt when app.js/style.css/index.html change
 const PREF_KEY = "snells-beach-prefs-v1";
 const DEFAULT_PREFS = { activities: ["hangout"], drive: 1, dog: false };
 const ACT = {
@@ -279,6 +279,14 @@ function rating(score) {
   return { key: "nope", label: "Nope" };
 }
 
+function closedWhy(b) {
+  if (b.closedUntil) {
+    const d = fmtDate(b.closedUntil, { day: "numeric", month: "short", year: "numeric" });
+    return `Closed for now · reopens ${d}`;
+  }
+  return "Closed for now";
+}
+
 /* Score every daylight hour for one beach on one day. */
 function evalBeachDay(b, day, act, tides, ctx) {
   const sr = hm(day.sunrise || "06:30"), ss = hm(day.sunset || "19:30");
@@ -291,8 +299,11 @@ function evalBeachDay(b, day, act, tides, ctx) {
   });
   const dog = dogRule(b, day.date);
   const filters = [];
-  if (b.driveMin > ctx.maxDrive) filters.push(`Too far · ${b.driveMin} min`);
-  if (ctx.dog && dog.status === "banned") filters.push("Dogs banned");
+  if (b.closed) filters.push(closedWhy(b));
+  else {
+    if (b.driveMin > ctx.maxDrive) filters.push(`Too far · ${b.driveMin} min`);
+    if (ctx.dog && dog.status === "banned") filters.push("Dogs banned");
+  }
   return { b, day, act, tides, ctx, sr, ss, evals, traffic, dog, filters, eligible: !filters.length };
 }
 
@@ -854,7 +865,7 @@ function render() {
 
   const heur = acts.filter((a) => ACT[a].heuristic);
   if (heur.length) html += `<div class="notice">${icon("dot")}<span>${esc(heur.map((a) => ACT[a].label).join(", "))}: rough heuristic scores, not proper forecasts for ${heur.length > 1 ? "these" : "this"}.</span></div>`;
-  const elig = today.picks.filter((r) => r.eligible);
+  const elig = today.picks.filter((r) => r.eligible && !r.b.closed);
   if (acts.includes("snorkel")) {
     const goat = today.picks.find((r) => r.b.doc);
     if (goat?.best.docOff) html += `<div class="notice bad">${icon("x")}<span><b>Goat Island is off today</b>: ${esc(goat.best.docOff)}. DOC says skip it in E/NE wind over ~20 kn or E/NE swell over 1 m.</span></div>`;
@@ -919,13 +930,16 @@ function render() {
 
   html += `<h3 class="sec">All beaches · ${today.ctx.isToday ? "today" : esc(fmtDate(today.day.date, { weekday: "short" }))}</h3><div class="list" data-section="all_beaches">${today.picks.map((r, i) => {
     const dogLine = r.dog ? `<p class="dogrule">${icon("dog")}<span>${esc(r.dog.text)}${r.b.dog?.source ? ` · <a href="${esc(r.b.dog.source)}" rel="noopener">source</a>` : ""}${r.b.dog?.verified === false ? " · <b>unverified, check signs</b>" : ""}</span></p>` : "";
-    return `<details class="row ${r.eligible ? "r-" + r.rating.key : "off"}" data-beach="${esc(r.b.id || r.b.name)}" data-rank="${i + 1}" data-top="${r.eligible && r === elig[0] ? "yes" : "no"}" data-eligible="${r.eligible ? "yes" : "no"}">
+    const closedBadge = r.b.closed ? `<span class="badge closed">Closed for now</span>` : "";
+    const closedNote = r.b.closed ? `<div class="notice warn">${icon("dot")}<span>${esc(r.b.closedReason || closedWhy(r.b))}${r.b.closedSource ? ` · <a href="${esc(r.b.closedSource)}" rel="noopener">source</a>` : ""}</span></div>` : "";
+    return `<details class="row ${r.eligible ? "r-" + r.rating.key : "off"}${r.b.closed ? " is-closed" : ""}" data-beach="${esc(r.b.id || r.b.name)}" data-rank="${i + 1}" data-top="${r.eligible && r === elig[0] ? "yes" : "no"}" data-eligible="${r.eligible ? "yes" : "no"}">
       <summary>
-        <span class="rname"><b>${bname(r.b)}</b><small>${esc(r.b.area)} · ${r.b.driveMin} min</small></span>
+        <span class="rname"><span class="rname-line"><b>${bname(r.b)}</b>${closedBadge}</span><small>${esc(r.b.area)} · ${r.b.driveMin} min</small></span>
         ${r.eligible ? `<span class="bar"><i style="width:${r.score}%"></i></span><span class="rs">${r.score}</span>${pill(r)}` : `<span class="why">${esc(r.filters.join(" · "))}</span>`}
         ${r.eligible ? heatEdge(fullOf(today, r), today.ctx.isToday, now) : ""}
       </summary>
       <div class="rbody">
+        ${closedNote}
         <p class="when sm">${icon("clock")}<b>${esc(r.window)}</b></p>
         ${windPair(fc, today.day, r.b, now, { at: r.done ? null : r.start })}
         ${chips(r, r.act, { ...prefs, dog: true })}
