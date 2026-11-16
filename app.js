@@ -3,7 +3,7 @@
 "use strict";
 
 const TZ = "Pacific/Auckland";
-const APP_VERSION = "2026-11-16r5";   // bump with data/version.txt when app.js/style.css/index.html change
+const APP_VERSION = "2026-11-16r6";   // bump with data/version.txt when app.js/style.css/index.html change
 const PREF_KEY = "snells-beach-prefs-v1";
 const DEFAULT_PREFS = { activities: ["hangout"], drive: 1, dog: false };
 const ACT = {
@@ -464,19 +464,57 @@ function ring(score, key) {
 const skyIcon = (s) => icon(s === "sun" ? "sun" : s === "partly" ? "partly" : s === "rain" || s === "showers" || s === "storm" ? "rain" : "cloud", `ic sky sky-${s || "cloud"}`);
 
 /* ---------- now vs later ---------- */
-/* Card heatline: inset bottom rail, one segment per hour (old rating colours), 1px gaps, past dimmed, now dot. */
+/* Card heatline: inset bottom rail, one segment per hour (old rating colours), 1px gaps, past dimmed, now dot.
+   A very thin UV-index rail sits just under it, same hours, WHO scale; missing model values are left blank. */
 const HX0 = 6 * 60, HX1 = 21 * 60, HP = (m) => ((clamp(m, HX0, HX1) - HX0) / (HX1 - HX0) * 100).toFixed(2);
+function uvBand(uv) {
+  if (uv == null || !Number.isFinite(+uv)) return null;
+  const n = Math.round(+uv);
+  if (n <= 2) return { key: "low", label: "low", n };
+  if (n <= 5) return { key: "mod", label: "moderate", n };
+  if (n <= 7) return { key: "high", label: "high", n };
+  if (n <= 10) return { key: "vhigh", label: "very high", n };
+  return { key: "extreme", label: "extreme", n };
+}
+function uvHour(min) {
+  min = ((min % 1440) + 1440) % 1440;
+  const h = Math.floor(min / 60), ap = h >= 12 ? "pm" : "am", h12 = h % 12 === 0 ? 12 : h % 12;
+  return `${h12}${ap}`;
+}
+function uvHint(inRange) {
+  const high = inRange.map((e) => ({ t: e.t, b: uvBand(e.slot?.uvIndex) })).filter((x) => x.b && x.b.n >= 6);
+  if (!high.length) return "";
+  const peak = high.reduce((a, c) => (c.b.n > a.b.n ? c : a));
+  const start = high[0].t, end = high[high.length - 1].t;
+  const when = start === end ? uvHour(start) : `${uvHour(start)}–${uvHour(end + 60)}`;
+  return `UV ${peak.b.label} ${when}`;
+}
 function heatEdge(R, isToday, now, { labels = false } = {}) {
   const evals = R?.evals || [];
   if (!evals.length) return "";
   const W = (60 / (HX1 - HX0) * 100).toFixed(2);
-  const segs = evals.filter((e) => e.t + 30 > HX0 && e.t - 30 < HX1).map((e) => {
+  const inRange = evals.filter((e) => e.t + 30 > HX0 && e.t - 30 < HX1);
+  const segs = inRange.map((e) => {
     const k = rating(e.score);
     return `<i class="k-${k.key}${isToday && e.t + 30 <= now.min ? " past" : ""}" style="left:${HP(e.t - 30)}%;width:${W}%" title="${fmtTime(e.t)}: ${k.label}"></i>`;
   }).join("");
   const dot = isToday && now.min > HX0 && now.min < HX1 ? `<span class="hdot" style="left:${HP(now.min)}%"></span>` : "";
   const ax = labels ? `<div class="hax" aria-hidden="true"><span>6am</span><span>9</span><span>12pm</span><span>3</span><span>6</span><span>9pm</span></div>` : "";
-  return `<div class="heat${labels ? " lbl" : ""}" role="img" aria-label="Hour by hour rating, 6am to 9pm">${ax}<div class="hrail">${segs}${dot}</div></div>`;
+  const uvSegs = inRange.map((e) => {
+    const b = uvBand(e.slot?.uvIndex);
+    if (!b) return "";
+    const tip = `UV ${b.n} ${b.label}`;
+    const past = isToday && e.t + 30 <= now.min ? " past" : "";
+    return `<i class="uv-${b.key}${past}" style="left:${HP(e.t - 30)}%;width:${W}%" title="${fmtTime(e.t)}: ${tip}" aria-label="${esc(tip)}"></i>`;
+  }).join("");
+  const uvVals = inRange.map((e) => uvBand(e.slot?.uvIndex)).filter(Boolean);
+  const hint = labels ? uvHint(inRange) : "";
+  const peak = uvVals.reduce((a, b) => (!a || b.n > a.n ? b : a), null);
+  const uvAria = !uvVals.length ? "" : (hint ? `${hint}, peak ${peak.n}` : `peak UV ${peak.n} ${peak.label}`);
+  const uvRail = uvSegs ? `<div class="uvrail" role="img" aria-label="${esc("UV index, 6am to 9pm" + (uvAria ? `. ${uvAria}` : ""))}">${uvSegs}</div>` : "";
+  const hintEl = hint ? `<div class="uvhint">${esc(hint)}</div>` : "";
+  const label = "Hour by hour rating, 6am to 9pm" + (uvAria ? `. ${uvAria}` : "");
+  return `<div class="heat${labels ? " lbl" : ""}${uvRail ? " has-uv" : ""}" role="img" aria-label="${esc(label)}">${ax}<div class="hrail">${segs}${dot}</div>${uvRail}${hintEl}</div>`;
 }
 const fullOf = (res, r) => (res.all || []).find((a) => a.b.id === r.b.id && a.act === r.act) || r;
 function nowLater(today, tomorrow, now, prefs) {

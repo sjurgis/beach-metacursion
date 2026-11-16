@@ -122,6 +122,7 @@ def check_forecast(fc):
                 num(s.get("airC"), -5, 40, f"{sw}.airC", required=False)
                 num(s.get("cloudPct"), 0, 100, f"{sw}.cloudPct", required=False)
                 num(s.get("rainProbPct"), 0, 100, f"{sw}.rainProbPct", required=False)
+                num(s.get("uvIndex"), 0, 25, f"{sw}.uvIndex", required=False)
                 if "models" in s:
                     if not isinstance(s["models"], dict): err(f"{sw}.models: must be an object")
                     else:

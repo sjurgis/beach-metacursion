@@ -3,6 +3,7 @@
 
 Sources:
   wind          hourly slots 06-20; vector blend of met.no (smoothed over +-1 h) and Open-Meteo, equal weight
+  UV index      Open-Meteo hourly uv_index (WHO scale); omitted on a slot when the model value is missing
   weather       met.no locationforecast 2.0 (compact) sky/temp; Open-Meteo gusts + rain probability
   swell, sea    Open-Meteo marine: Kawau Bay (inner) and off Te Arai (open coast)
   sun           Open-Meteo daily sunrise/sunset
@@ -255,7 +256,7 @@ def main():
     om = get("https://api.open-meteo.com/v1/forecast?"
              f"latitude={LAT}&longitude={LON}&timezone=Pacific%2FAuckland&wind_speed_unit=kn"
              f"&start_date={start}&end_date={end}"
-             "&hourly=wind_speed_10m,wind_direction_10m,wind_gusts_10m,precipitation,precipitation_probability,temperature_2m,cloud_cover,weather_code"
+             "&hourly=wind_speed_10m,wind_direction_10m,wind_gusts_10m,precipitation,precipitation_probability,temperature_2m,cloud_cover,weather_code,uv_index"
              "&daily=sunrise,sunset,temperature_2m_max")
     oh = om["hourly"]; ohi = {t: i for i, t in enumerate(oh["time"])}
 
@@ -318,6 +319,9 @@ def main():
             if rain: slot["rainMm"] = round(sum(rain) / len(rain), 1)
             if om_i is not None and oh["precipitation_probability"][om_i] is not None:
                 slot["rainProbPct"] = round(oh["precipitation_probability"][om_i])
+            uvs = oh.get("uv_index") or []
+            if om_i is not None and om_i < len(uvs) and uvs[om_i] is not None:
+                slot["uvIndex"] = round(float(uvs[om_i]), 1)
             if exact and exact["step"] == 1:
                 slot.update({"airC": exact["airC"], "cloudPct": exact["cloudPct"]})
                 if exact.get("sky"): slot["sky"] = exact["sky"]
@@ -364,7 +368,7 @@ def main():
             {"what": "Wind & weather (blended)", "name": "met.no Locationforecast (Snells Beach)",
              "url": f"https://api.met.no/weatherapi/locationforecast/2.0/compact?lat={LAT}&lon={LON}",
              "issued": dt.datetime.fromisoformat(met["properties"]["meta"]["updated_at"].replace("Z", "+00:00")).astimezone(TZ).replace(microsecond=0).isoformat()},
-            {"what": "Wind (blended), gusts, rain chance, sun", "name": "Open-Meteo forecast (best match)", "url": f"https://api.open-meteo.com/v1/forecast?latitude={LAT}&longitude={LON}"},
+            {"what": "Wind (blended), gusts, rain chance, sun, UV index", "name": "Open-Meteo forecast (best match)", "url": f"https://api.open-meteo.com/v1/forecast?latitude={LAT}&longitude={LON}"},
             {"what": "Swell & sea temp", "name": "Open-Meteo Marine (Kawau Bay; off Te Ārai)", "url": "https://open-meteo.com/en/docs/marine-weather-api"},
             {"what": "Tides", "name": "tides4fishing Mahurangi Harbour" + ("" if tide_log["ok"] else
                      " (site unreachable this run: using the last good table" + (", some days estimated" if "computed" in tide_log["bySource"].values() else "") + ")"),

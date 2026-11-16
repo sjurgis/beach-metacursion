@@ -63,6 +63,7 @@ Beaches without a slug in `beaches.json` are not monitored by Safeswim.
 | `airC` | number | no | air temp °C |
 | `cloudPct` | number 0–100 | no | cloud cover |
 | `sky` | string | no | one of `sun`, `partly`, `cloud`, `fog`, `showers`, `rain`, `storm` (drives the icon and a small rain penalty) |
+| `uvIndex` | number | no | Open-Meteo hourly UV index (WHO scale). Omit the key when the model value is missing — the page leaves that hour blank on the UV strip rather than inventing a number. |
 | `src` | string | no | which models went in, e.g. `"metno+openmeteo"` (info only) |
 | `models` | object | no | raw per-model wind for checking, `{ "metno": [dirDeg, kn], "openmeteo": [dirDeg, kn] }` (info only) |
 

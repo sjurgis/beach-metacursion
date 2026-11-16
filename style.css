@@ -2,6 +2,8 @@
 :root {
   /* heatline palette: deeper rating shades, >=3:1 against the light rail (#ece3d2) */
   --h-rail: #ece3d2; --h-night: #e2d8c6; --h-great: #1a7f45; --h-good: #4f8a3a; --h-meh: #a86a12; --h-nope: #c0392b;
+  /* WHO UV scale, toned to the sand/teal palette: low 0-2, moderate 3-5, high 6-7, very high 8-10, extreme 11+ */
+  --uv-low: #5a8f7c; --uv-mod: #c9a24a; --uv-high: #c87a3c; --uv-vhigh: #b5554a; --uv-extreme: #6d4e8c;
   --sand: #f6f1e7;
   --sand-2: #ece3d2;
   --card: #fffdf8;
@@ -330,7 +332,7 @@ footer.foot.wrap { margin-top: 8px; padding-top: 18px; }   /* + its 18px padding
 @media (max-width: 480px) { .runners { grid-template-columns: minmax(0,1fr); } }
 
 /* ---------- card heatline (inset bottom rail; replaces the old coloured top borders) ---------- */
-.hero, .card.runner, .card.day, .card.nl { position: relative; padding-bottom: 24px; }
+.hero, .card.runner, .card.day, .card.nl { position: relative; padding-bottom: 30px; }
 .heat { position: absolute; left: 14px; right: 14px; bottom: 10px; }
 .hero .heat { left: 16px; right: 16px; }
 .hrail { position: relative; height: 5px; border-radius: 3px; background: var(--h-rail); overflow: hidden; }
@@ -341,15 +343,30 @@ footer.foot.wrap { margin-top: 8px; padding-top: 18px; }   /* + its 18px padding
 .heat { overflow: visible; }
 .hrail { overflow: visible; }
 .hdot { position: absolute; top: 50%; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: 50%; background: var(--ink); box-shadow: 0 0 0 2px var(--card); z-index: 1; }
-.hero:has(.heat) { padding-bottom: 40px; }
+.hero:has(.heat) { padding-bottom: 46px; }
+.hero:has(.heat.lbl) { padding-bottom: 58px; }
 .hax { display: flex; justify-content: space-between; font-size: .62rem; color: var(--muted); margin-bottom: 3px; line-height: 1; }
+.uvrail { position: relative; height: 3px; margin-top: 2px; border-radius: 2px; background: var(--h-rail); }
+.uvrail i { position: absolute; top: 0; height: 3px; box-sizing: border-box; border-right: 1px solid var(--card); }
+.uvrail i::after { content: ""; position: absolute; left: 0; right: 0; top: -3px; bottom: -3px; } /* slightly larger hover/tap target */
+.uvrail i.uv-low { background: var(--uv-low); }
+.uvrail i.uv-mod { background: var(--uv-mod); }
+.uvrail i.uv-high { background: var(--uv-high); }
+.uvrail i.uv-vhigh { background: var(--uv-vhigh); }
+.uvrail i.uv-extreme { background: var(--uv-extreme); }
+.uvrail i.past { opacity: .55; }
+.uvhint { font-size: .62rem; color: var(--muted); text-align: right; margin-top: 3px; line-height: 1; letter-spacing: .01em; }
 .nl.dark .hrail { background: #2c4a52; }
 .nl.dark .hrail i { border-right-color: #16343c; }
 .nl.dark .hdot { background: #f6f1e7; box-shadow: 0 0 0 2px #16343c; }
-.row summary { position: relative; padding-bottom: 16px; }
+.nl.dark .uvrail { background: #2c4a52; }
+.nl.dark .uvrail i { border-right-color: #16343c; }
+.row summary { position: relative; padding-bottom: 20px; }
 .row .heat { left: 12px; right: 12px; bottom: 6px; grid-column: 1 / -1; }
 .row .hrail { height: 4px; }
 .row .hdot { width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; }
+.row .uvrail { height: 2px; }
+.row .uvrail i { height: 2px; }
 .notice.offline { background: var(--sand-2); color: var(--muted); }
 .foot { padding-bottom: max(40px, env(safe-area-inset-bottom)); }
 
