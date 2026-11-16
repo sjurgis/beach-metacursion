@@ -159,6 +159,25 @@ def check_forecast(fc):
         first = dt.date.fromisoformat(days[0]["date"]) if isinstance(days[0].get("date"), str) else None
         if first and u.astimezone(dt.timezone(dt.timedelta(hours=13))).date() - first > dt.timedelta(days=1):
             warn("days[0] is more than a day before 'updated': is the file stale?")
+    check_safeswim(fc)
+
+
+def check_safeswim(fc):
+    """Optional. Missing or failed fetch is fine (the page then shows nothing)."""
+    wq = fc.get("safeswim")
+    if wq is None: return
+    if not isinstance(wq, dict): err("safeswim: object"); return
+    beaches = wq.get("beaches")
+    if not isinstance(beaches, dict): err("safeswim.beaches: object"); return
+    for bid, x in beaches.items():
+        w = f"safeswim.beaches.{bid}"
+        if not isinstance(x, dict): err(f"{w}: object"); continue
+        if not isinstance(x.get("slug"), str): err(f"{w}.slug: required")
+        q = x.get("quality")
+        if q is not None and not isinstance(q, str): err(f"{w}.quality: string")
+        if "alert" in x and not isinstance(x.get("alert"), bool): err(f"{w}.alert: bool")
+        if x.get("alert") and q not in ("RED", "RED+", "BLACK"):
+            warn(f"{w}: alert is true but quality is {q!r} (expected RED, RED+ or BLACK)")
 
 
 def check_beaches(b):
@@ -183,6 +202,7 @@ def check_beaches(b):
         if dog.get("rules") and "from" in dog["rules"][-1]: err(f"{w}.dog.rules: last rule must be the catch-all (no from/to)")
         if "closed" in x and not isinstance(x.get("closed"), bool): err(f"{w}.closed: bool")
         if x.get("closedUntil") and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(x["closedUntil"])): err(f"{w}.closedUntil: YYYY-MM-DD")
+        if "safeswim" in x and x.get("safeswim") is not None and not isinstance(x.get("safeswim"), str): err(f"{w}.safeswim: slug string")
     if not ids: err("beaches.json: no beaches")
 
 

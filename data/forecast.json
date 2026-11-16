@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "updated": "2026-11-16T22:27:09+13:00",
+ "updated": "2026-11-16T22:34:00+13:00",
  "timezone": "Pacific/Auckland",
  "location": {
   "name": "Snells Beach",
@@ -33,6 +33,11 @@
    "what": "Live wind & rain (home stations)",
    "name": "Weather Underground PWS API: Algies Bay, Snells Beach, Sandspit, Mahurangi East, Point Wells (Omaha), Omaha Flats",
    "url": "https://www.wunderground.com/wundermap"
+  },
+  {
+   "what": "Water quality",
+   "name": "Safeswim",
+   "url": "https://safeswim.org.nz/"
   }
  ],
  "days": [
@@ -1689,7 +1694,7 @@
   {
    "source": "tides4fishing",
    "url": "https://tides4fishing.com/nz/auckland/mahurangi-harbour",
-   "at": "2026-11-16T22:27:09+13:00",
+   "at": "2026-11-16T22:34:00+13:00",
    "ok": true,
    "attempts": 1,
    "bySource": {
@@ -1701,7 +1706,7 @@
   }
  ],
  "observations": {
-  "fetched": "2026-11-16T22:27:09+13:00",
+  "fetched": "2026-11-16T22:34:00+13:00",
   "kind": "home",
   "blend": true,
   "stations": [
@@ -1711,12 +1716,12 @@
     "kind": "home",
     "lat": -36.435,
     "lon": 174.74,
-    "time": "2026-11-16T22:27:13+13:00",
-    "windKn": 1.1,
-    "gustKn": 2.2,
-    "windDirDeg": 301,
-    "airC": 16.2,
-    "pressureHpa": 1017.3,
+    "time": "2026-11-16T22:33:54+13:00",
+    "windKn": 0.0,
+    "gustKn": 0.0,
+    "windDirDeg": 115,
+    "airC": 16.1,
+    "pressureHpa": 1016.9,
     "rainRateMmH": 0.0,
     "rainTodayMm": 0.0,
     "url": "https://www.wunderground.com/dashboard/pws/IWARKW15",
@@ -1728,11 +1733,11 @@
     "kind": "home",
     "lat": -36.415,
     "lon": 174.726,
-    "time": "2026-11-16T22:27:07+13:00",
+    "time": "2026-11-16T22:33:07+13:00",
     "windKn": 0.0,
     "gustKn": 0.0,
-    "windDirDeg": 27,
-    "airC": 15.5,
+    "windDirDeg": 118,
+    "airC": 15.6,
     "pressureHpa": 1012.5,
     "rainRateMmH": 0.0,
     "rainTodayMm": 0.0,
@@ -1745,11 +1750,11 @@
     "kind": "home",
     "lat": -36.415,
     "lon": 174.726,
-    "time": "2026-11-16T22:27:10+13:00",
-    "windKn": 0.2,
-    "gustKn": 1.0,
-    "windDirDeg": 323,
-    "airC": 16.5,
+    "time": "2026-11-16T22:34:02+13:00",
+    "windKn": 0.0,
+    "gustKn": 0.0,
+    "windDirDeg": 322,
+    "airC": 16.4,
     "pressureHpa": 1010.9,
     "rainRateMmH": 0.0,
     "rainTodayMm": 0.0,
@@ -1762,12 +1767,12 @@
     "kind": "home",
     "lat": -36.397,
     "lon": 174.724,
-    "time": "2026-11-16T22:27:00+13:00",
+    "time": "2026-11-16T22:33:56+13:00",
     "windKn": 0.0,
     "gustKn": 0.0,
     "windDirDeg": 109,
     "airC": 14.9,
-    "pressureHpa": 1021.3,
+    "pressureHpa": 1021.4,
     "rainRateMmH": 0.0,
     "rainTodayMm": 0.0,
     "url": "https://www.wunderground.com/dashboard/pws/IWARKW128",
@@ -1779,12 +1784,12 @@
     "kind": "home",
     "lat": -36.473,
     "lon": 174.734,
-    "time": "2026-11-16T22:27:06+13:00",
-    "windKn": 1.0,
-    "gustKn": 1.0,
-    "windDirDeg": 233,
-    "airC": 16.8,
-    "pressureHpa": 1013.3,
+    "time": "2026-11-16T22:33:54+13:00",
+    "windKn": 2.5,
+    "gustKn": 2.9,
+    "windDirDeg": 261,
+    "airC": 16.7,
+    "pressureHpa": 1013.4,
     "rainRateMmH": 0.0,
     "rainTodayMm": 0.0,
     "url": "https://www.wunderground.com/dashboard/pws/IWARKW125",
@@ -1796,12 +1801,12 @@
     "kind": "home",
     "lat": -36.474,
     "lon": 174.735,
-    "time": "2026-11-16T22:27:05+13:00",
+    "time": "2026-11-16T22:33:48+13:00",
     "windKn": 0.0,
     "gustKn": 0.0,
-    "windDirDeg": 270,
+    "windDirDeg": 267,
     "airC": null,
-    "pressureHpa": 1019.6,
+    "pressureHpa": 1019.5,
     "rainRateMmH": 0.0,
     "rainTodayMm": 0.0,
     "url": "https://www.wunderground.com/dashboard/pws/IWARKW107",
@@ -1813,11 +1818,11 @@
     "kind": "home",
     "lat": -36.342522,
     "lon": 174.759415,
-    "time": "2026-11-16T22:15:03+13:00",
+    "time": "2026-11-16T22:30:05+13:00",
     "windKn": 0.0,
-    "gustKn": 0.0,
-    "windDirDeg": 210,
-    "airC": 14.8,
+    "gustKn": 1.7,
+    "windDirDeg": 258,
+    "airC": 14.4,
     "pressureHpa": 1015.9,
     "rainRateMmH": 0.0,
     "rainTodayMm": 0.0,
@@ -1830,12 +1835,12 @@
     "kind": "home",
     "lat": -36.34,
     "lon": 174.742,
-    "time": "2026-11-16T22:27:10+13:00",
+    "time": "2026-11-16T22:33:50+13:00",
     "windKn": 0.0,
     "gustKn": 0.0,
-    "windDirDeg": 64,
-    "airC": 14.8,
-    "pressureHpa": 1010.8,
+    "windDirDeg": 98,
+    "airC": 14.6,
+    "pressureHpa": 1011.1,
     "rainRateMmH": 0.0,
     "rainTodayMm": 0.0,
     "url": "https://www.wunderground.com/dashboard/pws/IWARKW99",
@@ -1886,6 +1891,104 @@
   ],
   "apiCalls": {
    "observations/current": 8
+  }
+ },
+ "safeswim": {
+  "updated": "2026-11-16T22:34:00+13:00",
+  "source": {
+   "what": "Water quality",
+   "name": "Safeswim",
+   "url": "https://safeswim.org.nz/"
+  },
+  "beaches": {
+   "snells": {
+    "slug": "snells-beach",
+    "name": "Snells Beach",
+    "quality": "GREEN",
+    "alert": false,
+    "label": "Suitable for swimming",
+    "url": "https://safeswim.org.nz/locations/snells-beach"
+   },
+   "algies": {
+    "slug": "algies-bay",
+    "name": "Algies Bay ",
+    "quality": "GREEN",
+    "alert": false,
+    "label": "Suitable for swimming",
+    "url": "https://safeswim.org.nz/locations/algies-bay"
+   },
+   "mahurangiwest": {
+    "slug": "sullivans-bay",
+    "name": "Sullivans Bay",
+    "quality": "GREEN",
+    "alert": false,
+    "label": "Suitable for swimming",
+    "url": "https://safeswim.org.nz/locations/sullivans-bay"
+   },
+   "wenderholm": {
+    "slug": "wenderholm",
+    "name": "Wenderholm",
+    "quality": "GREEN",
+    "alert": false,
+    "label": "Suitable for swimming",
+    "url": "https://safeswim.org.nz/locations/wenderholm"
+   },
+   "baddeleys": {
+    "slug": "baddeleys-beach",
+    "name": "Baddeleys Beach",
+    "quality": "GREEN",
+    "alert": false,
+    "label": "Suitable for swimming",
+    "url": "https://safeswim.org.nz/locations/baddeleys-beach"
+   },
+   "omaha": {
+    "slug": "omaha",
+    "name": "Omaha",
+    "quality": "GREEN",
+    "alert": false,
+    "label": "Suitable for swimming",
+    "url": "https://safeswim.org.nz/locations/omaha"
+   },
+   "tawharanui": {
+    "slug": "anchor-bay",
+    "name": "Anchor Bay",
+    "quality": "GREEN",
+    "alert": false,
+    "label": "Suitable for swimming",
+    "url": "https://safeswim.org.nz/locations/anchor-bay"
+   },
+   "mathesons": {
+    "slug": "mathesons-bay",
+    "name": "Mathesons Bay",
+    "quality": "GREEN",
+    "alert": false,
+    "label": "Suitable for swimming",
+    "url": "https://safeswim.org.nz/locations/mathesons-bay"
+   },
+   "goat": {
+    "slug": "goat-island",
+    "name": "Goat Island",
+    "quality": "GREEN",
+    "alert": false,
+    "label": "Suitable for swimming",
+    "url": "https://safeswim.org.nz/locations/goat-island"
+   },
+   "pakiri": {
+    "slug": "pakiri-beach",
+    "name": "Pakiri Beach",
+    "quality": "GREEN",
+    "alert": false,
+    "label": "Suitable for swimming",
+    "url": "https://safeswim.org.nz/locations/pakiri-beach"
+   },
+   "tearai": {
+    "slug": "te-arai",
+    "name": "Te Arai",
+    "quality": "GREEN",
+    "alert": false,
+    "label": "Suitable for swimming",
+    "url": "https://safeswim.org.nz/locations/te-arai"
+   }
   }
  }
 }

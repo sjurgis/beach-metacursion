@@ -26,11 +26,13 @@
    }
   ]
  },
+ "safeswimNote": "Safeswim slugs from https://safeswim.org.nz/api/locations, checked 16 Nov 2026. Beaches without a slug are not in Safeswim (Scotts Landing, Scandretts, Martins Bay, Campbells). Mathesons maps to the bay, not the lagoon.",
  "dogNote": "Rules from Auckland Council park pages and DOC, checked 9 Oct 2026. Signs can lag the website; council says follow the website. Summer time-and-season rules run 1 Dec – 1 Mar.",
  "matakana": "Weekend and holiday queues through Matakana village affect Ōmaha, Tāwharanui, Leigh, Pākiri, Te Ārai, Baddeleys and Campbells.",
  "beaches": [
   {
    "id": "snells",
+   "safeswim": "snells-beach",
    "name": "Snells Beach",
    "area": "Mahurangi East",
    "lat": -36.4164,
@@ -98,6 +100,7 @@
   },
   {
    "id": "algies",
+   "safeswim": "algies-bay",
    "name": "Algies Bay",
    "area": "Mahurangi East",
    "lat": -36.43268,
@@ -297,6 +300,7 @@
   },
   {
    "id": "mahurangiwest",
+   "safeswim": "sullivans-bay",
    "name": "Mahurangi West",
    "area": "Mahurangi West Regional Park",
    "lat": -36.51050,
@@ -352,6 +356,7 @@
   },
   {
    "id": "wenderholm",
+   "safeswim": "wenderholm",
    "name": "Wenderholm",
    "area": "Wenderholm Regional Park",
    "lat": -36.53208,
@@ -402,6 +407,7 @@
   },
   {
    "id": "baddeleys",
+   "safeswim": "baddeleys-beach",
    "name": "Baddeleys Beach",
    "area": "South Tāwharanui",
    "lat": -36.38193,
@@ -510,6 +516,7 @@
   },
   {
    "id": "omaha",
+   "safeswim": "omaha",
    "name": "Ōmaha",
    "area": "Ōmaha",
    "lat": -36.33511,
@@ -561,6 +568,7 @@
   },
   {
    "id": "tawharanui",
+   "safeswim": "anchor-bay",
    "name": "Tāwharanui (Anchor Bay)",
    "area": "Tāwharanui Regional Park",
    "lat": -36.36528,
@@ -605,6 +613,7 @@
   },
   {
    "id": "mathesons",
+   "safeswim": "mathesons-bay",
    "name": "Mathesons Bay",
    "area": "Leigh",
    "lat": -36.30111,
@@ -660,6 +669,7 @@
   },
   {
    "id": "goat",
+   "safeswim": "goat-island",
    "name": "Goat Island",
    "area": "Leigh · marine reserve",
    "lat": -36.27042,
@@ -711,6 +721,7 @@
   },
   {
    "id": "pakiri",
+   "safeswim": "pakiri-beach",
    "name": "Pākiri",
    "area": "Pākiri",
    "lat": -36.2499,
@@ -755,6 +766,7 @@
   },
   {
    "id": "tearai",
+   "safeswim": "te-arai",
    "name": "Te Ārai",
    "area": "Te Ārai Regional Park",
    "lat": -36.16353,

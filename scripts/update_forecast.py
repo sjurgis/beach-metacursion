@@ -8,6 +8,7 @@ Sources:
   sun           Open-Meteo daily sunrise/sunset
   tides         tides4fishing.com Mahurangi Harbour table
   rain history  data/rain_history.json: home-station rain totals per run + Open-Meteo past hours (scripts/rain_history.py)
+  water quality Safeswim https://safeswim.org.nz/api/locations (fail soft: omit if unreachable)
 
 Usage:  python3 scripts/update_forecast.py [--days 4] [--start YYYY-MM-DD] [--out data/forecast.json]
 Then:   python3 scripts/validate.py
@@ -25,6 +26,65 @@ SLOT_HOURS = list(range(6, 21))          # hourly 06:00-20:00 local
 SWELL_HOURS = [6, 9, 12, 15, 18]
 MS_TO_KN = 1.943844
 TIDE_URL = "https://tides4fishing.com/nz/auckland/mahurangi-harbour"
+
+
+
+SAFESWIM_URL = "https://safeswim.org.nz/api/locations"
+SAFESWIM_ALERT = {"RED", "RED+", "BLACK"}  # official about page: red = high risk / exceeds guidelines; black = wastewater overflow
+
+
+def collect_safeswim(now):
+    """Current Safeswim water quality for beaches that have a slug in beaches.json. None if the API fails."""
+    try:
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data", "beaches.json")
+        beaches = json.load(open(path, encoding="utf-8")).get("beaches") or []
+    except Exception as e:
+        print("warning: safeswim: beaches.json:", e, file=sys.stderr)
+        return None
+    try:
+        req = urllib.request.Request(SAFESWIM_URL, headers={"User-Agent": UA, "Accept": "application/json"})
+        with urllib.request.urlopen(req, timeout=20) as r:
+            data = json.loads(r.read().decode("utf-8", "ignore"))
+        locs = {loc["slug"]: loc for loc in (data.get("locations") or []) if loc.get("slug")}
+        if not locs:
+            print("warning: safeswim: empty location list", file=sys.stderr)
+            return None
+    except Exception as e:
+        print("warning: safeswim:", e, file=sys.stderr)
+        return None
+    out = {}
+    for b in beaches:
+        slug = b.get("safeswim")
+        if not slug:
+            continue
+        loc = locs.get(slug)
+        if not loc:
+            print(f"warning: safeswim: no location for slug {slug}", file=sys.stderr)
+            continue
+        quality = (loc.get("state") or {}).get("quality")
+        if not quality:
+            continue  # unknown: show nothing rather than invent a status
+        if quality in ("RED", "RED+"):
+            label = "Not suitable for swimming"
+        elif quality == "BLACK":
+            label = "Wastewater overflow — stay out of the water"
+        elif quality == "GREEN":
+            label = "Suitable for swimming"
+        else:
+            label = quality  # don't invent wording for an unexpected code
+        out[b["id"]] = {
+            "slug": slug,
+            "name": loc.get("name") or slug,
+            "quality": quality,
+            "alert": quality in SAFESWIM_ALERT,
+            "label": label,
+            "url": f"https://safeswim.org.nz/locations/{slug}",
+        }
+    return {
+        "updated": now.replace(microsecond=0).isoformat(),
+        "source": {"what": "Water quality", "name": "Safeswim", "url": "https://safeswim.org.nz/"},
+        "beaches": out,
+    }
 
 
 def get(url, raw=False):
@@ -322,6 +382,12 @@ def main():
         obs, osrc, live_line = None, None, (lambda o: "Live: no station readings right now.")
     if obs:
         out["observations"] = obs; out["sources"].append(osrc)
+    # water quality is best-effort: a failed Safeswim fetch must not break the forecast
+    wq = collect_safeswim(now)
+    if wq:
+        out["safeswim"] = wq
+        out["sources"].append(wq["source"])
+        print(f"safeswim: {sum(1 for v in wq['beaches'].values() if v.get('alert'))} alert(s), {len(wq['beaches'])} mapped")
     with open(os.path.join(os.path.dirname(a.out) or ".", "live.txt"), "w", encoding="utf-8") as f:
         f.write(live_line(obs) + "\n")
     with open(a.out, "w", encoding="utf-8") as f:

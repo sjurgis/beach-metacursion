@@ -20,6 +20,21 @@ Units are in the field names: `Kn` knots, `M` metres, `S` seconds, `Deg` degrees
 | `location` | object | no | `{ "name": "Snells Beach", "lat": -36.42, "lon": 174.73 }` (info only) |
 | `sources` | array | yes | non-empty; each `{ "what": "Wind & weather", "name": "met.no Locationforecast", "url": "https://…", "issued": "<ISO time, optional>" }`. Shown in the footer. |
 | `days` | array | yes | consecutive dates, **today first**, normally 4 days (today + 3) |
+| `safeswim` | object | no | current water quality from Safeswim. **Omit the whole object** if the API is unreachable — the page then shows no status rather than a guessed one |
+
+## `safeswim` (optional)
+
+Fetched each run from `https://safeswim.org.nz/api/locations` (the JSON API the Safeswim site uses). Official pin colours (Safeswim about page): green = low risk / meets swimming guidelines; red = high risk / exceeds guidelines; black = wastewater overflow near the beach. The API also uses `RED+` for an extended red. `GREY` or a missing quality is treated as unknown (show nothing).
+
+| field | type | meaning |
+|---|---|---|
+| `updated` | ISO 8601 with offset | when this block was fetched |
+| `source` | object | `{ "what": "Water quality", "name": "Safeswim", "url": "https://safeswim.org.nz/" }` (also appended to `sources`) |
+| `beaches` | object | keyed by our beach `id`. Only beaches with a `safeswim` slug in `beaches.json` that Safeswim actually returned. |
+
+Each `beaches.<id>`: `{ "slug", "name", "quality", "alert", "label", "url" }`. `alert` is `true` only for `RED`, `RED+` or `BLACK`. The page shows a warning and will not recommend that beach for swim / snorkel / surf / SUP. Green status is stored but not shown on the card.
+
+Beaches without a slug in `beaches.json` are not monitored by Safeswim.
 
 ## `days[]`
 

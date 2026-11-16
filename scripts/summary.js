@@ -11,7 +11,7 @@ const OUT = opt("--out") || path.join(ROOT, "data", "summary.json");
 
 const src = fs.readFileSync(path.join(ROOT, "app.js"), "utf8");
 const ctx = vm.createContext({ console, Intl, Date, Math, JSON, Set, Map, Object, Array, String, Number });
-vm.runInContext(src + "\n;globalThis.__api = { buildTides, evalBeachDay, pickWindow, blendObservations, nzNow, hm, dayNum, isWeekend, dir16, windSummary, windRel, rainSummary, fmtTime, r30, wetness, localMin, setNow: (m) => { NOW_OVERRIDE = m; } };", ctx);
+vm.runInContext(src + "\n;globalThis.__api = { buildTides, evalBeachDay, pickWindow, blendObservations, attachSafeswim, nzNow, hm, dayNum, isWeekend, dir16, windSummary, windRel, rainSummary, fmtTime, r30, wetness, localMin, setNow: (m) => { NOW_OVERRIDE = m; } };", ctx);
 const A = ctx.__api;
 
 const fc = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "forecast.json"), "utf8"));
@@ -19,6 +19,7 @@ const beaches = JSON.parse(fs.readFileSync(path.join(ROOT, "data", "beaches.json
 if (opt("--at")) A.setNow(A.hm(opt("--at")));
 const now = A.nzNow();
 A.blendObservations(fc, now, beaches);
+A.attachSafeswim(beaches, fc);
 
 const LIM = { name: 18, window: 14, note: 34, wind: 22, swell: 22, tide: 22 };
 function fit(s, n) {   // trim at a word/comma boundary, never mid-word if avoidable

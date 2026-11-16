@@ -3,7 +3,7 @@
 "use strict";
 
 const TZ = "Pacific/Auckland";
-const APP_VERSION = "2026-11-16r4";   // bump with data/version.txt when app.js/style.css/index.html change
+const APP_VERSION = "2026-11-16r5";   // bump with data/version.txt when app.js/style.css/index.html change
 const PREF_KEY = "snells-beach-prefs-v1";
 const DEFAULT_PREFS = { activities: ["hangout"], drive: 1, dog: false };
 const ACT = {
@@ -18,6 +18,7 @@ const ACT = {
 };
 const ACT_ICON = { hangout: "hangout", swim: "swim", surf: "surf", snorkel: "snorkel", sup: "sup", sailing: "sail", fishing: "fish", walking: "walk" };
 const TIDE_ACTS = new Set(["swim", "snorkel", "sup"]);   // these care about the mid-tide window
+const SWIM_TYPE = new Set(["swim", "snorkel", "surf", "sup"]);  // in-water activities hidden as picks when Safeswim says don't swim
 // how hard rain hits each activity (0 = ignore, 1 = rain ruins it)
 const RAIN_K = { hangout: 0.85, swim: 0.6, sup: 0.5, snorkel: 0.45, surf: 0.2, sailing: 0.5, fishing: 0.35, walking: 0.6 };
 const DIR16 = ["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"];
@@ -279,6 +280,17 @@ function rating(score) {
   return { key: "nope", label: "Nope" };
 }
 
+function attachSafeswim(beaches, fc) {
+  const map = (fc && fc.safeswim && fc.safeswim.beaches) || {};
+  for (const b of (beaches && beaches.beaches) || []) b.wq = map[b.id] || null;
+}
+function wqAlert(b) { return !!(b && b.wq && b.wq.alert); }
+function wqNotice(b) {
+  if (!wqAlert(b)) return "";
+  const href = b.wq.url ? ` · <a href="${esc(b.wq.url)}" rel="noopener">Safeswim</a>` : "";
+  return `<div class="notice bad">${icon("x")}<span><b>Water quality warning</b>: ${esc(b.wq.label || "Not suitable for swimming")}${href}</span></div>`;
+}
+
 function closedWhy(b) {
   if (b.closedUntil) {
     const d = fmtDate(b.closedUntil, { day: "numeric", month: "short", year: "numeric" });
@@ -303,6 +315,7 @@ function evalBeachDay(b, day, act, tides, ctx) {
   else {
     if (b.driveMin > ctx.maxDrive) filters.push(`Too far · ${b.driveMin} min`);
     if (ctx.dog && dog.status === "banned") filters.push("Dogs banned");
+    if (wqAlert(b) && SWIM_TYPE.has(act)) filters.push("Water quality warning");
   }
   return { b, day, act, tides, ctx, sr, ss, evals, traffic, dog, filters, eligible: !filters.length };
 }
@@ -365,6 +378,7 @@ function reasons(r, act) {
   const w = windSummary(r.inWin), rel = windRel(r.b, w.dir);
   const W = `${dir16(w.dir)} ${knText(w)} kn`;
   if (e.docOff) out.push({ k: "bad", t: `DOC: skip Goat Island (${e.docOff})` });
+  if (wqAlert(r.b)) out.push({ k: "bad", t: r.b.wq.label || "Not suitable for swimming" });
   // wind is shown in the Actual/Forecast boxes and the wind chip, so no wind bullet here
 
   const rs = rainSummary(r.inWin);
@@ -438,6 +452,7 @@ function chips(r, act, prefs, { compact = false } = {}) {
   }
   if (!compact || r.b.driveMin > 15) c.push(`<span class="chip c-plain">${icon("car")}${r.b.driveMin}<small>min</small></span>`);
   if (r.traffic) c.push(`<span class="chip c-mid" title="${esc(r.day.traffic?.note || "Weekend traffic through Matakana")}">${icon("traffic")}Matakana</span>`);
+  if (wqAlert(r.b)) c.push(`<span class="chip c-bad" title="${esc(r.b.wq.label || "Not suitable for swimming")}">${icon("x")}${esc(r.b.wq.quality === "BLACK" ? "Wastewater overflow" : "Not suitable for swimming")}</span>`);
   return `<div class="chips">${c.join("")}</div>`;
 }
 const bullets = (list) => !list.length ? "" : `<ul class="reasons">${list.map((x) => `<li class="r-${x.k}">${icon(x.k === "good" ? "check" : x.k === "bad" ? "x" : "dot")}<span>${esc(x.t)}</span></li>`).join("")}</ul>`;
@@ -494,7 +509,7 @@ function nowLater(today, tomorrow, now, prefs) {
         <div class="rhead"><h4>${bname(c.R.b)}</h4>${pill(fake)}</div>
         <p class="when sm"><b>${sc < 30 ? "Not great anywhere" : `Good till ~${fmtTime(c.until)}`}</b></p>
         ${windPair(STATE.fc, d, c.R.b, now)}
-        <div class="chips">${rainChip([c.e])}${tide}</div>${liveBasis(STATE.fc, now, c.R.b.id)}${heatEdge(c.R, true, now)}</article>`;
+        <div class="chips">${rainChip([c.e])}${tide}</div>${wqNotice(c.R.b)}${liveBasis(STATE.fc, now, c.R.b.id)}${heatEdge(c.R, true, now)}</article>`;
     }
   }
   // best later today: windows starting at least an hour from now
@@ -794,6 +809,7 @@ const bname = (b) => esc(b.name);
 
 function render() {
   const { beaches, fc, prefs } = STATE;
+  attachSafeswim(beaches, fc);
   const now = nzNow();
   const app = $("#app");
   const acts = prefs.activities, act = acts[0];
@@ -883,6 +899,7 @@ function render() {
       <p class="when">${icon("clock")}<span>${top.done ? "" : "Best "}<b>${esc(top.window)}</b></span></p>
       ${windPair(fc, today.day, top.b, now, { at: top.done ? null : top.start })}
       ${chips(top, top.act, prefs)}
+      ${wqNotice(top.b)}
       ${bullets(reasons(top, top.act))}
       ${lowNote}
       ${heatEdge(fullOf(today, top), today.ctx.isToday, now, { labels: true })}
@@ -896,6 +913,7 @@ function render() {
           <p class="when sm">${icon("clock")}<b>${esc(r.window)}</b></p>
           ${windPair(fc, today.day, r.b, now, { at: r.done ? null : r.start })}
           ${chips(r, r.act, prefs, { compact: true })}
+          ${wqNotice(r.b)}
           ${bullets(reasons(r, r.act).slice(0, 2))}
           ${heatEdge(fullOf(today, r), today.ctx.isToday, now)}
         </article>`).join("")}</div>`;
@@ -922,6 +940,7 @@ function render() {
         <p class="when sm">${icon("clock")}<b>${esc(top.window)}</b></p>
         ${windPair(fc, day, top.b, now, { at: top.best.t })}
         ${chips(top, top.act, prefs, { compact: true })}
+        ${wqNotice(top.b)}
         ${bullets(reasons(top, top.act).slice(0, 2))}
         ${heatEdge(fullOf(res, top), false, now)}
       </article>`;
@@ -940,6 +959,7 @@ function render() {
       </summary>
       <div class="rbody">
         ${closedNote}
+        ${wqNotice(r.b)}
         <p class="when sm">${icon("clock")}<b>${esc(r.window)}</b></p>
         ${windPair(fc, today.day, r.b, now, { at: r.done ? null : r.start })}
         ${chips(r, r.act, { ...prefs, dog: true })}
