@@ -1,16 +1,16 @@
 {
- "updated": "19:27",
+ "updated": "20:21",
  "date": "Tue 17 Nov",
  "picks": [
   {
    "name": "Martins Bay",
    "window": "6:00-6:30am",
-   "note": "NW 8kn, dry"
+   "note": "NW 7kn, sunny"
   },
   {
    "name": "Mathesons Bay",
-   "window": "6:00-6:30am",
-   "note": "NW 8kn, offshore, dry"
+   "window": "7:30-10:30am",
+   "note": "NW 7-10kn, offshore, sunny"
   },
   {
    "name": "Algies Bay",
@@ -18,32 +18,32 @@
    "note": "swim, deep enough, NW 9-11kn"
   }
  ],
- "wind": "NW 8-11kn g19",
+ "wind": "NW 7-11kn g19",
  "swell": "0.9m, small surf",
  "tide": "High 2:00pm",
  "weather": {
-  "now_c": 20.3,
+  "now_c": 17.9,
   "hi_c": 23,
   "lo_c": 15,
   "cond": "Foggy, partly cloudy pm",
-  "rain": "0.6mm, 8%",
+  "rain": "0.6mm, 29%",
   "wind": "WNW 3-8kn g18",
   "sunset": "8:08pm",
   "later": [
    {
-    "t": "8pm",
-    "c": 17,
-    "cond": "partly"
-   },
-   {
     "t": "6am",
     "c": 15,
-    "cond": "cloudy"
+    "cond": "clear"
    },
    {
     "t": "9am",
     "c": 19,
-    "cond": "partly"
+    "cond": "sunny"
+   },
+   {
+    "t": "12pm",
+    "c": 23,
+    "cond": "cloudy"
    }
   ]
  }
