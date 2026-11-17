@@ -1,40 +1,35 @@
 {
- "updated": "13:26",
+ "updated": "14:27",
  "date": "Tue 17 Nov",
  "picks": [
   {
    "name": "Wenderholm",
-   "window": "Now-3:30pm",
-   "note": "WNW 1-7kn, sheltered, dry"
+   "window": "Now-4:30pm",
+   "note": "WNW 0-7kn, offshore, showers 35%"
   },
   {
-   "name": "Martins Bay",
-   "window": "Now-3:30pm",
-   "note": "N 5-9kn, dry"
+   "name": "Tāwharanui",
+   "window": "Now-4:30pm",
+   "note": "WNW 0-7kn, showers 35%"
   },
   {
    "name": "Algies Bay",
    "window": "Now-4:30pm",
-   "note": "swim, deep enough, NNW 7-11kn"
+   "note": "swim, deep enough, NW 9-10kn"
   }
  ],
- "wind": "NW 7-11kn g20",
+ "wind": "NW 9-11kn g20",
  "swell": "1.0m, small surf",
  "tide": "High 1:30pm",
  "weather": {
-  "now_c": 22.7,
+  "now_c": 22.2,
   "hi_c": 23,
   "lo_c": 15,
-  "cond": "Partly cloudy, rain pm",
-  "rain": "1.7mm, 67%",
+  "cond": "Partly cloudy, cloudy pm",
+  "rain": "1.5mm, 67%",
   "wind": "NW 5-11kn g20",
   "sunset": "8:09pm",
   "later": [
-   {
-    "t": "3pm",
-    "c": 21,
-    "cond": "cloudy"
-   },
    {
     "t": "6pm",
     "c": 20,
@@ -43,7 +38,12 @@
    {
     "t": "8pm",
     "c": 19,
-    "cond": "cloudy"
+    "cond": "partly"
+   },
+   {
+    "t": "6am",
+    "c": 17,
+    "cond": "rain"
    }
   ]
  }
