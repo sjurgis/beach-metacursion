@@ -1,32 +1,32 @@
 {
- "updated": "14:27",
+ "updated": "15:21",
  "date": "Tue 17 Nov",
  "picks": [
   {
    "name": "Wenderholm",
-   "window": "Now-4:30pm",
-   "note": "WNW 0-7kn, offshore, showers 35%"
+   "window": "Now-5:30pm",
+   "note": "W 1-8kn, sheltered, showers 45%"
   },
   {
    "name": "Tāwharanui",
-   "window": "Now-4:30pm",
-   "note": "WNW 0-7kn, showers 35%"
+   "window": "Now-5:30pm",
+   "note": "WNW 0-8kn, showers 45%"
   },
   {
-   "name": "Algies Bay",
-   "window": "Now-4:30pm",
-   "note": "swim, deep enough, NW 9-10kn"
+   "name": "Snells Beach",
+   "window": "Now-5:30pm",
+   "note": "NW 2-9kn, showers 45%, high tide"
   }
  ],
- "wind": "NW 9-11kn g20",
+ "wind": "NW 3-11kn g20",
  "swell": "1.0m, small surf",
  "tide": "High 1:30pm",
  "weather": {
-  "now_c": 22.2,
+  "now_c": 21.1,
   "hi_c": 23,
   "lo_c": 15,
-  "cond": "Partly cloudy, cloudy pm",
-  "rain": "1.5mm, 67%",
+  "cond": "Partly cloudy, rain pm",
+  "rain": "1.8mm, 67%",
   "wind": "NW 5-11kn g20",
   "sunset": "8:09pm",
   "later": [
