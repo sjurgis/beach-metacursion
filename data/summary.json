@@ -1,33 +1,33 @@
 {
- "updated": "15:21",
+ "updated": "16:29",
  "date": "Tue 17 Nov",
  "picks": [
   {
+   "name": "Martins Bay",
+   "window": "Now-6:30pm",
+   "note": "NW 5-9kn, showers 35%"
+  },
+  {
+   "name": "Scandretts Bay",
+   "window": "Now-6:30pm",
+   "note": "NW 5-9kn, showers 35%"
+  },
+  {
    "name": "Wenderholm",
-   "window": "Now-5:30pm",
-   "note": "W 1-8kn, sheltered, showers 45%"
-  },
-  {
-   "name": "Tāwharanui",
-   "window": "Now-5:30pm",
-   "note": "WNW 0-8kn, showers 45%"
-  },
-  {
-   "name": "Snells Beach",
-   "window": "Now-5:30pm",
-   "note": "NW 2-9kn, showers 45%, high tide"
+   "window": "Now-6:30pm",
+   "note": "W 2-8kn, sheltered, showers 35%"
   }
  ],
- "wind": "NW 3-11kn g20",
+ "wind": "WNW 6-11kn g19",
  "swell": "1.0m, small surf",
  "tide": "High 1:30pm",
  "weather": {
-  "now_c": 21.1,
+  "now_c": 21.7,
   "hi_c": 23,
   "lo_c": 15,
   "cond": "Partly cloudy, rain pm",
-  "rain": "1.8mm, 67%",
-  "wind": "NW 5-11kn g20",
+  "rain": "1.8mm, 59%",
+  "wind": "NW 5-12kn g20",
   "sunset": "8:09pm",
   "later": [
    {
