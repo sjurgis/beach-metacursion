@@ -1,49 +1,49 @@
 {
- "updated": "19:23",
- "date": "Wed 18 Nov",
+ "updated": "22:34",
+ "date": "Thu 19 Nov",
  "picks": [
   {
    "name": "Wenderholm",
-   "window": "7:30-8:00pm",
-   "note": "SSW 17-18kn, sheltered, rain 80%"
+   "window": "6:00-8:30am",
+   "note": "SW 12-15kn, sheltered, showers 34%"
   },
   {
    "name": "Mathesons Bay",
-   "window": "7:30-8:00pm",
-   "note": "SSW 17-18kn, sheltered, rain 80%"
+   "window": "6:00-8:30am",
+   "note": "SW 12-15kn, sheltered, showers 34%"
   },
   {
    "name": "Martins Bay",
-   "window": "7:30-8:00pm",
-   "note": "SSW 17-18kn, offshore, rain 80%"
+   "window": "6:00-8:30am",
+   "note": "SW 12-15kn, offshore, showers 34%"
   }
  ],
- "wind": "WNW 10-18kn g27",
- "swell": "1.5m 8s, surf up",
- "tide": "High 2:30pm",
+ "wind": "SW 8-15kn g27",
+ "swell": "0.9m, small surf",
+ "tide": "High 3:30pm",
  "weather": {
-  "now_c": 21.5,
-  "hi_c": 23,
-  "lo_c": 15,
-  "cond": "Partly cloudy, rain pm",
-  "rain": "1.8mm, 59%",
-  "wind": "NW 5-11kn g20",
-  "sunset": "8:09pm",
+  "now_c": 15,
+  "hi_c": 22,
+  "lo_c": 13,
+  "cond": "Showers, storms pm",
+  "rain": "34mm, 100%",
+  "wind": "WNW 6-16kn g32",
+  "sunset": "8:10pm",
   "later": [
    {
-    "t": "8pm",
-    "c": 19,
-    "cond": "partly"
-   },
-   {
     "t": "6am",
-    "c": 17,
-    "cond": "rain"
+    "c": 13,
+    "cond": "clear"
    },
    {
     "t": "9am",
+    "c": 16,
+    "cond": "showers"
+   },
+   {
+    "t": "12pm",
     "c": 17,
-    "cond": "rain"
+    "cond": "showers"
    }
   ]
  }
