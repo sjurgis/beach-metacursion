@@ -1,19 +1,12 @@
 {
  "schemaVersion": 1,
- "updated": "2026-11-19T16:24:48+13:00",
+ "updated": "2026-11-19T17:32:41+13:00",
  "timezone": "Pacific/Auckland",
  "sources": {
   "station": "Weather Underground home stations (Algies Bay, Snells Beach, Sandspit, Mahurangi East)",
   "model": "Open-Meteo forecast, past-hour precipitation (estimate)"
  },
  "hours": [
-  {
-   "start": "2026-11-17T17:00:00+13:00",
-   "mm": 0.0,
-   "src": "station",
-   "n": 6,
-   "how": "total"
-  },
   {
    "start": "2026-11-17T18:00:00+13:00",
    "mm": 0.0,
@@ -328,83 +321,20 @@
   },
   {
    "start": "2026-11-19T16:00:00+13:00",
-   "mm": 0.4,
+   "mm": 0.5,
+   "src": "station",
+   "n": 6,
+   "how": "total"
+  },
+  {
+   "start": "2026-11-19T17:00:00+13:00",
+   "mm": 0.0,
    "src": "station",
    "n": 6,
    "how": "total"
   }
  ],
  "runs": [
-  {
-   "at": "2026-11-17T10:26:09+13:00",
-   "stations": {
-    "IWARKW15": {
-     "t": "2026-11-17T10:26:08+13:00",
-     "totalMm": 0.0,
-     "rateMmH": 0.0
-    },
-    "ISNELL2": {
-     "t": "2026-11-17T10:26:06+13:00",
-     "totalMm": 0.0,
-     "rateMmH": 0.0
-    },
-    "ISNELL1": {
-     "t": "2026-11-17T10:26:01+13:00",
-     "totalMm": 0.0,
-     "rateMmH": 0.0
-    },
-    "IWARKW128": {
-     "t": "2026-11-17T10:26:09+13:00",
-     "totalMm": 0.0,
-     "rateMmH": 0.0
-    },
-    "IWARKW125": {
-     "t": "2026-11-17T10:25:55+13:00",
-     "totalMm": 0.0,
-     "rateMmH": 0.0
-    },
-    "IWARKW107": {
-     "t": "2026-11-17T10:26:00+13:00",
-     "totalMm": 0.0,
-     "rateMmH": 0.0
-    }
-   }
-  },
-  {
-   "at": "2026-11-17T11:27:20+13:00",
-   "stations": {
-    "IWARKW15": {
-     "t": "2026-11-17T11:27:12+13:00",
-     "totalMm": 0.0,
-     "rateMmH": 0.0
-    },
-    "ISNELL2": {
-     "t": "2026-11-17T11:26:06+13:00",
-     "totalMm": 0.0,
-     "rateMmH": 0.0
-    },
-    "ISNELL1": {
-     "t": "2026-11-17T11:27:22+13:00",
-     "totalMm": 0.0,
-     "rateMmH": 0.0
-    },
-    "IWARKW128": {
-     "t": "2026-11-17T11:27:13+13:00",
-     "totalMm": 0.0,
-     "rateMmH": 0.0
-    },
-    "IWARKW125": {
-     "t": "2026-11-17T11:27:01+13:00",
-     "totalMm": 0.0,
-     "rateMmH": 0.0
-    },
-    "IWARKW107": {
-     "t": "2026-11-17T11:27:16+13:00",
-     "totalMm": 0.0,
-     "rateMmH": 0.0
-    }
-   }
-  },
   {
    "at": "2026-11-17T12:27:12+13:00",
    "stations": {
@@ -1172,6 +1102,41 @@
      "t": "2026-11-19T16:24:48+13:00",
      "totalMm": 9.9,
      "rateMmH": 3.0
+    }
+   }
+  },
+  {
+   "at": "2026-11-19T17:32:41+13:00",
+   "stations": {
+    "IWARKW15": {
+     "t": "2026-11-19T17:32:43+13:00",
+     "totalMm": 15.5,
+     "rateMmH": 0.0
+    },
+    "ISNELL2": {
+     "t": "2026-11-19T17:32:02+13:00",
+     "totalMm": 6.6,
+     "rateMmH": 0.0
+    },
+    "ISNELL1": {
+     "t": "2026-11-19T17:32:36+13:00",
+     "totalMm": 6.6,
+     "rateMmH": 0.0
+    },
+    "IWARKW128": {
+     "t": "2026-11-19T17:32:32+13:00",
+     "totalMm": 7.9,
+     "rateMmH": 0.0
+    },
+    "IWARKW125": {
+     "t": "2026-11-19T17:32:46+13:00",
+     "totalMm": 9.6,
+     "rateMmH": 0.0
+    },
+    "IWARKW107": {
+     "t": "2026-11-19T17:32:46+13:00",
+     "totalMm": 9.9,
+     "rateMmH": 0.0
     }
    }
   }
