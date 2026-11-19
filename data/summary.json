@@ -1,33 +1,33 @@
 {
- "updated": "15:34",
+ "updated": "16:25",
  "date": "Thu 19 Nov",
  "picks": [
   {
+   "name": "Snells Beach",
+   "window": "Now-6:30pm",
+   "note": "E 2-7kn, showers 30%, high tide"
+  },
+  {
    "name": "Algies Bay",
-   "window": "Now-5:30pm",
-   "note": "WNW 2-6kn, offshore, dry"
+   "window": "Now-6:30pm",
+   "note": "E 4-7kn, showers 30%, high tide"
   },
   {
    "name": "Wenderholm",
    "window": "7:30-8:00pm",
-   "note": "SSW 8-9kn, sheltered, showers 31%"
-  },
-  {
-   "name": "Snells Beach",
-   "window": "Now-6:30pm",
-   "note": "swim, deep enough, SSW 0-5kn"
+   "note": "SSW 6-8kn, sheltered, rain 62%"
   }
  ],
- "wind": "SW 2-9kn g15",
+ "wind": "SE 4-8kn g15",
  "swell": "0.9m, small surf",
  "tide": "High 3:30pm",
  "weather": {
-  "now_c": 15.7,
+  "now_c": 15,
   "hi_c": 19,
   "lo_c": 13,
   "cond": "Partly cloudy, rain pm",
-  "rain": "3.6mm, 99%",
-  "wind": "SW 8-14kn g26",
+  "rain": "3.1mm, 90%",
+  "wind": "SW 7-14kn g26",
   "sunset": "8:11pm",
   "later": [
    {
