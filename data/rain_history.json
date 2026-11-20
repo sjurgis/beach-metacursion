@@ -1,12 +1,62 @@
 {
  "schemaVersion": 1,
- "updated": "2026-11-20T12:21:40+13:00",
+ "updated": "2026-11-20T13:22:40+13:00",
  "timezone": "Pacific/Auckland",
  "sources": {
   "station": "Weather Underground home stations (Algies Bay, Snells Beach, Sandspit, Mahurangi East)",
   "model": "Open-Meteo forecast, past-hour precipitation (estimate)"
  },
  "hours": [
+  {
+   "start": "2026-11-18T14:00:00+13:00",
+   "mm": 2.3,
+   "src": "model"
+  },
+  {
+   "start": "2026-11-18T15:00:00+13:00",
+   "mm": 2.6,
+   "src": "model"
+  },
+  {
+   "start": "2026-11-18T16:00:00+13:00",
+   "mm": 0.9,
+   "src": "model"
+  },
+  {
+   "start": "2026-11-18T17:00:00+13:00",
+   "mm": 1.5,
+   "src": "model"
+  },
+  {
+   "start": "2026-11-18T18:00:00+13:00",
+   "mm": 0.4,
+   "src": "model"
+  },
+  {
+   "start": "2026-11-18T19:00:00+13:00",
+   "mm": 0.0,
+   "src": "model"
+  },
+  {
+   "start": "2026-11-18T20:00:00+13:00",
+   "mm": 0.0,
+   "src": "model"
+  },
+  {
+   "start": "2026-11-18T21:00:00+13:00",
+   "mm": 0.0,
+   "src": "model"
+  },
+  {
+   "start": "2026-11-18T22:00:00+13:00",
+   "mm": 0.0,
+   "src": "model"
+  },
+  {
+   "start": "2026-11-18T23:00:00+13:00",
+   "mm": 0.0,
+   "src": "model"
+  },
   {
    "start": "2026-11-19T00:00:00+13:00",
    "mm": 0.3,
@@ -261,6 +311,13 @@
   },
   {
    "start": "2026-11-20T12:00:00+13:00",
+   "mm": 0.0,
+   "src": "station",
+   "n": 6,
+   "how": "total"
+  },
+  {
+   "start": "2026-11-20T13:00:00+13:00",
    "mm": 0.0,
    "src": "station",
    "n": 6,
@@ -1278,6 +1335,41 @@
     },
     "IWARKW107": {
      "t": "2026-11-20T12:21:33+13:00",
+     "totalMm": 0.3,
+     "rateMmH": 0.0
+    }
+   }
+  },
+  {
+   "at": "2026-11-20T13:22:40+13:00",
+   "stations": {
+    "IWARKW15": {
+     "t": "2026-11-20T13:22:34+13:00",
+     "totalMm": 0.2,
+     "rateMmH": 0.0
+    },
+    "ISNELL2": {
+     "t": "2026-11-20T13:22:01+13:00",
+     "totalMm": 0.0,
+     "rateMmH": 0.0
+    },
+    "ISNELL1": {
+     "t": "2026-11-20T13:22:42+13:00",
+     "totalMm": 0.0,
+     "rateMmH": 0.0
+    },
+    "IWARKW128": {
+     "t": "2026-11-20T13:22:35+13:00",
+     "totalMm": 0.2,
+     "rateMmH": 0.0
+    },
+    "IWARKW125": {
+     "t": "2026-11-20T13:22:36+13:00",
+     "totalMm": 0.0,
+     "rateMmH": 0.0
+    },
+    "IWARKW107": {
+     "t": "2026-11-20T13:22:32+13:00",
      "totalMm": 0.3,
      "rateMmH": 0.0
     }
