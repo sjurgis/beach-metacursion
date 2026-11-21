@@ -1,40 +1,35 @@
 {
- "updated": "07:22",
+ "updated": "08:29",
  "date": "Sun 22 Nov",
  "picks": [
   {
-   "name": "Scandretts Bay",
-   "window": "Now-10:30am",
-   "note": "ESE 0-8kn, sheltered, sunny"
-  },
-  {
    "name": "Martins Bay",
    "window": "Now-10:30am",
-   "note": "ESE 0-8kn, sunny"
+   "note": "almost still, sunny"
+  },
+  {
+   "name": "Scandretts Bay",
+   "window": "Now-10:30am",
+   "note": "almost still, sheltered, sunny"
   },
   {
    "name": "Wenderholm",
    "window": "Now-10:30am",
-   "note": "ESE 0-8kn, sunny"
+   "note": "almost still, sunny"
   }
  ],
- "wind": "ENE 1-12kn g22",
+ "wind": "ENE 1-11kn g21",
  "swell": "0.8m, no surf",
  "tide": "High 6:00pm",
  "weather": {
-  "now_c": 13.7,
+  "now_c": 17.6,
   "hi_c": 20,
   "lo_c": 11,
   "cond": "Sunny",
-  "rain": "0.1mm, 22%",
-  "wind": "E 6-12kn g22",
+  "rain": "0.3mm, 22%",
+  "wind": "E 2-11kn g21",
   "sunset": "8:14pm",
   "later": [
-   {
-    "t": "9am",
-    "c": 17,
-    "cond": "sunny"
-   },
    {
     "t": "12pm",
     "c": 19,
@@ -43,6 +38,11 @@
    {
     "t": "3pm",
     "c": 19,
+    "cond": "sunny"
+   },
+   {
+    "t": "6pm",
+    "c": 18,
     "cond": "sunny"
    }
   ]
