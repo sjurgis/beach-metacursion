@@ -1,16 +1,16 @@
 {
- "updated": "11:25",
+ "updated": "12:31",
  "date": "Sun 22 Nov",
  "picks": [
   {
-   "name": "Martins Bay",
-   "window": "Now-1:30pm",
-   "note": "ENE 3-8kn, sunny"
+   "name": "Scandretts Bay",
+   "window": "Now-2:30pm",
+   "note": "E 6-9kn, sunny"
   },
   {
-   "name": "Scandretts Bay",
-   "window": "Now-1:30pm",
-   "note": "ENE 3-8kn, sunny"
+   "name": "Wenderholm",
+   "window": "Now-2:30pm",
+   "note": "E 2-7kn, sunny"
   },
   {
    "name": "Algies Bay",
@@ -18,15 +18,15 @@
    "note": "swim, deep enough, ENE 8-11kn"
   }
  ],
- "wind": "E 5-11kn g21",
+ "wind": "ENE 7-11kn g21",
  "swell": "0.8m, no surf",
  "tide": "High 6:00pm",
  "weather": {
-  "now_c": 20.4,
+  "now_c": 20.9,
   "hi_c": 20,
   "lo_c": 11,
   "cond": "Sunny",
-  "rain": "0.3mm, 22%",
+  "rain": "0.3mm, 33%",
   "wind": "E 2-11kn g21",
   "sunset": "8:14pm",
   "later": [
