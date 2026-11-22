@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "updated": "2026-11-22T20:29:23+13:00",
+ "updated": "2026-11-22T21:20:32+13:00",
  "timezone": "Pacific/Auckland",
  "sources": {
   "station": "Weather Underground home stations (Algies Bay, Snells Beach, Sandspit, Mahurangi East)",
@@ -8,19 +8,14 @@
  },
  "hours": [
   {
-   "start": "2026-11-20T21:00:00+13:00",
-   "mm": 0.0,
-   "src": "station",
-   "n": 6,
-   "how": "total"
-  },
-  {
    "start": "2026-11-20T22:00:00+13:00",
    "mm": 0.0,
-   "src": "station",
-   "n": 6,
-   "how": "total",
-   "cover": 0.32
+   "src": "model"
+  },
+  {
+   "start": "2026-11-20T23:00:00+13:00",
+   "mm": 0.0,
+   "src": "model"
   },
   {
    "start": "2026-11-21T00:00:00+13:00",
@@ -336,44 +331,16 @@
    "src": "station",
    "n": 6,
    "how": "total"
+  },
+  {
+   "start": "2026-11-22T21:00:00+13:00",
+   "mm": 0.0,
+   "src": "station",
+   "n": 6,
+   "how": "total"
   }
  ],
  "runs": [
-  {
-   "at": "2026-11-20T14:32:06+13:00",
-   "stations": {
-    "IWARKW15": {
-     "t": "2026-11-20T14:32:11+13:00",
-     "totalMm": 0.2,
-     "rateMmH": 0.0
-    },
-    "ISNELL2": {
-     "t": "2026-11-20T14:32:01+13:00",
-     "totalMm": 0.0,
-     "rateMmH": 0.0
-    },
-    "ISNELL1": {
-     "t": "2026-11-20T14:32:01+13:00",
-     "totalMm": 0.0,
-     "rateMmH": 0.0
-    },
-    "IWARKW128": {
-     "t": "2026-11-20T14:31:37+13:00",
-     "totalMm": 0.2,
-     "rateMmH": 0.0
-    },
-    "IWARKW125": {
-     "t": "2026-11-20T14:31:56+13:00",
-     "totalMm": 0.0,
-     "rateMmH": 0.0
-    },
-    "IWARKW107": {
-     "t": "2026-11-20T14:31:57+13:00",
-     "totalMm": 0.3,
-     "rateMmH": 0.0
-    }
-   }
-  },
   {
    "at": "2026-11-20T15:29:13+13:00",
    "stations": {
@@ -1909,6 +1876,41 @@
     },
     "IWARKW107": {
      "t": "2026-11-22T20:29:12+13:00",
+     "totalMm": 0.0,
+     "rateMmH": 0.0
+    }
+   }
+  },
+  {
+   "at": "2026-11-22T21:20:32+13:00",
+   "stations": {
+    "IWARKW15": {
+     "t": "2026-11-22T21:20:37+13:00",
+     "totalMm": 0.0,
+     "rateMmH": 0.0
+    },
+    "ISNELL2": {
+     "t": "2026-11-22T21:19:57+13:00",
+     "totalMm": 0.0,
+     "rateMmH": 0.0
+    },
+    "ISNELL1": {
+     "t": "2026-11-22T21:20:27+13:00",
+     "totalMm": 0.0,
+     "rateMmH": 0.0
+    },
+    "IWARKW128": {
+     "t": "2026-11-22T21:20:21+13:00",
+     "totalMm": 0.0,
+     "rateMmH": 0.0
+    },
+    "IWARKW125": {
+     "t": "2026-11-22T21:20:22+13:00",
+     "totalMm": 0.0,
+     "rateMmH": 0.0
+    },
+    "IWARKW107": {
+     "t": "2026-11-22T21:20:25+13:00",
      "totalMm": 0.0,
      "rateMmH": 0.0
     }
