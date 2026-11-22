@@ -1,28 +1,28 @@
 {
- "updated": "12:31",
+ "updated": "13:21",
  "date": "Sun 22 Nov",
  "picks": [
   {
-   "name": "Scandretts Bay",
-   "window": "Now-2:30pm",
-   "note": "E 6-9kn, sunny"
-  },
-  {
    "name": "Wenderholm",
-   "window": "Now-2:30pm",
-   "note": "E 2-7kn, sunny"
+   "window": "Now-3:30pm",
+   "note": "E 3-9kn, sunny"
   },
   {
-   "name": "Algies Bay",
+   "name": "Scotts Landing",
+   "window": "Now-4:30pm",
+   "note": "ENE 3-11kn, sheltered, sunny"
+  },
+  {
+   "name": "Snells Beach",
    "window": "3:00-8:00pm",
-   "note": "swim, deep enough, ENE 8-11kn"
+   "note": "swim, deep enough, E 8-11kn"
   }
  ],
- "wind": "ENE 7-11kn g21",
- "swell": "0.8m, no surf",
+ "wind": "E 8-11kn g21",
+ "swell": "0.9m, small surf",
  "tide": "High 6:00pm",
  "weather": {
-  "now_c": 20.9,
+  "now_c": 21.2,
   "hi_c": 20,
   "lo_c": 11,
   "cond": "Sunny",
