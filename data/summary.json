@@ -1,40 +1,35 @@
 {
- "updated": "19:23",
+ "updated": "20:30",
  "date": "Mon 23 Nov",
  "picks": [
   {
-   "name": "Martins Bay",
-   "window": "6:00-8:30am",
-   "note": "ENE 6-7kn, sunny"
+   "name": "Scandretts Bay",
+   "window": "6:00-7:30am",
+   "note": "E 6-7kn, sunny"
   },
   {
-   "name": "Scandretts Bay",
+   "name": "Martins Bay",
    "window": "6:00-8:30am",
-   "note": "ENE 6-7kn, sunny"
+   "note": "ENE 6-8kn, sunny"
   },
   {
    "name": "Snells Beach",
    "window": "6:00-9:30am",
-   "note": "swim, deep enough, ENE 6-7kn"
+   "note": "swim, deep enough, ENE 6-8kn"
   }
  ],
- "wind": "NE 6-8kn g17",
+ "wind": "NE 6-8kn g18",
  "swell": "0.8m, small surf",
  "tide": "High 6:30am, 7:00pm",
  "weather": {
-  "now_c": 18.4,
+  "now_c": 17.8,
   "hi_c": 20,
   "lo_c": 11,
   "cond": "Sunny",
-  "rain": "0.6mm, 14%",
+  "rain": "0.4mm, 14%",
   "wind": "E 2-10kn g21",
   "sunset": "8:14pm",
   "later": [
-   {
-    "t": "8pm",
-    "c": 16,
-    "cond": "sunny"
-   },
    {
     "t": "6am",
     "c": 14,
@@ -44,6 +39,11 @@
     "t": "9am",
     "c": 18,
     "cond": "sunny"
+   },
+   {
+    "t": "12pm",
+    "c": 19,
+    "cond": "partly"
    }
   ]
  }
