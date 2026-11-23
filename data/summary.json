@@ -1,33 +1,33 @@
 {
- "updated": "12:20",
+ "updated": "13:27",
  "date": "Mon 23 Nov",
  "picks": [
   {
    "name": "Wenderholm",
-   "window": "Now-3:30pm",
-   "note": "N 2-7kn, dry"
+   "window": "Now-4:30pm",
+   "note": "NE 3-7kn, dry"
   },
   {
    "name": "Scotts Landing",
    "window": "Now-8:30pm",
-   "note": "NNE 2-7kn, sheltered, dry"
+   "note": "NNE 3-7kn, sheltered, dry"
   },
   {
    "name": "Snells Beach",
    "window": "3:30-8:30pm",
-   "note": "swim, deep enough, NNE 6-7kn, dry"
+   "note": "swim, deep enough, NE 6-7kn, dry"
   }
  ],
- "wind": "NNE 6-11kn g15",
- "swell": "0.8m, small surf",
+ "wind": "ENE 6-9kn g15",
+ "swell": "0.9m, small surf",
  "tide": "High 7:00pm",
  "weather": {
-  "now_c": 20.9,
+  "now_c": 20.8,
   "hi_c": 20,
   "lo_c": 14,
   "cond": "Sunny, partly cloudy pm",
-  "rain": "0.1mm, 2%",
-  "wind": "NE 4-8kn g17",
+  "rain": "0mm, 2%",
+  "wind": "NE 4-8kn g16",
   "sunset": "8:15pm",
   "later": [
    {
