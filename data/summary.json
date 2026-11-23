@@ -1,24 +1,24 @@
 {
- "updated": "15:31",
+ "updated": "16:28",
  "date": "Mon 23 Nov",
  "picks": [
   {
    "name": "Wenderholm",
-   "window": "Now-6:30pm",
-   "note": "ENE 3-8kn, dry"
+   "window": "Now-8:30pm",
+   "note": "N 4-7kn, dry"
   },
   {
-   "name": "Martins Bay",
-   "window": "Now-5:30pm",
-   "note": "NNE 5-7kn, dry"
+   "name": "Tāwharanui",
+   "window": "Now-6:30pm",
+   "note": "SSW 8-9kn, offshore, dry"
   },
   {
    "name": "Snells Beach",
-   "window": "3:30-8:30pm",
-   "note": "swim, deep enough, NE 6-8kn, dry"
+   "window": "Now-8:30pm",
+   "note": "swim, deep enough, NE 4-7kn, dry"
   }
  ],
- "wind": "NE 7-8kn g14",
+ "wind": "NE 7kn g13",
  "swell": "0.9m, small surf",
  "tide": "High 7:00pm",
  "weather": {
