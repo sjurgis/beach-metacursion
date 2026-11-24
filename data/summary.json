@@ -1,5 +1,5 @@
 {
- "updated": "06:21",
+ "updated": "07:22",
  "date": "Wed 25 Nov",
  "picks": [
   {
@@ -8,7 +8,7 @@
    "note": "NNW 1-8kn, dry"
   },
   {
-   "name": "Wenderholm",
+   "name": "Scandretts Bay",
    "window": "Now-10:30am",
    "note": "NNW 1-8kn, dry"
   },
@@ -18,16 +18,16 @@
    "note": "swim, deep enough, N 0-8kn, dry"
   }
  ],
- "wind": "N 0-11kn g21",
+ "wind": "NNE 0-11kn g21",
  "swell": "1.1m 7s, surf up",
  "tide": "High 8:00am, 8:30pm",
  "weather": {
-  "now_c": 15.9,
+  "now_c": 16.4,
   "hi_c": 22,
-  "lo_c": 15,
+  "lo_c": 16,
   "cond": "Cloudy, partly cloudy pm",
   "rain": "0mm, 31%",
-  "wind": "N 5-11kn g21",
+  "wind": "N 4-11kn g21",
   "sunset": "8:17pm",
   "later": [
    {
