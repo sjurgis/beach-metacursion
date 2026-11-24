@@ -1,16 +1,16 @@
 {
- "updated": "19:26",
+ "updated": "20:22",
  "date": "Wed 25 Nov",
  "picks": [
   {
    "name": "Martins Bay",
-   "window": "6:00-9:30am",
-   "note": "NNW 5-7kn, dry"
+   "window": "6:00-10:30am",
+   "note": "N 5-9kn, dry"
   },
   {
    "name": "Wenderholm",
-   "window": "6:00-9:30am",
-   "note": "NNW 5-7kn, dry"
+   "window": "6:00-10:30am",
+   "note": "N 5-9kn, dry"
   },
   {
    "name": "Algies Bay",
@@ -22,28 +22,28 @@
  "swell": "1.1m 7s, surf up",
  "tide": "High 8:00am, 8:30pm",
  "weather": {
-  "now_c": 19.1,
+  "now_c": 18.7,
   "hi_c": 21,
   "lo_c": 12,
   "cond": "Sunny, rain pm",
-  "rain": "1.3mm, 100%",
-  "wind": "N 3-10kn g19",
+  "rain": "2.4mm, 100%",
+  "wind": "N 3-9kn g19",
   "sunset": "8:16pm",
   "later": [
    {
-    "t": "8pm",
-    "c": 17,
-    "cond": "cloudy"
-   },
-   {
     "t": "6am",
     "c": 16,
-    "cond": "cloudy"
+    "cond": "partly"
    },
    {
     "t": "9am",
     "c": 19,
-    "cond": "partly"
+    "cond": "sunny"
+   },
+   {
+    "t": "12pm",
+    "c": 21,
+    "cond": "sunny"
    }
   ]
  }
