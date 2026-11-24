@@ -1,16 +1,16 @@
 {
- "updated": "13:19",
+ "updated": "14:27",
  "date": "Tue 24 Nov",
  "picks": [
   {
    "name": "Wenderholm",
-   "window": "Now-2:30pm",
+   "window": "Now-3:30pm",
    "note": "almost still, dry"
   },
   {
-   "name": "Scotts Landing",
-   "window": "Now-2:30pm",
-   "note": "almost still, sheltered, dry"
+   "name": "Snells Beach",
+   "window": "Now-3:30pm",
+   "note": "N 5-6kn, dry"
   },
   {
    "name": "Algies Bay",
@@ -18,23 +18,18 @@
    "note": "swim, deep enough, N 10kn"
   }
  ],
- "wind": "N 10-12kn g18",
+ "wind": "N 9-10kn g18",
  "swell": "1.0m 7s, surf up",
  "tide": "High 7:30pm",
  "weather": {
-  "now_c": 21.5,
-  "hi_c": 20,
+  "now_c": 21.7,
+  "hi_c": 21,
   "lo_c": 12,
   "cond": "Sunny, showers pm",
-  "rain": "1.8mm, 99%",
+  "rain": "1mm, 99%",
   "wind": "N 3-10kn g19",
   "sunset": "8:16pm",
   "later": [
-   {
-    "t": "3pm",
-    "c": 20,
-    "cond": "showers"
-   },
    {
     "t": "6pm",
     "c": 18,
@@ -43,7 +38,12 @@
    {
     "t": "8pm",
     "c": 17,
-    "cond": "partly"
+    "cond": "cloudy"
+   },
+   {
+    "t": "6am",
+    "c": 16,
+    "cond": "cloudy"
    }
   ]
  }
