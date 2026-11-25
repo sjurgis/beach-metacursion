@@ -1,5 +1,5 @@
 {
- "updated": "08:25",
+ "updated": "09:21",
  "date": "Thu 26 Nov",
  "picks": [
   {
@@ -10,19 +10,19 @@
   {
    "name": "Martins Bay",
    "window": "Now-12:30pm",
-   "note": "W 3-11kn, offshore, dry"
+   "note": "WSW 8-11kn, offshore, dry"
   },
   {
    "name": "Algies Bay",
    "window": "Now-12:00pm",
-   "note": "swim, deep enough, W 3-10kn"
+   "note": "swim, deep enough, W 9kn"
   }
  ],
- "wind": "WSW 3-11kn g21",
+ "wind": "WSW 7-11kn g21",
  "swell": "1.0m, small surf",
  "tide": "High 9:00am, 9:30pm",
  "weather": {
-  "now_c": 18.9,
+  "now_c": 22.1,
   "hi_c": 23,
   "lo_c": 14,
   "cond": "Partly cloudy, cloudy pm",
