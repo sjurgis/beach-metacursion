@@ -1,28 +1,28 @@
 {
- "updated": "16:20",
+ "updated": "17:23",
  "date": "Sat 28 Nov",
  "picks": [
   {
    "name": "Wenderholm",
-   "window": "Now-6:30pm",
+   "window": "Now-7:30pm",
    "note": "N 3-8kn, sunny"
-  },
-  {
-   "name": "Martins Bay",
-   "window": "Now-6:30pm",
-   "note": "N 6-9kn, sunny"
   },
   {
    "name": "Scotts Landing",
    "window": "Now-8:30pm",
-   "note": "N 3-10kn, sheltered, sunny"
+   "note": "N 3-8kn, sheltered, sunny"
+  },
+  {
+   "name": "Snells Beach",
+   "window": "Now-7:30pm",
+   "note": "ENE 4-8kn, sunny"
   }
  ],
- "wind": "NNE 8-10kn g17",
+ "wind": "ENE 7-9kn g15",
  "swell": "0.9m, small surf",
  "tide": "High 11:00am, 11:30pm",
  "weather": {
-  "now_c": 21.9,
+  "now_c": 21,
   "hi_c": 21,
   "lo_c": 12,
   "cond": "Foggy, sunny pm",
@@ -30,11 +30,6 @@
   "wind": "NE 2-10kn g18",
   "sunset": "8:20pm",
   "later": [
-   {
-    "t": "6pm",
-    "c": 19,
-    "cond": "partly"
-   },
    {
     "t": "8pm",
     "c": 18,
@@ -44,6 +39,11 @@
     "t": "6am",
     "c": 15,
     "cond": "sunny"
+   },
+   {
+    "t": "9am",
+    "c": 19,
+    "cond": "partly"
    }
   ]
  }
