@@ -1,28 +1,28 @@
 {
- "updated": "18:26",
- "date": "Sat 28 Nov",
+ "updated": "19:27",
+ "date": "Sun 29 Nov",
  "picks": [
   {
-   "name": "Wenderholm",
-   "window": "Now-8:30pm",
-   "note": "almost still, dry"
-  },
-  {
-   "name": "Snells Beach",
-   "window": "Now-8:30pm",
-   "note": "almost still, dry"
-  },
-  {
    "name": "Martins Bay",
-   "window": "Now-8:30pm",
-   "note": "NE 6kn, dry"
+   "window": "6:00-6:30am",
+   "note": "NNE 5-6kn, sunny"
+  },
+  {
+   "name": "Scandretts Bay",
+   "window": "6:00-6:30am",
+   "note": "NNE 5-6kn, sunny"
+  },
+  {
+   "name": "Algies Bay",
+   "window": "8:30am-3:00pm",
+   "note": "swim, deep enough, NNE 8-12kn"
   }
  ],
- "wind": "NE 7-8kn g11",
- "swell": "0.9m, small surf",
- "tide": "High 11:00am, 11:30pm",
+ "wind": "NNE 5-12kn g23",
+ "swell": "0.8m, small surf",
+ "tide": "High 11:30am",
  "weather": {
-  "now_c": 20.7,
+  "now_c": 19.4,
   "hi_c": 21,
   "lo_c": 12,
   "cond": "Foggy, sunny pm",
